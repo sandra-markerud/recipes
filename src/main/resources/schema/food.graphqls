@@ -1,0 +1,8 @@
+extend type Query {
+    allFoods: [Food]!
+}
+
+type Food {
+    id: ID!
+    name: String!
+}
