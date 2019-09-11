@@ -1,7 +1,7 @@
 #!/usr/bin/env bash
 
 echo "**********************************"
-echo "*    Start pre-push.sh git hook     *"
+echo "*    Start pre-push git hook     *"
 echo "**********************************"
 
 error="$(./build.sh | tee /dev/stderr | grep "BUILD FAILURE")";
