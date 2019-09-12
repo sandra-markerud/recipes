@@ -22,15 +22,17 @@ This repository contains an application to manage cooking recipes for my family,
 ### Before you start: clone this repository
 1. `git clone https://github.com/sandra-markerud/recipes.git`
 
+### Build the project
+1. Open a new terminal inside the the project's root folder
+2. Run the `./build-project.sh` script to start the maven build. Due to the `frontend-maven-plugin`, the frontend is also built in addition to the backend
+
 ### Build and start the backend
 1. Open a new terminal inside the the project's root folder
-2. Run the `./build-backend.sh` script to start the maven build
 3. Run the  `./run-backend.sh` script to start the spring boot backend via maven
 4. Start the GraphQL Playground and enter the following url endpoint `http://localhost:4000/query` to access the graphQL endpoint
 
 ### Install, build and start the frontend 
 1. Open a new terminal inside the `frontend` folder
-2. Install the npm packages with `yarn install`
 3. Start the webpack web server with `yarn start`
 4. The webserver now should listen on `http://localhost:3000`
 
