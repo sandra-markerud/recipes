@@ -29,7 +29,7 @@ This repository contains an application to manage cooking recipes for my family,
 ### Build and start the backend
 1. Open a new terminal inside the project's root folder
 2. Run the  `./run-backend.sh` script to start the spring boot backend via maven
-3. Start the GraphQL Playground and enter the following url endpoint `http://localhost:4000/query` to access the graphQL endpoint
+3. Start the GraphQL Playground and enter the following url endpoint `http://localhost:4000/graphql` to access the graphQL endpoint
 
 ### Install, build and start the frontend 
 1. Open a new terminal inside the project's root folder
