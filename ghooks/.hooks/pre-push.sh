@@ -4,7 +4,7 @@ echo "**********************************"
 echo "*    Start pre-push git hook     *"
 echo "**********************************"
 
-error="$(./build.sh | tee /dev/stderr | grep "BUILD FAILURE")";
+error="$(./build-backend.sh | tee /dev/stderr | grep "BUILD FAILURE")";
 
 if [ -z "$error" ]
 then
