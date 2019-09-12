@@ -1,0 +1,6 @@
+type Ingredient {
+    id: ID!
+    quantity: Float!
+    unit: Unit!
+    food: Food!
+}
