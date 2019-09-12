@@ -1,21 +1,34 @@
 package com.markerud.recipes.food;
 
-public class Food {
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.Table;
 
-    private final long id;
-    private final String name;
+import org.hibernate.annotations.NaturalId;
 
-    public Food(long id, String name) {
-        this.id = id;
-        this.name = name;
-    }
+import com.markerud.recipes.jpa.BaseEntity;
 
-    public long getId() {
-        return id;
-    }
+@Entity
+@Table(name = "FOODS")
+public class Food extends BaseEntity {
+
+    @NaturalId
+    @Column(name = "NAME")
+    private String name;
 
     public String getName() {
         return name;
+    }
+
+    public Food setName(String name) {
+        this.name = name;
+        return this;
+    }
+
+    @Override
+    public String toString() {
+        String localPart = "name=" + name;
+        return String.format(super.toString(), localPart);
     }
 
 }

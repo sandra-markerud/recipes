@@ -1,0 +1,6 @@
+query FetchAllFoods {
+  allFoods {
+    id
+    name
+  }
+}
