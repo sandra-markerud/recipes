@@ -21,11 +21,23 @@
 		<java.version>11</java.version>
         <node.version>v12.10.0</node.version>
         <yarn.version>v1.17.3</yarn.version>
+		<spring-data-jpa-entity-graph.version>2.1.0</spring-data-jpa-entity-graph.version>
+		<graphql-spring-boot-webmvc.version>1.0</graphql-spring-boot-webmvc.version>
+		<graphql-starter-test.version>5.0.2</graphql-starter-test.version>
+		<hamcrest.version>2.1</hamcrest.version>
 		<maven-frontend-plugin.version>1.8.0</maven-frontend-plugin.version>
 		<maven-githook-plugin.version>1.0.0</maven-githook-plugin.version>
 	</properties>
 
 	<dependencies>
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter-actuator</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter-data-jpa</artifactId>
+        </dependency>
 		<dependency>
 			<groupId>org.springframework.boot</groupId>
 			<artifactId>spring-boot-starter-web</artifactId>
@@ -33,11 +45,50 @@
 		<dependency>
 			<groupId>com.graphql-java</groupId>
 			<artifactId>graphql-java-spring-boot-starter-webmvc</artifactId>
-			<version>1.0</version>
+			<version>${graphql-spring-boot-webmvc.version}</version>
+		</dependency>
+		<dependency>
+			<groupId>com.cosium.spring.data</groupId>
+			<artifactId>spring-data-jpa-entity-graph</artifactId>
+			<version>${spring-data-jpa-entity-graph.version}</version>
+		</dependency>
+		<dependency>
+			<groupId>org.springframework.boot</groupId>
+			<artifactId>spring-boot-devtools</artifactId>
+			<scope>runtime</scope>
+		</dependency>
+		<dependency>
+			<groupId>com.h2database</groupId>
+			<artifactId>h2</artifactId>
+			<scope>runtime</scope>
 		</dependency>
 		<dependency>
 			<groupId>org.springframework.boot</groupId>
 			<artifactId>spring-boot-starter-test</artifactId>
+			<scope>test</scope>
+			<exclusions>
+				<exclusion>
+					<groupId>junit</groupId>
+					<artifactId>junit</artifactId>
+				</exclusion>
+			</exclusions>
+		</dependency>
+		<dependency>
+			<groupId>org.junit.jupiter</groupId>
+			<artifactId>junit-jupiter-engine</artifactId>
+			<version>${junit-jupiter.version}</version>
+			<scope>test</scope>
+		</dependency>
+		<dependency>
+			<groupId>com.graphql-java</groupId>
+			<artifactId>graphql-spring-boot-starter-test</artifactId>
+			<version>${graphql-starter-test.version}</version>
+			<scope>test</scope>
+		</dependency>
+		<dependency>
+			<groupId>org.hamcrest</groupId>
+			<artifactId>hamcrest</artifactId>
+			<version>${hamcrest.version}</version>
 			<scope>test</scope>
 		</dependency>
 	</dependencies>
