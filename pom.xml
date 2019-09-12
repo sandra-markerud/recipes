@@ -21,6 +21,8 @@
 		<java.version>11</java.version>
         <node.version>v12.10.0</node.version>
         <yarn.version>v1.17.3</yarn.version>
+		<graphql-java.version>9.2</graphql-java.version>
+		<google-guava.version>21.0</google-guava.version>
 		<spring-data-jpa-entity-graph.version>2.1.0</spring-data-jpa-entity-graph.version>
 		<graphql-spring-boot-webmvc.version>1.0</graphql-spring-boot-webmvc.version>
 		<graphql-starter-test.version>5.0.2</graphql-starter-test.version>
@@ -28,6 +30,21 @@
 		<maven-frontend-plugin.version>1.8.0</maven-frontend-plugin.version>
 		<maven-githook-plugin.version>1.0.0</maven-githook-plugin.version>
 	</properties>
+
+	<dependencyManagement>
+		<dependencies>
+			<dependency>
+				<groupId>com.graphql-java</groupId>
+				<artifactId>graphql-java</artifactId>
+				<version>${graphql-java.version}</version>
+			</dependency>
+			<dependency>
+				<groupId>com.google.guava</groupId>
+				<artifactId>guava</artifactId>
+				<version>${google-guava.version}</version>
+			</dependency>
+		</dependencies>
+	</dependencyManagement>
 
 	<dependencies>
         <dependency>
@@ -174,6 +191,61 @@
 							</ghooks>
 						</configuration>
 						<phase>compile</phase>
+					</execution>
+				</executions>
+			</plugin>
+
+			<plugin>
+				<groupId>org.apache.maven.plugins</groupId>
+				<artifactId>maven-enforcer-plugin</artifactId>
+				<dependencies>
+					<dependency>
+						<groupId>de.andrena.tools.nopackagecycles</groupId>
+						<artifactId>no-package-cycles-enforcer-rule</artifactId>
+						<version>1.0.9</version>
+					</dependency>
+				</dependencies>
+				<executions>
+					<execution>
+						<id>enforce-no-package-cycles</id>
+						<goals>
+							<goal>enforce</goal>
+						</goals>
+						<phase>test</phase>
+						<configuration>
+							<rules>
+								<NoPackageCyclesRule implementation="de.andrena.tools.nopackagecycles.NoPackageCyclesRule" />
+							</rules>
+						</configuration>
+					</execution>
+					<execution>
+						<id>enforce</id>
+						<goals>
+							<goal>enforce</goal>
+						</goals>
+						<configuration>
+							<rules>
+								<dependencyConvergence />
+								<bannedDependencies>
+									<excludes>
+										<exclude>junit:junit</exclude>
+										<exclude>org.hamcrest</exclude>
+										<exclude>org.springframework:spring-test</exclude>
+										<exclude>org.springframework.boot:spring-boot-test</exclude>
+										<exclude>org.mockito</exclude>
+										<exclude>org.assertj</exclude>
+									</excludes>
+									<includes>
+										<include>junit:junit:*:*:test</include>
+										<include>org.hamcrest:*:*:*:test</include>
+										<include>org.springframework:spring-test:*:*:test</include>
+										<include>org.springframework.boot:spring-boot-test:*:*:test</include>
+										<include>org.mockito:*:*:*:test</include>
+										<exclude>org.assertj:*:*:*:test</exclude>
+									</includes>
+								</bannedDependencies>
+							</rules>
+						</configuration>
 					</execution>
 				</executions>
 			</plugin>

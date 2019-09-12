@@ -88,9 +88,9 @@
     <orderEntry type="library" name="Maven: com.graphql-java:graphql-java-spring-boot-starter-webmvc:1.0" level="project" />
     <orderEntry type="library" name="Maven: org.springframework.boot:spring-boot-autoconfigure:2.1.8.RELEASE" level="project" />
     <orderEntry type="library" name="Maven: com.graphql-java:graphql-java-spring-webmvc:1.0" level="project" />
-    <orderEntry type="library" name="Maven: com.graphql-java:graphql-java:11.0" level="project" />
+    <orderEntry type="library" name="Maven: com.graphql-java:graphql-java:9.2" level="project" />
     <orderEntry type="library" name="Maven: org.antlr:antlr4-runtime:4.7.1" level="project" />
-    <orderEntry type="library" name="Maven: com.graphql-java:java-dataloader:2.1.1" level="project" />
+    <orderEntry type="library" name="Maven: com.graphql-java:java-dataloader:2.0.2" level="project" />
     <orderEntry type="library" name="Maven: org.reactivestreams:reactive-streams:1.0.3" level="project" />
     <orderEntry type="library" name="Maven: com.cosium.spring.data:spring-data-jpa-entity-graph:2.1.0" level="project" />
     <orderEntry type="library" scope="RUNTIME" name="Maven: org.springframework.boot:spring-boot-devtools:2.1.8.RELEASE" level="project" />
