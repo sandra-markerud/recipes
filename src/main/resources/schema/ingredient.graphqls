@@ -3,4 +3,5 @@ type Ingredient {
     quantity: Float!
     unit: Unit!
     food: Food!
+    recipe: Recipe!
 }

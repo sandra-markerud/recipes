@@ -1,4 +1,4 @@
-package com.markerud.recipes.ingredient;
+package com.markerud.recipes.recipe;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;

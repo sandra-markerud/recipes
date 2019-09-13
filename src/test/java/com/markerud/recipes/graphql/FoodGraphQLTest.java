@@ -13,6 +13,7 @@ import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.test.annotation.DirtiesContext;
 import org.springframework.test.context.junit.jupiter.SpringExtension;
 
+import com.fasterxml.jackson.databind.JsonNode;
 import com.graphql.spring.boot.test.GraphQLResponse;
 import com.graphql.spring.boot.test.GraphQLTestTemplate;
 import com.markerud.recipes.food.Food;
@@ -39,10 +40,13 @@ class FoodGraphQLTest {
         GraphQLResponse fetchAllFoodsResponse = graphQLTestTemplate.postForResource("graphql/fetchAllFoods.graphql");
 
         // then
-        assertThat(fetchAllFoodsResponse.get("$.data.allFoods[0].id"), equalTo("1"));
-        assertThat(fetchAllFoodsResponse.get("$.data.allFoods[0].name"), equalTo("Apfel"));
-        assertThat(fetchAllFoodsResponse.get("$.data.allFoods[1].id"), equalTo("2"));
-        assertThat(fetchAllFoodsResponse.get("$.data.allFoods[1].name"), equalTo("Birne"));
+        JsonNode allFoods = fetchAllFoodsResponse.readTree().get("data").get("allFoods");
+
+        assertThat(allFoods.size(), equalTo(2));
+        assertThat(allFoods.get(0).get("id").asLong(), equalTo(1L));
+        assertThat(allFoods.get(0).get("name").asText(), equalTo("Apfel"));
+        assertThat(allFoods.get(1).get("id").asLong(), equalTo(2L));
+        assertThat(allFoods.get(1).get("name").asText(), equalTo("Birne"));
     }
 
 }

@@ -1,0 +1,10 @@
+extend type Query {
+    allRecipes: [Recipe!]!
+}
+
+type Recipe {
+    id: ID!
+    name: String!
+    ingredients: [Ingredient]!
+    instruction: String!
+}

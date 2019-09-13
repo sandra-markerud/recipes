@@ -1,4 +1,4 @@
-package com.markerud.recipes.ingredient;
+package com.markerud.recipes.recipe;
 
 import javax.persistence.CascadeType;
 import javax.persistence.Column;
@@ -7,6 +7,7 @@ import javax.persistence.FetchType;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.Table;
+import java.math.BigDecimal;
 
 import com.markerud.recipes.food.Food;
 import com.markerud.recipes.jpa.BaseEntity;
@@ -16,7 +17,7 @@ import com.markerud.recipes.jpa.BaseEntity;
 public class Ingredient extends BaseEntity {
 
     @Column(name = "QUANTITY")
-    private double quantity;
+    private BigDecimal quantity;
 
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "UNIT_ID")
@@ -26,11 +27,15 @@ public class Ingredient extends BaseEntity {
     @JoinColumn(name = "FOOD_ID")
     private Food food;
 
-    public double getQuantity() {
+    @ManyToOne(fetch = FetchType.LAZY)
+    @JoinColumn(name = "RECIPE_ID")
+    private Recipe recipe;
+
+    public BigDecimal getQuantity() {
         return quantity;
     }
 
-    public Ingredient setQuantity(double quantity) {
+    public Ingredient setQuantity(BigDecimal quantity) {
         this.quantity = quantity;
         return this;
     }
@@ -50,6 +55,15 @@ public class Ingredient extends BaseEntity {
 
     public Ingredient setFood(Food food) {
         this.food = food;
+        return this;
+    }
+
+    public Recipe getRecipe() {
+        return recipe;
+    }
+
+    public Ingredient setRecipe(Recipe recipe) {
+        this.recipe = recipe;
         return this;
     }
 

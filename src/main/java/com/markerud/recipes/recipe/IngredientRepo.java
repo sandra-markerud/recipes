@@ -1,4 +1,4 @@
-package com.markerud.recipes.ingredient;
+package com.markerud.recipes.recipe;
 
 import com.cosium.spring.data.jpa.entity.graph.repository.EntityGraphJpaRepository;
 

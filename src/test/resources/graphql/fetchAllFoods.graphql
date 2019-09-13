@@ -1,6 +1,6 @@
 query FetchAllFoods {
-  allFoods {
-    id
-    name
-  }
+    allFoods {
+        id
+        name
+    }
 }

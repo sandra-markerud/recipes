@@ -52,7 +52,8 @@ public class GraphQLProvider {
     private RuntimeWiring buildRuntimeWiring() {
         return RuntimeWiring.newRuntimeWiring() //
                 .type("Query", typeWiring -> typeWiring //
-                        .dataFetcher("allFoods", query.allFoodsFetcher)) //
+                        .dataFetcher("allFoods", query.allFoodsFetcher) //
+                        .dataFetcher("allRecipes", query.allRecipesFetcher)) //
                 .build();
     }
 }
