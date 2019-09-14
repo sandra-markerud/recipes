@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 https://maven.apache.org/xsd/maven-4.0.0.xsd">
+		 xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 https://maven.apache.org/xsd/maven-4.0.0.xsd">
 	<modelVersion>4.0.0</modelVersion>
 	<parent>
 		<groupId>org.springframework.boot</groupId>
@@ -19,8 +19,8 @@
 
 	<properties>
 		<java.version>11</java.version>
-        <node.version>v12.10.0</node.version>
-        <yarn.version>v1.17.3</yarn.version>
+		<node.version>v12.10.0</node.version>
+		<yarn.version>v1.17.3</yarn.version>
 		<graphql-java.version>9.2</graphql-java.version>
 		<google-guava.version>21.0</google-guava.version>
 		<spring-data-jpa-entity-graph.version>2.1.0</spring-data-jpa-entity-graph.version>
@@ -47,14 +47,14 @@
 	</dependencyManagement>
 
 	<dependencies>
-        <dependency>
-            <groupId>org.springframework.boot</groupId>
-            <artifactId>spring-boot-starter-actuator</artifactId>
-        </dependency>
-        <dependency>
-            <groupId>org.springframework.boot</groupId>
-            <artifactId>spring-boot-starter-data-jpa</artifactId>
-        </dependency>
+		<dependency>
+			<groupId>org.springframework.boot</groupId>
+			<artifactId>spring-boot-starter-actuator</artifactId>
+		</dependency>
+		<dependency>
+			<groupId>org.springframework.boot</groupId>
+			<artifactId>spring-boot-starter-data-jpa</artifactId>
+		</dependency>
 		<dependency>
 			<groupId>org.springframework.boot</groupId>
 			<artifactId>spring-boot-starter-web</artifactId>
@@ -68,6 +68,10 @@
 			<groupId>com.cosium.spring.data</groupId>
 			<artifactId>spring-data-jpa-entity-graph</artifactId>
 			<version>${spring-data-jpa-entity-graph.version}</version>
+		</dependency>
+		<dependency>
+			<groupId>org.apache.commons</groupId>
+			<artifactId>commons-lang3</artifactId>
 		</dependency>
 		<dependency>
 			<groupId>org.springframework.boot</groupId>
@@ -106,6 +110,16 @@
 			<groupId>org.hamcrest</groupId>
 			<artifactId>hamcrest</artifactId>
 			<version>${hamcrest.version}</version>
+			<scope>test</scope>
+		</dependency>
+		<dependency>
+			<groupId>org.mockito</groupId>
+			<artifactId>mockito-junit-jupiter</artifactId>
+			<scope>test</scope>
+		</dependency>
+		<dependency>
+			<groupId>org.mockito</groupId>
+			<artifactId>mockito-core</artifactId>
 			<scope>test</scope>
 		</dependency>
 	</dependencies>
@@ -168,7 +182,7 @@
 						<goals>
 							<goal>yarn</goal>
 						</goals>
-                        <phase>compile</phase>
+						<phase>compile</phase>
 						<configuration>
 							<arguments>build</arguments>
 						</configuration>
