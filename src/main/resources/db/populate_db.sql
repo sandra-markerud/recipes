@@ -16,7 +16,16 @@ INSERT INTO FOODS (ID, NAME, VERSION, CREATED_ON, MODIFIED_ON) VALUES
 
 INSERT INTO RECIPES (ID, NAME, INSTRUCTION, VERSION, CREATED_ON, MODIFIED_ON) VALUES
     (3000, 'Pilzpfanne in Zitronenrahm', 'Pilze schälen und in kleine Stücke schneiden. Gekochten Schinken in Würfel schneiden und zusammen mit den Pilzen anbraten...', 0, CURRENT_TIMESTAMP, CURRENT_TIMESTAMP),
-	(3001, 'Schinkennudeln', 'Nudeln bissfest kochen. Gekochter Schinken in Würfel schneiden und zusammen mit den Nudeln braten', 0, CURRENT_TIMESTAMP, CURRENT_TIMESTAMP);
+	(3001, 'Schinkennudeln', 'Nudeln bissfest kochen. Gekochter Schinken in Würfel schneiden und zusammen mit den Nudeln braten', 0, CURRENT_TIMESTAMP, CURRENT_TIMESTAMP),
+	(3002, 'Obstsalat', 'Alles kleinschnibbeln und mischen', 0, CURRENT_TIMESTAMP, CURRENT_TIMESTAMP),
+	(3003, 'Egg & Bacon', 'Bacon anbraten, warm stellen, danach Ei backen...', 0, CURRENT_TIMESTAMP, CURRENT_TIMESTAMP),
+	(3004, 'Bauerntopf', 'Man nehme...', 0, CURRENT_TIMESTAMP, CURRENT_TIMESTAMP),
+	(3005, 'Schokopudding', 'Man nehme...', 0, CURRENT_TIMESTAMP, CURRENT_TIMESTAMP),
+	(3006, 'Butterbrot', 'Man nehme...', 0, CURRENT_TIMESTAMP, CURRENT_TIMESTAMP),
+	(3007, 'Flammkuchen Elsässer Art', 'Man nehme...', 0, CURRENT_TIMESTAMP, CURRENT_TIMESTAMP),
+	(3008, 'Dosensuppe', 'Man nehme...', 0, CURRENT_TIMESTAMP, CURRENT_TIMESTAMP),
+	(3009, 'Haferbrei à la Liv', 'Man nehme...', 0, CURRENT_TIMESTAMP, CURRENT_TIMESTAMP),
+	(3010, 'Müsli', 'Man nehme...', 0, CURRENT_TIMESTAMP, CURRENT_TIMESTAMP);
 
 INSERT INTO INGREDIENTS (ID, QUANTITY, UNIT_ID, FOOD_ID, RECIPE_ID, VERSION, CREATED_ON, MODIFIED_ON) VALUES
 	(4000, 600, 1000, 2000, 3000, 0, CURRENT_TIMESTAMP, CURRENT_TIMESTAMP),
