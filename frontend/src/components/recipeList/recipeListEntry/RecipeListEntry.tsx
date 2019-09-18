@@ -1,15 +1,17 @@
 import * as React from 'react';
 import { Link } from 'react-router-dom';
-import { Recipe } from "../../../generated/graphql";
+import {Recipe} from '../../../generated/graphql';
+import withStyles, { WithSheet } from 'react-jss';
+import styles from './styles';
 
-interface RecipeListEntryProps {
+type RecipeListEntryProps = WithSheet<typeof styles, {}> & {
     recipe: (
         { __typename?: 'Recipe' }
         & Pick<Recipe, 'id' | 'name'>
         )
 }
 
-const RecipeListEntry: React.FC<RecipeListEntryProps> = ( { recipe }) => {
+const RecipeListEntry: React.FC<RecipeListEntryProps> = ( { recipe, classes }) => {
     return (
         <div>
             <Link to={"/rezept/" + recipe.id}>
@@ -23,4 +25,4 @@ const RecipeListEntry: React.FC<RecipeListEntryProps> = ( { recipe }) => {
 };
 
 
-export default RecipeListEntry;
+export default withStyles(styles)(RecipeListEntry);
