@@ -1,5 +1,5 @@
-import React from "react";
-import { AllRecipesQuery } from "../../generated/graphql";
+import React from 'react';
+import { AllRecipesQuery } from '../../generated/graphql';
 
 interface RecipeListProps {
     data: AllRecipesQuery

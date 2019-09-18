@@ -1,6 +1,6 @@
-import React from 'react';
+import * as React from 'react';
 import { Route, Switch } from 'react-router-dom';
-import RecipeList from "./components/recipeList/index";
+import RecipeList from './components/recipeList/index';
 
 const App: React.FC = () => {
   return (

@@ -1,5 +1,4 @@
-// @ts-ignore
-import React from 'react';
+import * as React from 'react';
 import { ApolloError } from 'apollo-boost';
 
 interface ErrorProps {
