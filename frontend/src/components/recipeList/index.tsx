@@ -1,6 +1,7 @@
 import React from 'react';
 import { useAllRecipesQuery } from "../../generated/graphql";
 import RecipeList from "./RecipeList";
+import Error from "../shared/error/Error";
 
 const RecipeListContainer = () => {
     const { data, error, loading } = useAllRecipesQuery();
@@ -10,7 +11,7 @@ const RecipeListContainer = () => {
     }
 
     if (error || !data) {
-        return <div>Ups! Etwas ist schief gelaufen!</div>;
+        return <Error error={error} />;
     }
 
     return <RecipeList data={ data } />;
