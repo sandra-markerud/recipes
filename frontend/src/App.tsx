@@ -3,12 +3,16 @@ import {Route, Switch} from 'react-router-dom';
 import RecipeList from './components/recipeList/index';
 import Header from './components/shared/header/Header';
 import Footer from './components/shared/footer/Footer';
+import withStyles, {WithSheet} from 'react-jss';
+import styles from './styles';
 
-const App: React.FC = () => {
+type AppProps = WithSheet<typeof styles, {}>
+
+const App: React.FC<AppProps> = ({classes}) => {
     return (
         <React.Fragment>
             <Header/>
-            <main>
+            <main className={classes.content}>
                 <Switch>
                     <Route exact path="/" component={RecipeList}/>
                 </Switch>
@@ -18,4 +22,4 @@ const App: React.FC = () => {
     );
 };
 
-export default App;
+export default withStyles(styles)(App);
