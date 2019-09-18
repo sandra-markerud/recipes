@@ -4,6 +4,7 @@ import { BrowserRouter } from 'react-router-dom';
 import ApolloClient from 'apollo-boost';
 import { ApolloProvider } from 'react-apollo';
 import App from './App';
+import 'normalize.css';
 import * as serviceWorker from './serviceWorker';
 
 const client = new ApolloClient({
