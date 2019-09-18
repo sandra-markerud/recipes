@@ -1,7 +1,9 @@
 import * as React from 'react';
 import { ApolloError } from 'apollo-boost';
+import withStyles, { WithSheet } from 'react-jss';
+import styles from './styles';
 
-interface ErrorProps {
+type ErrorProps = WithSheet<typeof styles, {}> & {
     error: ApolloError | undefined
 }
 
@@ -16,4 +18,4 @@ const Error: React.FC<ErrorProps> = ( { error } ) => {
     );
 };
 
-export default Error;
+export default withStyles(styles)(Error);
