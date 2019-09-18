@@ -10,7 +10,7 @@ const RecipeListContainer = () => {
     }
 
     if (error || !data) {
-        return <div>ERROR</div>;
+        return <div>Ups! Etwas ist schief gelaufen!</div>;
     }
 
     return <RecipeList data={ data } />;
