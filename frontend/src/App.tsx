@@ -2,6 +2,7 @@ import * as React from 'react';
 import {Route, Switch} from 'react-router-dom';
 import RecipeList from './components/recipeList/index';
 import Header from './components/shared/header/Header';
+import Footer from './components/shared/footer/Footer';
 
 const App: React.FC = () => {
     return (
@@ -12,6 +13,7 @@ const App: React.FC = () => {
                     <Route exact path="/" component={RecipeList}/>
                 </Switch>
             </main>
+            <Footer/>
         </React.Fragment>
     );
 };
