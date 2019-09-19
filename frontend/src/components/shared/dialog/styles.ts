@@ -1,29 +1,29 @@
-import {colors} from "../../../config";
+import {Colors} from "../../../config";
 
 export default {
 
     success: {
-        color: colors.systemColors.success.dark,
-        borderColor: colors.systemColors.success.dark,
-        backgroundColor: colors.systemColors.success.light,
+        color: Colors.systemColors.success.dark,
+        borderColor: Colors.systemColors.success.dark,
+        backgroundColor: Colors.systemColors.success.light,
     },
 
     info: {
-        color: colors.systemColors.info.dark,
-        borderColor: colors.systemColors.info.dark,
-        backgroundColor: colors.systemColors.info.light,
+        color: Colors.systemColors.info.dark,
+        borderColor: Colors.systemColors.info.dark,
+        backgroundColor: Colors.systemColors.info.light,
     },
 
     warning: {
-        color: colors.systemColors.warning.dark,
-        borderColor: colors.systemColors.warning.dark,
-        backgroundColor: colors.systemColors.warning.light,
+        color: Colors.systemColors.warning.dark,
+        borderColor: Colors.systemColors.warning.dark,
+        backgroundColor: Colors.systemColors.warning.light,
     },
 
     error: {
-        color: colors.systemColors.error.dark,
-        borderColor: colors.systemColors.error.dark,
-        backgroundColor: colors.systemColors.error.light,
+        color: Colors.systemColors.error.dark,
+        borderColor: Colors.systemColors.error.dark,
+        backgroundColor: Colors.systemColors.error.light,
     },
 
     dialogFrame: {

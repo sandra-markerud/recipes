@@ -1,9 +1,9 @@
-import {colors} from "../../../config";
+import {Colors} from "../../../config";
 
 export default {
 
     footer: {
-        color: colors.standardColors.anthracite,
+        color: Colors.standardColors.anthracite,
         fontWeight: 'bold',
         padding: '0.1em 1em'
     }

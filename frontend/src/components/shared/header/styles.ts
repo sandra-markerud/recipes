@@ -1,10 +1,10 @@
-import {colors} from "../../../config";
+import {Colors} from "../../../config";
 
 export default {
 
     headline: {
-        color: colors.standardColors.white,
-        backgroundColor: colors.standardColors.anthracite,
+        color: Colors.standardColors.white,
+        backgroundColor: Colors.standardColors.anthracite,
         padding: '0.1em 1em',
         margin: '0em',
     },
