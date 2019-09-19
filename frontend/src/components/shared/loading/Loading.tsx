@@ -1,5 +1,5 @@
 import * as React from 'react';
-import withStyles, { WithSheet } from 'react-jss';
+import withStyles, {WithSheet} from 'react-jss';
 import styles from './styles';
 
 const Loading: React.FC<WithSheet<typeof styles>> = () => {
