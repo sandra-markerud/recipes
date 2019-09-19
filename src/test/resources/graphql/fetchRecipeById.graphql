@@ -1,0 +1,20 @@
+query FetchRecipeById(
+    $id: ID!
+) {
+    recipe(id: $id) {
+        id
+        name
+        instruction
+        ingredients {
+            id
+            quantity
+            unit {
+                code
+            }
+            food {
+                id
+                name
+            }
+        }
+    }
+}

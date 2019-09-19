@@ -1,5 +1,6 @@
 extend type Query {
     allRecipes: [Recipe!]!
+    recipe(id: ID!): Recipe
 }
 
 type Recipe {
