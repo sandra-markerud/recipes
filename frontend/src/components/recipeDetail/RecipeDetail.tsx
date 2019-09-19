@@ -2,6 +2,7 @@ import * as React from 'react';
 import {RecipeByIdQuery} from '../../generated/graphql';
 import withStyles, {WithSheet} from 'react-jss';
 import styles from './styles';
+import Dialog from '../shared/dialog';
 
 type RecipeDetailProps = WithSheet<typeof styles, {}> & {
     data: RecipeByIdQuery
@@ -10,7 +11,9 @@ type RecipeDetailProps = WithSheet<typeof styles, {}> & {
 const RecipeDetail: React.FC<RecipeDetailProps> = ({data, classes}) => {
     const recipe = data.recipe;
     if (!recipe) {
-        return <div>Mööööööp, Rezept existiert nicht!</div>
+        return (
+            <Dialog level={"warning"} headline={'Warnung'} message={'Dieses Rezept existiert nicht'}/>
+        );
     }
     return (
         <React.Fragment>
