@@ -1,8 +1,8 @@
 import React from 'react';
 import {useRecipeByIdQuery} from '../../generated/graphql';
 import RecipeDetail from './RecipeDetail';
-import Error from '../shared/error/Error';
-import Loading from '../shared/loading/Loading';
+import Error from '../shared/error';
+import Loading from '../shared/loading';
 
 interface OwnProps {
     id: number;

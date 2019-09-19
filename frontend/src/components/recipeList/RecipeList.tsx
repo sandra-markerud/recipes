@@ -1,6 +1,6 @@
 import * as React from 'react';
 import { AllRecipesQuery } from '../../generated/graphql';
-import RecipeListEntry from './recipeListEntry/RecipeListEntry';
+import RecipeListEntry from './recipeListEntry';
 import withStyles, { WithSheet } from 'react-jss';
 import styles from './styles';
 

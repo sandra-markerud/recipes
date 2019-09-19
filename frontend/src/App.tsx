@@ -1,9 +1,9 @@
 import * as React from 'react';
 import {Route, Switch} from 'react-router-dom';
-import RecipeList from './components/recipeList/index';
+import RecipeList from './components/recipeList';
 import RecipeDetail from './components/recipeDetail';
-import Header from './components/shared/header/Header';
-import Footer from './components/shared/footer/Footer';
+import Header from './components/shared/header';
+import Footer from './components/shared/footer';
 import withStyles, {WithSheet} from 'react-jss';
 import styles from './styles';
 

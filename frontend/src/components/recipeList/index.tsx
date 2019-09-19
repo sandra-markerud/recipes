@@ -1,8 +1,8 @@
 import React from 'react';
 import { useAllRecipesQuery } from '../../generated/graphql';
 import RecipeList from './RecipeList';
-import Error from '../shared/error/Error';
-import Loading from '../shared/loading/Loading';
+import Error from '../shared/error';
+import Loading from '../shared/loading';
 
 const RecipeListContainer = () => {
     const { data, error, loading } = useAllRecipesQuery();
