@@ -35,6 +35,12 @@ export type Query = {
    __typename?: 'Query',
   allFoods: Array<Food>,
   allRecipes: Array<Recipe>,
+  recipe?: Maybe<Recipe>,
+};
+
+
+export type QueryRecipeArgs = {
+  id: Scalars['ID']
 };
 
 export type Recipe = {
@@ -49,6 +55,30 @@ export type Unit = {
    __typename?: 'Unit',
   code: Scalars['String'],
 };
+export type RecipeByIdQueryVariables = {
+  id: Scalars['ID']
+};
+
+
+export type RecipeByIdQuery = (
+  { __typename?: 'Query' }
+  & { recipe: Maybe<(
+    { __typename?: 'Recipe' }
+    & Pick<Recipe, 'id' | 'name' | 'instruction'>
+    & { ingredients: Array<(
+      { __typename?: 'Ingredient' }
+      & Pick<Ingredient, 'id' | 'quantity'>
+      & { unit: (
+        { __typename?: 'Unit' }
+        & Pick<Unit, 'code'>
+      ), food: (
+        { __typename?: 'Food' }
+        & Pick<Food, 'id' | 'name'>
+      ) }
+    )> }
+  )> }
+);
+
 export type AllRecipesQueryVariables = {};
 
 
@@ -60,6 +90,53 @@ export type AllRecipesQuery = (
   )> }
 );
 
+export const RecipeByIdDocument = gql`
+    query RecipeById($id: ID!) {
+  recipe(id: $id) {
+    id
+    name
+    instruction
+    ingredients {
+      id
+      quantity
+      unit {
+        code
+      }
+      food {
+        id
+        name
+      }
+    }
+  }
+}
+    `;
+export type RecipeByIdComponentProps = Omit<ApolloReactComponents.QueryComponentOptions<RecipeByIdQuery, RecipeByIdQueryVariables>, 'query'> & ({ variables: RecipeByIdQueryVariables; skip?: boolean; } | { skip: boolean; });
+
+    export const RecipeByIdComponent = (props: RecipeByIdComponentProps) => (
+      <ApolloReactComponents.Query<RecipeByIdQuery, RecipeByIdQueryVariables> query={RecipeByIdDocument} {...props} />
+    );
+    
+export type RecipeByIdProps<TChildProps = {}> = ApolloReactHoc.DataProps<RecipeByIdQuery, RecipeByIdQueryVariables> & TChildProps;
+export function withRecipeById<TProps, TChildProps = {}>(operationOptions?: ApolloReactHoc.OperationOption<
+  TProps,
+  RecipeByIdQuery,
+  RecipeByIdQueryVariables,
+  RecipeByIdProps<TChildProps>>) {
+    return ApolloReactHoc.withQuery<TProps, RecipeByIdQuery, RecipeByIdQueryVariables, RecipeByIdProps<TChildProps>>(RecipeByIdDocument, {
+      alias: 'recipeById',
+      ...operationOptions
+    });
+};
+
+    export function useRecipeByIdQuery(baseOptions?: ApolloReactHooks.QueryHookOptions<RecipeByIdQuery, RecipeByIdQueryVariables>) {
+      return ApolloReactHooks.useQuery<RecipeByIdQuery, RecipeByIdQueryVariables>(RecipeByIdDocument, baseOptions);
+    }
+      export function useRecipeByIdLazyQuery(baseOptions?: ApolloReactHooks.LazyQueryHookOptions<RecipeByIdQuery, RecipeByIdQueryVariables>) {
+        return ApolloReactHooks.useLazyQuery<RecipeByIdQuery, RecipeByIdQueryVariables>(RecipeByIdDocument, baseOptions);
+      }
+      
+export type RecipeByIdQueryHookResult = ReturnType<typeof useRecipeByIdQuery>;
+export type RecipeByIdQueryResult = ApolloReactCommon.QueryResult<RecipeByIdQuery, RecipeByIdQueryVariables>;
 export const AllRecipesDocument = gql`
     query AllRecipes {
   allRecipes {
