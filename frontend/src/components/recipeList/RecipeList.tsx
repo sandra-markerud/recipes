@@ -18,7 +18,7 @@ const RecipeList: React.FC<RecipeListProps> = ({data, classes}) => {
         );
     });
     return (
-        <ul>{listItems}</ul>
+        <ul className={classes.list}>{listItems}</ul>
     );
 };
 
