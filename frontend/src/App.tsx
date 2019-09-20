@@ -11,7 +11,7 @@ type AppProps = WithSheet<typeof styles, {}>;
 
 const App: React.FC<AppProps> = ({classes}) => {
     return (
-        <div className={classes.page}>
+        <React.Fragment>
             <Header/>
             <main className={classes.content}>
                 <Switch>
@@ -22,7 +22,7 @@ const App: React.FC<AppProps> = ({classes}) => {
                 </Switch>
             </main>
             <Footer/>
-        </div>
+        </React.Fragment>
     );
 };
 
