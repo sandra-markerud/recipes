@@ -2,13 +2,22 @@ import {Colors} from "./config";
 
 export default {
 
-    content: {
-        margin: '1em 1em',
+    '@font-face': {
+        fontFamily: 'ArchitectsDaughter',
+        src: 'url("/fonts/ArchitectsDaughter.ttf") format("truetype")',
+    },
+
+    page: {
+        color: Colors.standardColors.anthracite,
         font: {
-            color: Colors.standardColors.anthracite,
+            family: 'ArchitectsDaughter',
             weight: 'normal',
-            size: '1em'
+            size: '1em',
         }
+    },
+
+    content: {
+        margin: '1em'
     }
 
 };
