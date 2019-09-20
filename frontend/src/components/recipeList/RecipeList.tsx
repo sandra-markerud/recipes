@@ -12,13 +12,12 @@ const RecipeList: React.FC<RecipeListProps> = ({data, classes}) => {
 
     const listItems = data.allRecipes.map(currentRecipe => {
         return (
-            <li key={currentRecipe.id}>
-                <RecipeListEntry recipe={currentRecipe}/>
-            </li>
+            <RecipeListEntry key={currentRecipe.id} recipe={currentRecipe}/>
         );
     });
+
     return (
-        <ul className={classes.list}>{listItems}</ul>
+        <div className={classes.recipeTiles}>{listItems}</div>
     );
 };
 

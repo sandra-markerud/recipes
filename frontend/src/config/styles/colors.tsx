@@ -2,6 +2,7 @@ export default {
     standardColors: {
         white: '#FFFFFF',
         anthracite: '#5F5F5F',
+        lightGray: '#E6E6E6',
     },
 
     systemColors: {

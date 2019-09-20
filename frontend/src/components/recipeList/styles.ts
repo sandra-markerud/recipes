@@ -1,11 +1,12 @@
 export default {
 
-    list: {
-        padding: '0',
-        listStyle: 'none',
+    recipeTiles: {
         display: 'flex',
-        flexDirection: 'row',
         flexWrap: 'wrap',
-    }
+        flexDirection: 'row',
+        justifyContent: 'space-between',
+        alignContent: 'flex-start',
+        alignItems: 'stretch',
+    },
 
 };
