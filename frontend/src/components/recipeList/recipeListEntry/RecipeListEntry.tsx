@@ -16,7 +16,7 @@ const RecipeListEntry: React.FC<RecipeListEntryProps> = ({recipe, classes}) => {
         <div className={classes.recipeTile}>
             <Link to={"/rezept/" + recipe.id}>
                 <img
-                    src="https://static.independent.co.uk/s3fs-public/thumbnails/image/2014/08/11/15/79102899.jpg?width=294.406&height=294.406&fit=bounds&format=pjpg&auto=webp&quality=70"
+                    src="https://static.independent.co.uk/s3fs-public/thumbnails/image/2014/08/11/15/79102899.jpg?width=250&height=250&fit=bounds&format=pjpg&auto=webp&quality=70"
                     alt="recipe.name"/>
                 <hr/>
                 {recipe.name}

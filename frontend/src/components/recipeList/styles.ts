@@ -1,12 +1,12 @@
 export default {
 
     recipeTiles: {
-        display: 'flex',
-        flexWrap: 'wrap',
-        flexDirection: 'row',
-        justifyContent: 'space-between',
-        alignContent: 'flex-start',
-        alignItems: 'stretch',
+        display: 'grid',
+        gridTemplateColumns: 'repeat(auto-fit, 270px)',
+        gridTemplateRows: 'auto',
+        gridGap: '15px 25px',
+        placeItems: 'center',
+        justifyContent: 'center'
     },
 
 };
