@@ -29,7 +29,6 @@ export default {
     dialogFrame: {
         borderStyle: 'solid',
         padding: '0.5em 1em',
-        margin: '0.5em 1em',
     },
 
 };
