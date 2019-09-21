@@ -17,6 +17,8 @@ import static com.markerud.recipes.jpa.EntityGraphSelector.deriveEntityGraphForR
 @Component
 public class Query {
 
+    private static final Long SOME_NONEXISTANT_ID = -1L;
+
     private FoodRepo foodRepo;
     private RecipeRepo recipeRepo;
 
@@ -34,9 +36,13 @@ public class Query {
     };
 
     DataFetcher<Optional<Recipe>> recipeFetcher = environment -> {
-        Long id = Long.valueOf(environment.getArgument("id"));
-        EntityGraph entityGraph = deriveEntityGraphForRecipe(environment);
-        return recipeRepo.findById(id, entityGraph);
+        try {
+            Long id = Long.valueOf(environment.getArgument("id"));
+            EntityGraph entityGraph = deriveEntityGraphForRecipe(environment);
+            return recipeRepo.findById(id, entityGraph);
+        } catch (NumberFormatException e) {
+            return Optional.empty();
+        }
     };
 
 }

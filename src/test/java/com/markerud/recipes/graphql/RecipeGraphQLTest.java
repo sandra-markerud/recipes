@@ -7,7 +7,6 @@ import com.graphql.spring.boot.test.GraphQLTestTemplate;
 import com.markerud.recipes.food.Food;
 import com.markerud.recipes.food.FoodRepo;
 import com.markerud.recipes.recipe.*;
-import org.hamcrest.Matchers;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
@@ -22,7 +21,6 @@ import java.math.BigDecimal;
 import static java.util.Arrays.stream;
 import static org.hamcrest.MatcherAssert.assertThat;
 import static org.hamcrest.Matchers.equalTo;
-import static org.hamcrest.Matchers.notNullValue;
 import static org.junit.jupiter.api.Assertions.assertTrue;
 import static org.springframework.test.annotation.DirtiesContext.ClassMode.BEFORE_EACH_TEST_METHOD;
 
@@ -73,6 +71,19 @@ class RecipeGraphQLTest {
     void fetchRecipeById_whenRecipeNotFound() throws IOException {
         // given
         variables.put("id", 4711L);
+
+        // when
+        GraphQLResponse fetchRecipeByIdResponse = graphQLTestTemplate.perform("graphql/fetchRecipeById.graphql", variables);
+
+        // then
+        JsonNode fetchedRecipe = fetchRecipeByIdResponse.readTree().get("data").get("recipe");
+        assertTrue(fetchedRecipe.isNull());
+    }
+
+    @Test
+    void fetchRecipeById_handleInvalidNumberFormatForId() throws IOException {
+        // given
+        variables.put("id", "somethingEvilOrWeird");
 
         // when
         GraphQLResponse fetchRecipeByIdResponse = graphQLTestTemplate.perform("graphql/fetchRecipeById.graphql", variables);
