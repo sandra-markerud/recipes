@@ -52,11 +52,10 @@ class RecipeGraphQLTest {
     @Test
     void fetchRecipeById_whenRecipeFound() throws IOException {
         // given
-        Unit piece = unitRepo.saveAndFlush(new Unit().setCode("ST"));
-        Recipe recipe = persistRecipe("Obstsalat", "alles kleinschnibbeln...", //
-                createIngredient(BigDecimal.ONE, piece, "Apfel"), //
-                createIngredient(BigDecimal.ONE, piece, "Birne"), //
-                createIngredient(BigDecimal.ONE, piece, "Banane"));
+        Unit gramme = unitRepo.saveAndFlush(new Unit().setCode("ST"));
+        Recipe recipe = persistRecipe("Schinkennudeln", "Man nehme...", //
+                createIngredient(BigDecimal.valueOf(500L), gramme, "Nudeln"), //
+                createIngredient(BigDecimal.valueOf(200L), gramme, "gekochter Schinken"));
         variables.put("id", recipe.getId());
 
         // when
@@ -64,7 +63,9 @@ class RecipeGraphQLTest {
 
         // then
         JsonNode fetchedRecipe = fetchRecipeByIdResponse.readTree().get("data").get("recipe");
-        assertThat(fetchedRecipe.get("name").asText(), equalTo("Obstsalat"));
+        assertThat(fetchedRecipe.get("name").asText(), equalTo("Schinkennudeln"));
+        assertThat(fetchedRecipe.get("instruction").asText(), equalTo("Man nehme..."));
+        assertThat(fetchedRecipe.get("ingredients").size(), equalTo(2));
     }
 
     @Test
