@@ -1,31 +1,37 @@
 import * as React from 'react';
 import {Route, Switch} from 'react-router-dom';
 import {library} from '@fortawesome/fontawesome-svg-core'
-import {faSpinner} from '@fortawesome/free-solid-svg-icons'
+import {faHome, faSpinner} from '@fortawesome/free-solid-svg-icons'
 import RecipeList from './components/recipeList';
 import RecipeDetail from './components/recipeDetail';
-import Header from './components/shared/header';
-import Footer from './components/shared/footer';
+import PageTemplate from './pages/shared/pageTemplate/PageTemplate';
 import withStyles, {WithSheet} from 'react-jss';
 import styles from './styles';
 
-library.add(faSpinner);
+library.add(faHome, faSpinner);
 
 type AppProps = WithSheet<typeof styles, {}>;
 
-const App: React.FC<AppProps> = ({classes}) => {
+const App: React.FC<AppProps> = () => {
+
     return (
         <React.Fragment>
-            <Header/>
-            <main className={classes.content}>
-                <Switch>
-                    <Route exact path="/" component={RecipeList}/>
-                    <Route path="/rezept/:id" render={
-                        props => <RecipeDetail id={props.match.params.id}/>
-                    }/>
-                </Switch>
-            </main>
-            <Footer/>
+            <Switch>
+
+                <Route exact path="/" render={props => (
+                    <PageTemplate title={'Rezepte'} {...props}>
+                        <RecipeList/>
+                    </PageTemplate>
+                )}/>
+
+                <Route path="/rezept/:id" render={props => (
+                    <PageTemplate title={'Rezept'} {...props}>
+                        <RecipeDetail id={props.match.params.id}/>
+                    </PageTemplate>
+                )}/>
+
+
+            </Switch>
         </React.Fragment>
     );
 };

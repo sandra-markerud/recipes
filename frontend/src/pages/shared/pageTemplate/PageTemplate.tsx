@@ -1,0 +1,29 @@
+import * as React from 'react';
+import {FontAwesomeIcon} from '@fortawesome/react-fontawesome';
+import withStyles, {WithSheet} from 'react-jss';
+import styles from './styles';
+import {Link} from 'react-router-dom';
+
+type PageTemplateProps = WithSheet<typeof styles, {}> & {
+    title: string
+}
+
+const PageTemplate: React.FC<PageTemplateProps> = ({title, children, classes}) => {
+    return (
+        <div className={classes.page}>
+            <header className={classes.header}>
+                <Link to="/">
+                    <FontAwesomeIcon icon={'home'}/><span>{title}</span>
+                </Link>
+            </header>
+            <div className={classes.content}>
+                {children}
+            </div>
+            <footer className={classes.footer}>
+                <p>Copyright Sandra Markerud</p>
+            </footer>
+        </div>
+    );
+};
+
+export default withStyles(styles)(PageTemplate);
