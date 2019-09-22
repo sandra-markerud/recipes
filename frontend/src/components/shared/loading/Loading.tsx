@@ -1,10 +1,13 @@
 import * as React from 'react';
 import withStyles, {WithSheet} from 'react-jss';
 import styles from './styles';
+import {FontAwesomeIcon} from "@fortawesome/react-fontawesome";
 
-const Loading: React.FC<WithSheet<typeof styles>> = () => {
+type LoaderProps = WithSheet<typeof styles, {}>;
+
+const Loading: React.FC<LoaderProps> = ({classes}) => {
     return (
-        <h3>Loading...</h3>
+        <FontAwesomeIcon icon={"spinner"} pulse className={classes.spinner}/>
     );
 };
 
