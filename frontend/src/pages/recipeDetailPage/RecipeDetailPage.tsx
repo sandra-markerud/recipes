@@ -2,7 +2,7 @@ import * as React from 'react';
 import {RecipeByIdQuery} from '../../generated/graphql';
 import withStyles, {WithSheet} from 'react-jss';
 import styles from './styles';
-import Dialog from '../../components/shared/dialog';
+import Dialog from '../../components/dialog';
 
 type RecipeDetailPageProps = WithSheet<typeof styles, {}> & {
     data: RecipeByIdQuery

@@ -1,4 +1,4 @@
-import {Colors} from "../../../config";
+import {Colors} from "../../config";
 
 export default {
 

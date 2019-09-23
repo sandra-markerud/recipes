@@ -1,14 +1,14 @@
 import React from 'react';
 import {useAllRecipesQuery} from '../../generated/graphql';
 import RecipesCollectionPage from './RecipesCollectionPage';
-import Error from '../../components/shared/error';
-import Loading from '../../components/shared/loading';
+import Error from '../../components/error';
+import Loader from '../../components/loader';
 
 const RecipesCollectionContainer = () => {
     const {data, error, loading} = useAllRecipesQuery();
 
     if (loading) {
-        return <Loading/>;
+        return <Loader/>;
     }
 
     if (error || !data) {

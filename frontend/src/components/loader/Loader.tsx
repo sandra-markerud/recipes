@@ -5,10 +5,10 @@ import {FontAwesomeIcon} from "@fortawesome/react-fontawesome";
 
 type LoaderProps = WithSheet<typeof styles, {}>;
 
-const Loading: React.FC<LoaderProps> = ({classes}) => {
+const Loader: React.FC<LoaderProps> = ({classes}) => {
     return (
         <FontAwesomeIcon icon={"spinner"} pulse className={classes.spinner}/>
     );
 };
 
-export default withStyles(styles)(Loading);
+export default withStyles(styles)(Loader);
