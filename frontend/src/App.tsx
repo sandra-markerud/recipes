@@ -2,7 +2,7 @@ import * as React from 'react';
 import {Route, Switch} from 'react-router-dom';
 import {library} from '@fortawesome/fontawesome-svg-core';
 import {faBars, faHeart, faHome, faSearch, faSpinner} from '@fortawesome/free-solid-svg-icons';
-import RecipeList from './components/recipeList';
+import RecipesCollectionPage from './pages/recipesCollectionPage';
 import RecipeDetail from './components/recipeDetail';
 import PageTemplate from './pages/pageTemplate';
 import withStyles, {WithSheet} from 'react-jss';
@@ -20,7 +20,7 @@ const App: React.FC<AppProps> = () => {
 
                 <Route exact path="/" render={props => (
                     <PageTemplate title={'Rezepte'} {...props}>
-                        <RecipeList/>
+                        <RecipesCollectionPage/>
                     </PageTemplate>
                 )}/>
 
