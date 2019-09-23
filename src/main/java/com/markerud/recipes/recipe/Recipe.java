@@ -18,7 +18,7 @@ public class Recipe extends BaseEntity {
     @Column(name = "NAME")
     private String name;
 
-    @Column(name = "INSTRUCTION")
+    @Column(name = "INSTRUCTION", length = 4000)
     private String instruction;
 
     @OneToMany(fetch = FetchType.LAZY, cascade = CascadeType.ALL, orphanRemoval = true, mappedBy = "recipe")
