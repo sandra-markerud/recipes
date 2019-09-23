@@ -7,5 +7,5 @@ export default {
     text: {
         whiteSpace: 'pre-wrap',
     },
-    
+
 };

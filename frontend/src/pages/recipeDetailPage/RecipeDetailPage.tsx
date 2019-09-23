@@ -4,6 +4,7 @@ import withStyles, {WithSheet} from 'react-jss';
 import styles from './styles';
 import Dialog from '../../components/dialog';
 import Instruction from '../../components/instruction';
+import IngredientList from '../../components/ingredientList';
 
 type RecipeDetailPageProps = WithSheet<typeof styles, {}> & {
     data: RecipeByIdQuery
@@ -20,57 +21,7 @@ const RecipeDetailPage: React.FC<RecipeDetailPageProps> = ({data, classes}) => {
         <div className={classes.splitPanel}>
             <div className={classes.ingredients}>
                 <h3>Bild und Zutaten</h3>
-                <ul>
-                    <li>FOO</li>
-                    <li>FOO</li>
-                    <li>FOO</li>
-                    <li>FOO</li>
-                    <li>FOO</li>
-                    <li>FOO</li>
-                    <li>FOO</li>
-                    <li>FOO</li>
-                    <li>FOO</li>
-                    <li>FOO</li>
-                    <li>FOO</li>
-                    <li>FOO</li>
-                    <li>FOO</li>
-                    <li>FOO</li>
-                    <li>FOO</li>
-                    <li>FOO</li>
-                    <li>FOO</li>
-                    <li>FOO</li>
-                    <li>FOO</li>
-                    <li>FOO</li>
-                    <li>FOO</li>
-                    <li>FOO</li>
-                    <li>FOO</li>
-                    <li>FOO</li>
-                    <li>FOO</li>
-                    <li>FOO</li>
-                    <li>FOO</li>
-                    <li>FOO</li>
-                    <li>FOO</li>
-                    <li>FOO</li>
-                    <li>FOO</li>
-                    <li>FOO</li>
-                    <li>FOO</li>
-                    <li>FOO</li>
-                    <li>FOO</li>
-                    <li>FOO</li>
-                    <li>FOO</li>
-                    <li>FOO</li>
-                    <li>FOO</li>
-                    <li>FOO</li>
-                    <li>FOO</li>
-                    <li>FOO</li>
-                    <li>FOO</li>
-                    <li>FOO</li>
-                    <li>FOO</li>
-                    <li>FOO</li>
-                    <li>FOO</li>
-                    <li>FOO</li>
-                    <li>LAST ITEM</li>
-                </ul>
+                <IngredientList ingredients={recipe.ingredients}/>
             </div>
             <Instruction text={recipe.instruction}/>
         </div>
