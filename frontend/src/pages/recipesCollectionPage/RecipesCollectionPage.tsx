@@ -1,18 +1,18 @@
 import * as React from 'react';
 import {AllRecipesQuery} from '../../generated/graphql';
-import RecipeListEntry from '../../components/recipeList/recipeListEntry';
+import RecipeTile from '../../components/recipeTile';
 import withStyles, {WithSheet} from 'react-jss';
 import styles from './styles';
 
-type RecipeListProps = WithSheet<typeof styles, {}> & {
+type RecipesCollectionPageProps = WithSheet<typeof styles, {}> & {
     data: AllRecipesQuery
 }
 
-const RecipesCollectionPage: React.FC<RecipeListProps> = ({data, classes}) => {
+const RecipesCollectionPage: React.FC<RecipesCollectionPageProps> = ({data, classes}) => {
 
     const listItems = data.allRecipes.map(currentRecipe => {
         return (
-            <RecipeListEntry key={currentRecipe.id} recipe={currentRecipe}/>
+            <RecipeTile key={currentRecipe.id} recipe={currentRecipe}/>
         );
     });
 
