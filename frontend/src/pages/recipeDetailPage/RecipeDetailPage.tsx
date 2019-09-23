@@ -3,6 +3,7 @@ import {RecipeByIdQuery} from '../../generated/graphql';
 import withStyles, {WithSheet} from 'react-jss';
 import styles from './styles';
 import Dialog from '../../components/dialog';
+import Instruction from '../../components/instruction';
 
 type RecipeDetailPageProps = WithSheet<typeof styles, {}> & {
     data: RecipeByIdQuery
@@ -70,68 +71,8 @@ const RecipeDetailPage: React.FC<RecipeDetailPageProps> = ({data, classes}) => {
                     <li>FOO</li>
                     <li>LAST ITEM</li>
                 </ul>
-                </div>
-            <div className={classes.instructions}>
-                <h3>Zubereitung</h3>
-                <ul>
-                    <li>BAR</li>
-                    <li>BAR</li>
-                    <li>BAR</li>
-                    <li>BAR</li>
-                    <li>BAR</li>
-                    <li>BAR</li>
-                    <li>BAR</li>
-                    <li>BAR</li>
-                    <li>BAR</li>
-                    <li>BAR</li>
-                    <li>BAR</li>
-                    <li>BAR</li>
-                    <li>BAR</li>
-                    <li>BAR</li>
-                    <li>BAR</li>
-                    <li>BAR</li>
-                    <li>BAR</li>
-                    <li>BAR</li>
-                    <li>BAR</li>
-                    <li>BAR</li>
-                    <li>BAR</li>
-                    <li>BAR</li>
-                    <li>BAR</li>
-                    <li>BAR</li>
-                    <li>BAR</li>
-                    <li>BAR</li>
-                    <li>BAR</li>
-                    <li>BAR</li>
-                    <li>BAR</li>
-                    <li>BAR</li>
-                    <li>BAR</li>
-                    <li>BAR</li>
-                    <li>BAR</li>
-                    <li>BAR</li>
-                    <li>BAR</li>
-                    <li>BAR</li>
-                    <li>BAR</li>
-                    <li>BAR</li>
-                    <li>BAR</li>
-                    <li>BAR</li>
-                    <li>BAR</li>
-                    <li>BAR</li>
-                    <li>BAR</li>
-                    <li>BAR</li>
-                    <li>BAR</li>
-                    <li>BAR</li>
-                    <li>BAR</li>
-                    <li>BAR</li>
-                    <li>BAR</li>
-                    <li>BAR</li>
-                    <li>BAR</li>
-                    <li>BAR</li>
-                    <li>BAR</li>
-                    <li>BAR</li>
-                    <li>BAR</li>
-                    <li>LAST ITEM</li>
-                </ul>
             </div>
+            <Instruction text={recipe.instruction}/>
         </div>
     );
 };
