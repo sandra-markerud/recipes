@@ -10,7 +10,7 @@ export default {
 
     content: {
         backgroundColor: Colors.standardColors.white,
-        overflow: 'auto',
+        overflow: 'hidden',
         padding: '10px',
     },
 

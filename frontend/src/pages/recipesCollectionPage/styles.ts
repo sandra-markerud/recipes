@@ -6,7 +6,9 @@ export default {
         gridTemplateRows: 'auto',
         gridGap: '15px 25px',
         placeItems: 'center',
-        justifyContent: 'center'
+        justifyContent: 'center',
+        height: '100%',
+        overflow: 'auto',
     },
 
 };

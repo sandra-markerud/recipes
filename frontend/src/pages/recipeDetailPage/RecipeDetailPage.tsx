@@ -16,10 +16,123 @@ const RecipeDetailPage: React.FC<RecipeDetailPageProps> = ({data, classes}) => {
         );
     }
     return (
-        <React.Fragment>
-            <h1>{recipe.name}</h1>
-            <div>Hier kommt gleich das ganze Rezept hin:</div>
-        </React.Fragment>
+        <div className={classes.splitPanel}>
+            <div className={classes.ingredients}>
+                <h3>Bild und Zutaten</h3>
+                <ul>
+                    <li>FOO</li>
+                    <li>FOO</li>
+                    <li>FOO</li>
+                    <li>FOO</li>
+                    <li>FOO</li>
+                    <li>FOO</li>
+                    <li>FOO</li>
+                    <li>FOO</li>
+                    <li>FOO</li>
+                    <li>FOO</li>
+                    <li>FOO</li>
+                    <li>FOO</li>
+                    <li>FOO</li>
+                    <li>FOO</li>
+                    <li>FOO</li>
+                    <li>FOO</li>
+                    <li>FOO</li>
+                    <li>FOO</li>
+                    <li>FOO</li>
+                    <li>FOO</li>
+                    <li>FOO</li>
+                    <li>FOO</li>
+                    <li>FOO</li>
+                    <li>FOO</li>
+                    <li>FOO</li>
+                    <li>FOO</li>
+                    <li>FOO</li>
+                    <li>FOO</li>
+                    <li>FOO</li>
+                    <li>FOO</li>
+                    <li>FOO</li>
+                    <li>FOO</li>
+                    <li>FOO</li>
+                    <li>FOO</li>
+                    <li>FOO</li>
+                    <li>FOO</li>
+                    <li>FOO</li>
+                    <li>FOO</li>
+                    <li>FOO</li>
+                    <li>FOO</li>
+                    <li>FOO</li>
+                    <li>FOO</li>
+                    <li>FOO</li>
+                    <li>FOO</li>
+                    <li>FOO</li>
+                    <li>FOO</li>
+                    <li>FOO</li>
+                    <li>FOO</li>
+                    <li>LAST ITEM</li>
+                </ul>
+                </div>
+            <div className={classes.instructions}>
+                <h3>Zubereitung</h3>
+                <ul>
+                    <li>BAR</li>
+                    <li>BAR</li>
+                    <li>BAR</li>
+                    <li>BAR</li>
+                    <li>BAR</li>
+                    <li>BAR</li>
+                    <li>BAR</li>
+                    <li>BAR</li>
+                    <li>BAR</li>
+                    <li>BAR</li>
+                    <li>BAR</li>
+                    <li>BAR</li>
+                    <li>BAR</li>
+                    <li>BAR</li>
+                    <li>BAR</li>
+                    <li>BAR</li>
+                    <li>BAR</li>
+                    <li>BAR</li>
+                    <li>BAR</li>
+                    <li>BAR</li>
+                    <li>BAR</li>
+                    <li>BAR</li>
+                    <li>BAR</li>
+                    <li>BAR</li>
+                    <li>BAR</li>
+                    <li>BAR</li>
+                    <li>BAR</li>
+                    <li>BAR</li>
+                    <li>BAR</li>
+                    <li>BAR</li>
+                    <li>BAR</li>
+                    <li>BAR</li>
+                    <li>BAR</li>
+                    <li>BAR</li>
+                    <li>BAR</li>
+                    <li>BAR</li>
+                    <li>BAR</li>
+                    <li>BAR</li>
+                    <li>BAR</li>
+                    <li>BAR</li>
+                    <li>BAR</li>
+                    <li>BAR</li>
+                    <li>BAR</li>
+                    <li>BAR</li>
+                    <li>BAR</li>
+                    <li>BAR</li>
+                    <li>BAR</li>
+                    <li>BAR</li>
+                    <li>BAR</li>
+                    <li>BAR</li>
+                    <li>BAR</li>
+                    <li>BAR</li>
+                    <li>BAR</li>
+                    <li>BAR</li>
+                    <li>BAR</li>
+                    <li>LAST ITEM</li>
+                </ul>
+            </div>
+        </div>
     );
 };
 
