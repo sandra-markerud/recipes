@@ -1,8 +1,7 @@
 import * as React from 'react';
-import {FontAwesomeIcon} from '@fortawesome/react-fontawesome';
 import withStyles, {WithSheet} from 'react-jss';
 import styles from './styles';
-import {Link} from 'react-router-dom';
+import Header from '../../partials/header';
 
 type PageTemplateProps = WithSheet<typeof styles, {}> & {
     title: string
@@ -11,17 +10,7 @@ type PageTemplateProps = WithSheet<typeof styles, {}> & {
 const PageTemplate: React.FC<PageTemplateProps> = ({title, children, classes}) => {
     return (
         <div className={classes.page}>
-            <header className={classes.header}>
-                <Link to="/" className={classes.headerColumnLeft}>
-                    <FontAwesomeIcon icon={'home'} className={classes.icon}/>
-                </Link>
-                <p className={classes.headerColumnMiddle}>{title}</p>
-                <span className={classes.headerColumnRight}>
-                    <FontAwesomeIcon icon={'search'} className={classes.icon}/>
-                    <FontAwesomeIcon icon={'heart'} className={classes.icon}/>
-                    <FontAwesomeIcon icon={'bars'} className={classes.icon}/>
-                </span>
-            </header>
+            <Header title={title}/>
             <div className={classes.content}>
                 {children}
             </div>
