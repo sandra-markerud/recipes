@@ -14,11 +14,4 @@ export default {
         padding: '10px',
     },
 
-    footer: {
-        color: Colors.standardColors.white,
-        backgroundColor: Colors.standardColors.anthracite,
-        textAlign: 'center',
-        padding: '10px',
-    },
-
 };
