@@ -1,8 +1,8 @@
 import React from 'react';
 import {useRecipeByIdQuery} from '../../generated/graphql';
-import RecipeDetail from './RecipeDetail';
-import Error from '../shared/error';
-import Loading from '../shared/loading';
+import RecipeDetailPage from './RecipeDetailPage';
+import Error from '../../components/shared/error';
+import Loading from '../../components/shared/loading';
 
 interface OwnProps {
     id: number;
@@ -21,7 +21,7 @@ const RecipeDetailContainer = ({id}: OwnProps) => {
         return <Error error={error}/>;
     }
 
-    return <RecipeDetail data={data}/>;
+    return <RecipeDetailPage data={data}/>;
 };
 
 export default RecipeDetailContainer;

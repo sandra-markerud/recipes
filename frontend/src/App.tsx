@@ -3,7 +3,7 @@ import {Route, Switch} from 'react-router-dom';
 import {library} from '@fortawesome/fontawesome-svg-core';
 import {faBars, faHeart, faHome, faSearch, faSpinner} from '@fortawesome/free-solid-svg-icons';
 import RecipesCollectionPage from './pages/recipesCollectionPage';
-import RecipeDetail from './components/recipeDetail';
+import RecipeDetailPage from './pages/recipeDetailPage';
 import PageTemplate from './pages/pageTemplate';
 import withStyles, {WithSheet} from 'react-jss';
 import styles from './styles';
@@ -26,7 +26,7 @@ const App: React.FC<AppProps> = () => {
 
                 <Route path="/rezept/:id" render={props => (
                     <PageTemplate title={'Rezept'} {...props}>
-                        <RecipeDetail id={props.match.params.id}/>
+                        <RecipeDetailPage id={props.match.params.id}/>
                     </PageTemplate>
                 )}/>
 

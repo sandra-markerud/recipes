@@ -2,17 +2,17 @@ import * as React from 'react';
 import {RecipeByIdQuery} from '../../generated/graphql';
 import withStyles, {WithSheet} from 'react-jss';
 import styles from './styles';
-import Dialog from '../shared/dialog';
+import Dialog from '../../components/shared/dialog';
 
-type RecipeDetailProps = WithSheet<typeof styles, {}> & {
+type RecipeDetailPageProps = WithSheet<typeof styles, {}> & {
     data: RecipeByIdQuery
 }
 
-const RecipeDetail: React.FC<RecipeDetailProps> = ({data, classes}) => {
+const RecipeDetailPage: React.FC<RecipeDetailPageProps> = ({data, classes}) => {
     const recipe = data.recipe;
     if (!recipe) {
         return (
-            <Dialog level={"warning"} headline={'Warnung'} message={'Dieses Rezept existiert nicht'}/>
+            <Dialog level={'warning'} headline={'Warnung'} message={'Dieses Rezept existiert nicht'}/>
         );
     }
     return (
@@ -23,4 +23,4 @@ const RecipeDetail: React.FC<RecipeDetailProps> = ({data, classes}) => {
     );
 };
 
-export default withStyles(styles)(RecipeDetail);
+export default withStyles(styles)(RecipeDetailPage);
