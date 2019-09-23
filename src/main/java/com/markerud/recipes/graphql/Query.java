@@ -17,8 +17,6 @@ import static com.markerud.recipes.jpa.EntityGraphSelector.deriveEntityGraphForR
 @Component
 public class Query {
 
-    private static final Long SOME_NONEXISTANT_ID = -1L;
-
     private FoodRepo foodRepo;
     private RecipeRepo recipeRepo;
 
