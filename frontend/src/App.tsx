@@ -4,7 +4,7 @@ import {library} from '@fortawesome/fontawesome-svg-core';
 import {faBars, faHeart, faHome, faSearch, faSpinner} from '@fortawesome/free-solid-svg-icons';
 import RecipeList from './components/recipeList';
 import RecipeDetail from './components/recipeDetail';
-import PageTemplate from './pages/shared/pageTemplate/PageTemplate';
+import PageTemplate from './pages/pageTemplate';
 import withStyles, {WithSheet} from 'react-jss';
 import styles from './styles';
 
