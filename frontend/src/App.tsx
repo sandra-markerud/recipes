@@ -1,8 +1,7 @@
 import * as React from 'react';
 import {Route, Switch} from 'react-router-dom';
 import {library} from '@fortawesome/fontawesome-svg-core';
-import {faBars, faHome, faSearch, faSpinner} from '@fortawesome/free-solid-svg-icons';
-import {faHeart} from '@fortawesome/free-regular-svg-icons';
+import {faBars, faHeart, faHome, faSearch, faSpinner} from '@fortawesome/free-solid-svg-icons';
 import RecipeList from './components/recipeList';
 import RecipeDetail from './components/recipeDetail';
 import PageTemplate from './pages/shared/pageTemplate/PageTemplate';

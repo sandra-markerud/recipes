@@ -18,7 +18,7 @@ const PageTemplate: React.FC<PageTemplateProps> = ({title, children, classes}) =
                 <p className={classes.headerColumnMiddle}>{title}</p>
                 <span className={classes.headerColumnRight}>
                     <FontAwesomeIcon icon={'search'} className={classes.icon}/>
-                    <FontAwesomeIcon icon={['far', 'heart']} className={classes.icon}/>
+                    <FontAwesomeIcon icon={'heart'} className={classes.icon}/>
                     <FontAwesomeIcon icon={'bars'} className={classes.icon}/>
                 </span>
             </header>
