@@ -17,6 +17,10 @@ export default {
             color: 'inherit',
             textDecoration: 'none',
             cursor: 'pointer',
+        },
+
+        p: {
+            margin: '0',
         }
     },
 

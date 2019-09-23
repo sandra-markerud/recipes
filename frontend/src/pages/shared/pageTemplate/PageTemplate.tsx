@@ -12,9 +12,15 @@ const PageTemplate: React.FC<PageTemplateProps> = ({title, children, classes}) =
     return (
         <div className={classes.page}>
             <header className={classes.header}>
-                <Link to="/">
-                    <FontAwesomeIcon icon={'home'}/><span>{title}</span>
+                <Link to="/" className={classes.headerColumnLeft}>
+                    <FontAwesomeIcon icon={'home'} className={classes.icon}/>
                 </Link>
+                <p className={classes.headerColumnMiddle}>{title}</p>
+                <span className={classes.headerColumnRight}>
+                    <FontAwesomeIcon icon={'search'} className={classes.icon}/>
+                    <FontAwesomeIcon icon={['far', 'heart']} className={classes.icon}/>
+                    <FontAwesomeIcon icon={'bars'} className={classes.icon}/>
+                </span>
             </header>
             <div className={classes.content}>
                 {children}
