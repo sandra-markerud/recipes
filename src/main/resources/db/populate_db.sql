@@ -54,7 +54,7 @@ Für Salatdressing für 1 Person dosiert man so: 1 TL Mischung, 2 EL Balsamico, 
 
 Optional: Wer mag gibt 1 TL Senf und 1 TL Honig in die angerührte Mischung hinzu. Das Dressing schmeckt aber auch ohne gut.
 
-Wichtig: vor dem Entnehmen der Mischung immer vorher im Glas gut durchrühren. Zucker und Salz neigen dazu, durch die Kräuter nach unten uz rieseln.', 0, CURRENT_TIMESTAMP, CURRENT_TIMESTAMP);
+Wichtig: vor dem Entnehmen der Mischung immer vorher im Glas gut durchrühren. Zucker und Salz neigen dazu, durch die Kräuter nach unten zu rieseln.', 0, CURRENT_TIMESTAMP, CURRENT_TIMESTAMP);
 
 
 INSERT INTO INGREDIENTS (ID, QUANTITY, UNIT_ID, FOOD_ID, RECIPE_ID, VERSION, CREATED_ON, MODIFIED_ON) VALUES
