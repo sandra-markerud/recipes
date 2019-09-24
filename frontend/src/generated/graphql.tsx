@@ -54,6 +54,7 @@ export type Recipe = {
 export type Unit = {
    __typename?: 'Unit',
   code: Scalars['String'],
+  name: Scalars['String'],
 };
 export type RecipeByIdQueryVariables = {
   id: Scalars['ID']
@@ -70,7 +71,7 @@ export type RecipeByIdQuery = (
       & Pick<Ingredient, 'id' | 'quantity'>
       & { unit: (
         { __typename?: 'Unit' }
-        & Pick<Unit, 'code'>
+        & Pick<Unit, 'code' | 'name'>
       ), food: (
         { __typename?: 'Food' }
         & Pick<Food, 'id' | 'name'>
@@ -101,6 +102,7 @@ export const RecipeByIdDocument = gql`
       quantity
       unit {
         code
+        name
       }
       food {
         id

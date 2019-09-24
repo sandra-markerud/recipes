@@ -11,6 +11,7 @@ export const QUERY_RECIPE_BY_ID = gql`
                 quantity
                 unit {
                     code
+                    name
                 }
                 food {
                     id
