@@ -1,5 +1,3 @@
-import {Colors} from '../../config';
-
 export default {
 
     splitPanel: {
@@ -10,7 +8,6 @@ export default {
     },
 
     ingredients: {
-        backgroundColor: Colors.systemColors.warning.light,
         overflow: 'auto',
     },
 

@@ -1,3 +1,5 @@
+import {Colors} from '../../config';
+
 export default {
 
     ingredientCollection: {
@@ -8,8 +10,8 @@ export default {
         display: 'grid',
         gridTemplateColumns: '1fr 2fr',
         gridColumnGap: '10px',
-        borderBottom: '1px solid',
-        padding: '1em 0 0 0',
+        borderBottom: '1px solid ' + Colors.standardColors.lightGray,
+        padding: '1em 0',
     },
 
     quantity: {
