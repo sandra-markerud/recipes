@@ -1,14 +1,15 @@
 import * as React from 'react';
 import {Route, Switch} from 'react-router-dom';
 import {library} from '@fortawesome/fontawesome-svg-core';
-import {faBars, faHeart, faHome, faSearch, faSpinner} from '@fortawesome/free-solid-svg-icons';
+import {faBars, faCookieBite, faHeart, faHome, faSearch, faSpinner} from '@fortawesome/free-solid-svg-icons';
 import RecipesCollectionPage from './pages/recipesCollectionPage';
 import RecipeDetailPage from './pages/recipeDetailPage';
 import PageTemplate from './pages/pageTemplate';
 import withStyles, {WithSheet} from 'react-jss';
 import styles from './styles';
+import NotFoundPage from './pages/notFoundPage';
 
-library.add(faBars, faHeart, faHome, faSearch, faSpinner);
+library.add(faBars, faCookieBite, faHeart, faHome, faSearch, faSpinner);
 
 type AppProps = WithSheet<typeof styles, {}>;
 
@@ -30,6 +31,11 @@ const App: React.FC<AppProps> = () => {
                     </PageTemplate>
                 )}/>
 
+                <Route render={props => (
+                    <PageTemplate title={'404 - Fehler'} {...props}>
+                        <NotFoundPage/>
+                    </PageTemplate>
+                )}/>
 
             </Switch>
         </React.Fragment>
