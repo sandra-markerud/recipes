@@ -50,6 +50,21 @@ class RecipeGraphQLTest {
     }
 
     @Test
+    void createRecipe() throws IOException {
+        // given
+        variables.put("name", "Obstsalat");
+        variables.put("instruction", "Alles kleinschnibbeln und in eine Schüssel geben.");
+
+        // when
+        GraphQLResponse createRecipeResponse = graphQLTestTemplate.perform("graphql/createRecipe.graphql", variables);
+
+        // then
+        JsonNode createdRecipe = createRecipeResponse.readTree().get("data").get("createRecipe").get("recipe");
+        assertThat(createdRecipe.get("name").asText(), equalTo("Obstsalat"));
+        assertThat(createdRecipe.get("instruction").asText(), equalTo("Alles kleinschnibbeln und in eine Schüssel geben."));
+    }
+
+    @Test
     void fetchRecipeById_whenRecipeFound() throws IOException {
         // given
         Unit gramme = unitRepo.saveAndFlush(new Unit().setCode("ST"));

@@ -3,9 +3,22 @@ extend type Query {
     recipe(id: ID!): Recipe
 }
 
+extend type Mutation {
+    createRecipe(input: CreateRecipeInput!): CreateRecipePayload!
+}
+
 type Recipe {
     id: ID!
     name: String!
-    ingredients: [Ingredient!]!
     instruction: String!
+    ingredients: [Ingredient!]!
+}
+
+input CreateRecipeInput {
+    name: String!
+    instruction: String!
+}
+
+type CreateRecipePayload {
+    recipe: Recipe
 }

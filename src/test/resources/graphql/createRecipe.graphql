@@ -1,0 +1,18 @@
+mutation CreateRecipe($name: String!, $instruction: String!) {
+    createRecipe(input: { name: $name, instruction: $instruction }) {
+        recipe {
+            id
+            name
+            instruction
+            ingredients {
+                quantity
+                unit {
+                    name
+                }
+                food {
+                    name
+                }
+            }
+        }
+    }
+}
