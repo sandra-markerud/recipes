@@ -16,6 +16,35 @@ export type Scalars = {
 };
 
 
+export type CreateFoodInput = {
+  name: Scalars['String'],
+};
+
+export type CreateFoodPayload = {
+   __typename?: 'CreateFoodPayload',
+  food: Food,
+};
+
+export type CreateRecipeInput = {
+  name: Scalars['String'],
+  instruction: Scalars['String'],
+};
+
+export type CreateRecipePayload = {
+   __typename?: 'CreateRecipePayload',
+  recipe: Recipe,
+};
+
+export type CreateUnitInput = {
+  code: Scalars['String'],
+  name: Scalars['String'],
+};
+
+export type CreateUnitPayload = {
+   __typename?: 'CreateUnitPayload',
+  unit: Unit,
+};
+
 export type Food = {
    __typename?: 'Food',
   id: Scalars['ID'],
@@ -31,11 +60,34 @@ export type Ingredient = {
   recipe: Recipe,
 };
 
+export type Mutation = {
+   __typename?: 'Mutation',
+  createFood: CreateFoodPayload,
+  createRecipe: CreateRecipePayload,
+  createUnit: CreateUnitPayload,
+};
+
+
+export type MutationCreateFoodArgs = {
+  input: CreateFoodInput
+};
+
+
+export type MutationCreateRecipeArgs = {
+  input: CreateRecipeInput
+};
+
+
+export type MutationCreateUnitArgs = {
+  input: CreateUnitInput
+};
+
 export type Query = {
    __typename?: 'Query',
   allFoods: Array<Food>,
   allRecipes: Array<Recipe>,
   recipe?: Maybe<Recipe>,
+  allUnits: Array<Unit>,
 };
 
 
@@ -47,12 +99,13 @@ export type Recipe = {
    __typename?: 'Recipe',
   id: Scalars['ID'],
   name: Scalars['String'],
-  ingredients: Array<Ingredient>,
   instruction: Scalars['String'],
+  ingredients: Array<Ingredient>,
 };
 
 export type Unit = {
    __typename?: 'Unit',
+  id: Scalars['ID'],
   code: Scalars['String'],
   name: Scalars['String'],
 };
