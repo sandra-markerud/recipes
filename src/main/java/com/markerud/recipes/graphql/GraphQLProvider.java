@@ -24,6 +24,7 @@ public class GraphQLProvider {
 
     private GraphQL graphQL;
     private Query query;
+    private Mutation mutation;
 
     @Bean
     public GraphQL graphQL() {
@@ -31,8 +32,9 @@ public class GraphQLProvider {
     }
 
     @Autowired
-    public GraphQLProvider(Query query) {
+    public GraphQLProvider(Query query, Mutation mutation) {
         this.query = query;
+        this.mutation = mutation;
     }
 
     @PostConstruct
@@ -55,6 +57,8 @@ public class GraphQLProvider {
                         .dataFetcher("allFoods", query.allFoodsFetcher) //
                         .dataFetcher("allRecipes", query.allRecipesFetcher) //
                         .dataFetcher("recipe", query.recipeFetcher)) //
+                .type("Mutation", typeWiring -> typeWiring //
+                        .dataFetcher("createFood", mutation.createFoodFetcher))
                 .build();
     }
 }

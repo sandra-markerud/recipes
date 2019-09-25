@@ -1,0 +1,8 @@
+mutation CreateFood($name: String!) {
+    createFood(input: { name: $name }) {
+        food {
+            id
+            name
+        }
+    }
+}
