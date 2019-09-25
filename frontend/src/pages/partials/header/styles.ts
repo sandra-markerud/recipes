@@ -7,7 +7,7 @@ export default {
         backgroundColor: Colors.standardColors.anthracite,
         padding: '10px',
         display: 'grid',
-        gridTemplateColumns: '150px auto 150px',
+        gridTemplateColumns: '1fr auto 1fr',
     },
 
     columnLeft: {
