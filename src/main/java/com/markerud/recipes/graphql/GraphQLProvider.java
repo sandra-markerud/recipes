@@ -58,6 +58,7 @@ public class GraphQLProvider {
                         .dataFetcher("allRecipes", query.allRecipesFetcher) //
                         .dataFetcher("recipe", query.recipeFetcher)) //
                 .type("Mutation", typeWiring -> typeWiring //
+                        .dataFetcher("createUnit", mutation.createUnitFetcher) //
                         .dataFetcher("createFood", mutation.createFoodFetcher))
                 .build();
     }

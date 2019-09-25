@@ -1,0 +1,9 @@
+mutation CreateUnit($code: String!, $name: String!) {
+    createUnit(input: { code: $code, name: $name }) {
+        unit {
+            id
+            code
+            name
+        }
+    }
+}

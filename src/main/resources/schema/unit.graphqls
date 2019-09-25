@@ -1,9 +1,22 @@
 extend type Query {
     allUnits: [Unit!]!
 }
+extend type Mutation {
+    createUnit(input: CreateUnitInput!): CreateUnitPayload!
+}
 
 type Unit {
     id: ID!
     code: String!
     name: String!
 }
+
+input CreateUnitInput {
+    code: String!
+    name: String!
+}
+
+type CreateUnitPayload {
+    unit: Unit
+}
+

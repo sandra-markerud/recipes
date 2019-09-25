@@ -1,10 +1,12 @@
 package com.markerud.recipes.graphql;
 
 import com.fasterxml.jackson.databind.JsonNode;
+import com.fasterxml.jackson.databind.node.ObjectNode;
 import com.graphql.spring.boot.test.GraphQLResponse;
 import com.graphql.spring.boot.test.GraphQLTestTemplate;
 import com.markerud.recipes.recipe.Unit;
 import com.markerud.recipes.recipe.UnitRepo;
+import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -16,6 +18,7 @@ import java.io.IOException;
 
 import static org.hamcrest.MatcherAssert.assertThat;
 import static org.hamcrest.Matchers.equalTo;
+import static org.hamcrest.Matchers.notNullValue;
 import static org.springframework.test.annotation.DirtiesContext.ClassMode.BEFORE_EACH_TEST_METHOD;
 
 @ExtendWith(SpringExtension.class)
@@ -28,6 +31,29 @@ class UnitGraphQLTest {
 
     @Autowired
     private UnitRepo unitRepo;
+
+    private ObjectNode variables;
+
+    @BeforeEach
+    void setUp() {
+        variables = VariablesUtil.createVariables();
+    }
+
+    @Test
+    void createUnit() throws IOException {
+        // given
+        variables.put("code", "TABLESPOON");
+        variables.put("name", "EL");
+
+        // when
+        GraphQLResponse createUnitResponse = graphQLTestTemplate.perform("graphql/createUnit.graphql", variables);
+
+        // then
+        JsonNode createdUnit = createUnitResponse.readTree().get("data").get("createUnit").get("unit");
+        assertThat(createdUnit.get("id").asLong(), notNullValue());
+        assertThat(createdUnit.get("code").asText(), equalTo("TABLESPOON"));
+        assertThat(createdUnit.get("name").asText(), equalTo("EL"));
+    }
 
     @Test
     void fetchAllUnits() throws IOException {
