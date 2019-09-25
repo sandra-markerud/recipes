@@ -16,5 +16,5 @@ input CreateFoodInput {
 }
 
 type CreateFoodPayload {
-    food: Food
+    food: Food!
 }

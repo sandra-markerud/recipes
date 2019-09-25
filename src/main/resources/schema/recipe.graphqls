@@ -20,5 +20,5 @@ input CreateRecipeInput {
 }
 
 type CreateRecipePayload {
-    recipe: Recipe
+    recipe: Recipe!
 }

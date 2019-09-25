@@ -17,6 +17,6 @@ input CreateUnitInput {
 }
 
 type CreateUnitPayload {
-    unit: Unit
+    unit: Unit!
 }
 
