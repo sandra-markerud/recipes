@@ -1,0 +1,7 @@
+query FetchAllUnits {
+    allUnits {
+        id
+        code
+        name
+    }
+}

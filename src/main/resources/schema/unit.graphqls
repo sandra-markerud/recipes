@@ -1,4 +1,9 @@
+extend type Query {
+    allUnits: [Unit!]!
+}
+
 type Unit {
+    id: ID!
     code: String!
     name: String!
 }

@@ -5,6 +5,8 @@ import com.markerud.recipes.food.Food;
 import com.markerud.recipes.food.FoodRepo;
 import com.markerud.recipes.recipe.Recipe;
 import com.markerud.recipes.recipe.RecipeRepo;
+import com.markerud.recipes.recipe.Unit;
+import com.markerud.recipes.recipe.UnitRepo;
 import graphql.schema.DataFetcher;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
@@ -19,12 +21,16 @@ public class Query {
 
     private FoodRepo foodRepo;
     private RecipeRepo recipeRepo;
+    private UnitRepo unitRepo;
 
     @Autowired
-    public Query(FoodRepo foodRepo, RecipeRepo recipeRepo) {
+    public Query(FoodRepo foodRepo, RecipeRepo recipeRepo, UnitRepo unitRepo) {
         this.foodRepo = foodRepo;
         this.recipeRepo = recipeRepo;
+        this.unitRepo = unitRepo;
     }
+
+    DataFetcher<List<Unit>> allUnitsFetcher = environment -> unitRepo.findAll();
 
     DataFetcher<List<Food>> allFoodsFetcher = environment -> foodRepo.findAll();
 
