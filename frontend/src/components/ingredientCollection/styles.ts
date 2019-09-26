@@ -11,7 +11,7 @@ export default {
         gridTemplateColumns: '1fr 2fr',
         gridColumnGap: '10px',
         borderBottom: '1px solid ' + Colors.standardColors.lightGray,
-        padding: '1em 0',
+        padding: '0.6em 0',
     },
 
     quantity: {

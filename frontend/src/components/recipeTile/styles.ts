@@ -3,11 +3,6 @@ import {Colors} from "../../config";
 export default {
 
     recipeTile: {
-        // border: {
-        //     style: 'solid',
-        //     color: Colors.standardColors.anthracite,
-        //     width: '1px',
-        // },
         width: '250px',
         margin: '1%',
         padding: '10px',

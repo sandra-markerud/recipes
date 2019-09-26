@@ -10,7 +10,8 @@ export default {
             font: {
                 family: 'Blokletters-Balpen',
                 size: '1em',
-            }
+            },
+            lineHeight: '1.4',
         },
 
         a: {
