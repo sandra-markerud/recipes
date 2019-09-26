@@ -18,6 +18,7 @@ import withStyles, {WithSheet} from 'react-jss';
 import styles from './styles';
 import NotFoundPage from './pages/notFoundPage';
 import {faPlusSquare} from '@fortawesome/free-regular-svg-icons';
+import AddRecipePage from './pages/addRecipePage/AddRecipePage';
 
 library.add(faAngleDoubleRight, faAngleDoubleUp, faBars, faCookieBite, faHeart, faHome, faPlusSquare, faSearch, faSpinner)
 ;
@@ -33,6 +34,12 @@ const App: React.FC<AppProps> = () => {
                 <Route exact path="/" render={props => (
                     <PageTemplate title={'Rezepte'} {...props}>
                         <RecipesCollectionPage/>
+                    </PageTemplate>
+                )}/>
+
+                <Route path="/rezept/neu" render={props => (
+                    <PageTemplate title={'Neues Rezept'} {...props}>
+                        <AddRecipePage/>
                     </PageTemplate>
                 )}/>
 
