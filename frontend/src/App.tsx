@@ -1,15 +1,26 @@
 import * as React from 'react';
 import {Route, Switch} from 'react-router-dom';
 import {library} from '@fortawesome/fontawesome-svg-core';
-import {faBars, faCookieBite, faHeart, faHome, faSearch, faSpinner} from '@fortawesome/free-solid-svg-icons';
+import {
+    faAngleDoubleRight,
+    faAngleDoubleUp,
+    faBars,
+    faCookieBite,
+    faHeart,
+    faHome,
+    faSearch,
+    faSpinner
+} from '@fortawesome/free-solid-svg-icons';
 import RecipesCollectionPage from './pages/recipesCollectionPage';
 import RecipeDetailPage from './pages/recipeDetailPage';
 import PageTemplate from './pages/pageTemplate';
 import withStyles, {WithSheet} from 'react-jss';
 import styles from './styles';
 import NotFoundPage from './pages/notFoundPage';
+import {faPlusSquare} from '@fortawesome/free-regular-svg-icons';
 
-library.add(faBars, faCookieBite, faHeart, faHome, faSearch, faSpinner);
+library.add(faAngleDoubleRight, faAngleDoubleUp, faBars, faCookieBite, faHeart, faHome, faPlusSquare, faSearch, faSpinner)
+;
 
 type AppProps = WithSheet<typeof styles, {}>;
 
