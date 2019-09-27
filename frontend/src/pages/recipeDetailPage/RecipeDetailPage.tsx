@@ -6,12 +6,13 @@ import Dialog from '../../components/dialog';
 import Instruction from '../../components/instruction';
 import IngredientCollection from '../../components/ingredientCollection';
 import RecipeLogo from '../../components/recipeLogo/RecipeLogo';
+import PageTemplate from '../pageTemplate/PageTemplate';
 
 type RecipeDetailPageProps = WithSheet<typeof styles, {}> & {
     data: RecipeByIdQuery
 }
 
-const RecipeDetailPage: React.FC<RecipeDetailPageProps> = ({data, classes}) => {
+const RecipeDetailContent: React.FC<RecipeDetailPageProps> = ({data, classes}) => {
     const recipe = data.recipe;
     if (!recipe) {
         return (
@@ -21,11 +22,20 @@ const RecipeDetailPage: React.FC<RecipeDetailPageProps> = ({data, classes}) => {
     return (
         <div className={classes.splitPanel}>
             <div className={classes.ingredients}>
-                <RecipeLogo />
+                <RecipeLogo/>
                 <IngredientCollection ingredients={recipe.ingredients}/>
             </div>
             <Instruction text={recipe.instruction}/>
         </div>
+    );
+};
+
+const RecipeDetailPage: React.FC<RecipeDetailPageProps> = (props) => {
+    const title: string = props.data.recipe ? props.data.recipe.name : 'Rezept nicht gefunden';
+    return (
+        <PageTemplate title={title}>
+            <RecipeDetailContent {...props}/>
+        </PageTemplate>
     );
 };
 

@@ -43,11 +43,9 @@ const App: React.FC<AppProps> = () => {
                     </PageTemplate>
                 )}/>
 
-                <Route path="/rezept/:id" render={props => (
-                    <PageTemplate title={'Rezept'} {...props}>
-                        <RecipeDetailPage id={props.match.params.id}/>
-                    </PageTemplate>
-                )}/>
+                <Route path="/rezept/:id" render={
+                    props => <RecipeDetailPage id={props.match.params.id}/>
+                }/>
 
                 <Route render={props => (
                     <PageTemplate title={'404 - Fehler'} {...props}>
