@@ -2,22 +2,19 @@ import * as React from 'react';
 import withStyles, {WithSheet} from 'react-jss';
 import styles from './styles';
 import PageTemplate from '../pageTemplate/PageTemplate';
+import Form from '../../components/form';
 
 type AddRecipePageProps = WithSheet<typeof styles, {}>;
-
-const AddRecipeContent: React.FC<AddRecipePageProps> = () => {
-    return (
-        <div>
-            <h1>Hier kommt das Formular hin</h1>
-        </div>
-    );
-};
-
 
 const AddRecipePage: React.FC<AddRecipePageProps> = (props) => {
     return (
         <PageTemplate title={'Neues Rezept'}>
-            <AddRecipeContent {...props} />
+            <div>
+                <h1>Hier kommt das Formular hin</h1>
+                <Form>
+                    <h1>Test</h1>
+                </Form>
+            </div>
         </PageTemplate>
     );
 };
