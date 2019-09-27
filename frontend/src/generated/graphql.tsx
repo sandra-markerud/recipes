@@ -1,6 +1,6 @@
 import gql from 'graphql-tag';
-import * as React from 'react';
 import * as ApolloReactCommon from '@apollo/react-common';
+import * as React from 'react';
 import * as ApolloReactComponents from '@apollo/react-components';
 import * as ApolloReactHoc from '@apollo/react-hoc';
 import * as ApolloReactHooks from '@apollo/react-hooks';
@@ -109,6 +109,34 @@ export type Unit = {
   code: Scalars['String'],
   name: Scalars['String'],
 };
+export type CreateRecipeMutationVariables = {
+  name: Scalars['String'],
+  instruction: Scalars['String']
+};
+
+
+export type CreateRecipeMutation = (
+  { __typename?: 'Mutation' }
+  & { createRecipe: (
+    { __typename?: 'CreateRecipePayload' }
+    & { recipe: (
+      { __typename?: 'Recipe' }
+      & Pick<Recipe, 'id' | 'name' | 'instruction'>
+      & { ingredients: Array<(
+        { __typename?: 'Ingredient' }
+        & Pick<Ingredient, 'quantity'>
+        & { unit: (
+          { __typename?: 'Unit' }
+          & Pick<Unit, 'name'>
+        ), food: (
+          { __typename?: 'Food' }
+          & Pick<Food, 'name'>
+        ) }
+      )> }
+    ) }
+  ) }
+);
+
 export type RecipeByIdQueryVariables = {
   id: Scalars['ID']
 };
@@ -144,6 +172,51 @@ export type AllRecipesQuery = (
   )> }
 );
 
+export const CreateRecipeDocument = gql`
+    mutation CreateRecipe($name: String!, $instruction: String!) {
+  createRecipe(input: {name: $name, instruction: $instruction}) {
+    recipe {
+      id
+      name
+      instruction
+      ingredients {
+        quantity
+        unit {
+          name
+        }
+        food {
+          name
+        }
+      }
+    }
+  }
+}
+    `;
+export type CreateRecipeMutationFn = ApolloReactCommon.MutationFunction<CreateRecipeMutation, CreateRecipeMutationVariables>;
+export type CreateRecipeComponentProps = Omit<ApolloReactComponents.MutationComponentOptions<CreateRecipeMutation, CreateRecipeMutationVariables>, 'mutation'>;
+
+    export const CreateRecipeComponent = (props: CreateRecipeComponentProps) => (
+      <ApolloReactComponents.Mutation<CreateRecipeMutation, CreateRecipeMutationVariables> mutation={CreateRecipeDocument} {...props} />
+    );
+    
+export type CreateRecipeProps<TChildProps = {}> = ApolloReactHoc.MutateProps<CreateRecipeMutation, CreateRecipeMutationVariables> & TChildProps;
+export function withCreateRecipe<TProps, TChildProps = {}>(operationOptions?: ApolloReactHoc.OperationOption<
+  TProps,
+  CreateRecipeMutation,
+  CreateRecipeMutationVariables,
+  CreateRecipeProps<TChildProps>>) {
+    return ApolloReactHoc.withMutation<TProps, CreateRecipeMutation, CreateRecipeMutationVariables, CreateRecipeProps<TChildProps>>(CreateRecipeDocument, {
+      alias: 'createRecipe',
+      ...operationOptions
+    });
+};
+
+    export function useCreateRecipeMutation(baseOptions?: ApolloReactHooks.MutationHookOptions<CreateRecipeMutation, CreateRecipeMutationVariables>) {
+      return ApolloReactHooks.useMutation<CreateRecipeMutation, CreateRecipeMutationVariables>(CreateRecipeDocument, baseOptions);
+    }
+export type CreateRecipeMutationHookResult = ReturnType<typeof useCreateRecipeMutation>;
+export type CreateRecipeMutationResult = ApolloReactCommon.MutationResult<CreateRecipeMutation>;
+export type CreateRecipeMutationOptions = ApolloReactCommon.BaseMutationOptions<CreateRecipeMutation, CreateRecipeMutationVariables>;
 export const RecipeByIdDocument = gql`
     query RecipeById($id: ID!) {
   recipe(id: $id) {

@@ -1,10 +1,12 @@
 import React, {Component} from 'react';
+import {RouteComponentProps, withRouter} from 'react-router-dom';
 import withStyles, {WithSheet} from 'react-jss';
 import styles from './styles';
 import PageTemplate from '../pageTemplate/PageTemplate';
 import TextareaAutosize from 'react-autosize-textarea';
+import {CreateRecipeComponent, CreateRecipeMutationVariables} from '../../generated/graphql';
 
-type AddRecipePageProps = WithSheet<typeof styles, {}>;
+type AddRecipePageProps = WithSheet<typeof styles, {}> & RouteComponentProps;
 
 type AddRecipePageState = {
     nameInput: string,
@@ -29,12 +31,15 @@ class AddRecipePage extends Component<AddRecipePageProps, AddRecipePageState> {
     };
 
     handleSubmit = (event: React.FormEvent<HTMLElement>) => {
-        alert('A name was submitted: ' + this.state.nameInput);
         event.preventDefault();
     };
 
     render() {
         const classes = this.props.classes;
+        const variables: CreateRecipeMutationVariables = {
+            name: this.state.nameInput,
+            instruction: this.state.instructionInput,
+        };
         return (
             <PageTemplate title={'Neues Rezept'}>
                 <form onSubmit={this.handleSubmit}>
@@ -52,7 +57,17 @@ class AddRecipePage extends Component<AddRecipePageProps, AddRecipePageState> {
                                           value={this.state.instructionInput}
                                           onChange={this.handleAreaChange}/>
 
-                        <input type="submit" className={classes.formElement} value="Rezept speichern"/>
+                        <CreateRecipeComponent variables={variables} onCompleted={(data) => {
+                            this.props.history.push(
+                                `/rezept/${data.createRecipe.recipe.id}`
+                            );
+                        }}>
+                            {mutate => (
+                                <input type={'submit'} value={'Rezept speichern'} className={classes.formElement}
+                                       onClick={() => mutate()}/>
+                            )}
+                        </CreateRecipeComponent>
+
                     </div>
                 </form>
             </PageTemplate>
@@ -60,4 +75,4 @@ class AddRecipePage extends Component<AddRecipePageProps, AddRecipePageState> {
     }
 }
 
-export default withStyles(styles)(AddRecipePage);
+export default withRouter(withStyles(styles)(AddRecipePage));
