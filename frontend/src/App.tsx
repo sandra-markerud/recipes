@@ -13,7 +13,6 @@ import {
 } from '@fortawesome/free-solid-svg-icons';
 import RecipesCollectionPage from './pages/recipesCollectionPage';
 import RecipeDetailPage from './pages/recipeDetailPage';
-import PageTemplate from './pages/pageTemplate';
 import withStyles, {WithSheet} from 'react-jss';
 import styles from './styles';
 import NotFoundPage from './pages/notFoundPage';
@@ -28,33 +27,12 @@ type AppProps = WithSheet<typeof styles, {}>;
 const App: React.FC<AppProps> = () => {
 
     return (
-        <React.Fragment>
-            <Switch>
-
-                <Route exact path="/" render={props => (
-                    <PageTemplate title={'Rezepte'} {...props}>
-                        <RecipesCollectionPage/>
-                    </PageTemplate>
-                )}/>
-
-                <Route path="/rezept/neu" render={props => (
-                    <PageTemplate title={'Neues Rezept'} {...props}>
-                        <AddRecipePage/>
-                    </PageTemplate>
-                )}/>
-
-                <Route path="/rezept/:id" render={
-                    props => <RecipeDetailPage id={props.match.params.id}/>
-                }/>
-
-                <Route render={props => (
-                    <PageTemplate title={'404 - Fehler'} {...props}>
-                        <NotFoundPage/>
-                    </PageTemplate>
-                )}/>
-
-            </Switch>
-        </React.Fragment>
+        <Switch>
+            <Route exact path="/" component={RecipesCollectionPage}/>
+            <Route path="/rezept/neu" component={AddRecipePage}/>
+            <Route path="/rezept/:id" render={props => <RecipeDetailPage id={props.match.params.id}/>}/>
+            <Route component={NotFoundPage}/>
+        </Switch>
     );
 };
 

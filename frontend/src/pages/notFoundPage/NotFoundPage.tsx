@@ -2,10 +2,11 @@ import * as React from 'react';
 import withStyles, {WithSheet} from 'react-jss';
 import styles from './styles';
 import {FontAwesomeIcon} from '@fortawesome/react-fontawesome';
+import PageTemplate from '../pageTemplate/PageTemplate';
 
 type NotFoundPageProps = WithSheet<typeof styles, {}>;
 
-const NotFoundPage: React.FC<NotFoundPageProps> = ({classes}) => {
+const NotFoundContent: React.FC<NotFoundPageProps> = ({classes}) => {
     return (
         <div className={classes.notFoundContent}>
             <div className={classes.notFoundMessage}>
@@ -13,6 +14,14 @@ const NotFoundPage: React.FC<NotFoundPageProps> = ({classes}) => {
                 <p>Page not found</p>
             </div>
         </div>
+    );
+};
+
+const NotFoundPage: React.FC<NotFoundPageProps> = (props) => {
+    return (
+        <PageTemplate title={'404 - Fehler'}>
+            <NotFoundContent {...props} />
+        </PageTemplate>
     );
 };
 
