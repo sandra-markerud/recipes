@@ -1,22 +1,61 @@
-import * as React from 'react';
+import React, {Component} from 'react';
 import withStyles, {WithSheet} from 'react-jss';
 import styles from './styles';
 import PageTemplate from '../pageTemplate/PageTemplate';
-import Form from '../../components/form';
+import TextareaAutosize from 'react-autosize-textarea';
 
 type AddRecipePageProps = WithSheet<typeof styles, {}>;
 
-const AddRecipePage: React.FC<AddRecipePageProps> = (props) => {
-    return (
-        <PageTemplate title={'Neues Rezept'}>
-            <div>
-                <h1>Hier kommt das Formular hin</h1>
-                <Form>
-                    <h1>Test</h1>
-                </Form>
-            </div>
-        </PageTemplate>
-    );
+type AddRecipePageState = {
+    nameInput: string,
+    instructionInput: string,
 };
+
+class AddRecipePage extends Component<AddRecipePageProps, AddRecipePageState> {
+    constructor(props: AddRecipePageProps) {
+        super(props);
+        this.state = {
+            nameInput: '',
+            instructionInput: '',
+        };
+    }
+
+    handleChange = (event: React.ChangeEvent<HTMLInputElement>) => {
+        this.setState({nameInput: event.target.value});
+    };
+
+    handleAreaChange = (event: React.ChangeEvent<HTMLTextAreaElement>) => {
+        this.setState({instructionInput: event.target.value});
+    };
+
+    handleSubmit = (event: React.FormEvent<HTMLElement>) => {
+        alert('A name was submitted: ' + this.state.nameInput);
+        event.preventDefault();
+    };
+
+    render() {
+        const classes = this.props.classes;
+        return (
+            <PageTemplate title={'Neues Rezept'}>
+                <form onSubmit={this.handleSubmit} className={classes.centeredForm}>
+
+                    <label htmlFor="name" className={classes.formLabel}>Rezeptname:</label>
+                    <input id="name" type="text" className={classes.formElement} value={this.state.nameInput}
+                           placeholder={'Hier kommt der Rezeptname hin...'}
+                           onChange={this.handleChange}/>
+
+                    <label htmlFor="instruction" className={classes.formLabel}>Zubereitung:</label>
+                    <TextareaAutosize id='instruction' className={classes.formElement}
+                                      placeholder={'Hier kommt die Zubereitung hin...'}
+                                      rows={5}
+                                      value={this.state.instructionInput}
+                                      onChange={this.handleAreaChange}/>
+
+                    <input type="submit" className={classes.formElement} value="Submit"/>
+                </form>
+            </PageTemplate>
+        );
+    }
+}
 
 export default withStyles(styles)(AddRecipePage);

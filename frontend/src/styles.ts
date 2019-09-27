@@ -4,6 +4,7 @@ export default {
 
     '@global': {
         body: {
+            minWidth: '320px',
             margin: 0,
             padding: 0,
             color: Colors.standardColors.anthracite,
