@@ -37,21 +37,23 @@ class AddRecipePage extends Component<AddRecipePageProps, AddRecipePageState> {
         const classes = this.props.classes;
         return (
             <PageTemplate title={'Neues Rezept'}>
-                <form onSubmit={this.handleSubmit} className={classes.centeredForm}>
+                <form onSubmit={this.handleSubmit}>
+                    <div className={classes.formContainer}>
 
-                    <label htmlFor="name" className={classes.formLabel}>Rezeptname:</label>
-                    <input id="name" type="text" className={classes.formElement} value={this.state.nameInput}
-                           placeholder={'Hier kommt der Rezeptname hin...'}
-                           onChange={this.handleChange}/>
+                        <label htmlFor="name" className={classes.formLabel}>Rezeptname:</label>
+                        <input id="name" type="text" className={classes.formElement} value={this.state.nameInput}
+                               placeholder={'Hier kommt der Rezeptname hin...'}
+                               onChange={this.handleChange}/>
 
-                    <label htmlFor="instruction" className={classes.formLabel}>Zubereitung:</label>
-                    <TextareaAutosize id='instruction' className={classes.formElement}
-                                      placeholder={'Hier kommt die Zubereitung hin...'}
-                                      rows={5}
-                                      value={this.state.instructionInput}
-                                      onChange={this.handleAreaChange}/>
+                        <label htmlFor="instruction" className={classes.formLabel}>Zubereitung:</label>
+                        <TextareaAutosize id='instruction' className={classes.formElement}
+                                          placeholder={'Hier kommt die Zubereitung hin...'}
+                                          rows={5}
+                                          value={this.state.instructionInput}
+                                          onChange={this.handleAreaChange}/>
 
-                    <input type="submit" className={classes.formElement} value="Submit"/>
+                        <input type="submit" className={classes.formElement} value="Rezept speichern"/>
+                    </div>
                 </form>
             </PageTemplate>
         );

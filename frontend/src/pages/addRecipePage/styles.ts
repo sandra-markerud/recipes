@@ -2,22 +2,28 @@ import {Colors} from '../../config';
 
 export default {
 
-    centeredForm: {
-        maxWidth: '900px',
-        maxHeight: '100%',
-        margin: '20px auto',
-        padding: '10px',
-        boxShadow: '0 4px 10px 0 rgba(0,0,0,0.2),0 4px 20px 0 rgba(0,0,0,0.19)',
-        backgroundColor: Colors.standardColors.lightGray,
+    '@global': {
+        form: {
+            height: '100%',
+            overflow: 'auto',
+        },
+        textarea: {
+            resize: 'none',
+        },
+    },
 
+    formContainer: {
         display: 'grid',
         gridTemplateColumns: '200px 1fr',
+        gridTemplateRows: 'auto',
         gridGap: '10px',
         alignItems: 'center',
-        //
-        // '& textarea': {
-        //     resize: 'vertical',
-        // }
+        maxWidth: '900px',
+        margin: '0 auto',
+        padding: '10px',
+        backgroundColor: Colors.standardColors.lightGray,
+        boxShadow: '0 4px 10px 0 rgba(0,0,0,0.2),0 4px 20px 0 rgba(0,0,0,0.19)',
+        overflow: 'auto',
     },
 
     formLabel: {
@@ -32,14 +38,6 @@ export default {
         lineHeight: '1.4',
         border: '1px solid ' + Colors.standardColors.anthracite,
     },
-
-    '@global': {
-        textarea: {
-            resize: 'none',
-            maxHeight: '100%',
-        },
-    },
-
 
     '@media screen and (max-width: 600px)': {
         formLabel: {
