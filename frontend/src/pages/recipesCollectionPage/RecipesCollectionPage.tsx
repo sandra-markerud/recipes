@@ -3,7 +3,6 @@ import {AllRecipesQuery} from '../../generated/graphql';
 import RecipeTile from '../../components/recipeTile';
 import withStyles, {WithSheet} from 'react-jss';
 import styles from './styles';
-import PageTemplate from '../pageTemplate/PageTemplate';
 
 type RecipesCollectionPageProps = WithSheet<typeof styles, {}> & {
     data: AllRecipesQuery
@@ -18,9 +17,7 @@ const RecipesCollectionPage: React.FC<RecipesCollectionPageProps> = ({data, clas
         );
     });
     return (
-        <PageTemplate title={'Rezepte'}>
-            <div className={classes.recipeTiles}>{listItems}</div>
-        </PageTemplate>
+        <div className={classes.recipeTiles}>{listItems}</div>
     );
 };
 
