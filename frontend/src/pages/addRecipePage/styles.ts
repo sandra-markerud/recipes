@@ -42,6 +42,7 @@ export default {
     '@media screen and (max-width: 600px)': {
         formLabel: {
             gridColumn: '1 / 3',
+            textAlign: 'left',
         },
         formElement: {
             gridColumn: '1 / 3',
