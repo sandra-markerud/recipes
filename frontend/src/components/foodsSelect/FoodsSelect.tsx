@@ -11,7 +11,7 @@ const FoodsSelect: React.FC<FoodsSelectProps> = ({data, classes}) => {
     const options = data.allFoods.sort((a, b) => {
         return a.name === b.name ? 0 : a.name < b.name ? -1 : 1;
     }).map(food => {
-        return <option key={food.id} value={food.id}>label={food.name}</option>
+        return <option key={food.id} value={food.id}>{food.name}</option>
     });
     return (
         <select required className={classes.component}>

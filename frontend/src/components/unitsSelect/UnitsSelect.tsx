@@ -11,7 +11,7 @@ const UnitsSelect: React.FC<UnitsSelectProps> = ({data, classes}) => {
     const options = data.allUnits.sort((a, b) => {
         return a.longName === b.longName ? 0 : a.longName < b.longName ? -1 : 1;
     }).map(unit => {
-        return <option key={unit.id} value={unit.id}>label={unit.longName}</option>
+        return <option key={unit.id} value={unit.id}>{unit.longName}</option>
     });
     return (
         <select required className={classes.component}>
