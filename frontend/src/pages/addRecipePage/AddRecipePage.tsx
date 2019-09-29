@@ -1,16 +1,20 @@
 import React, {Component} from 'react';
+import {ApolloError} from 'apollo-boost';
 import {RouteComponentProps, withRouter} from 'react-router-dom';
 import withStyles, {WithSheet} from 'react-jss';
 import styles from './styles';
 import PageTemplate from '../pageTemplate/PageTemplate';
 import TextareaAutosize from 'react-autosize-textarea';
 import {CreateRecipeComponent, CreateRecipeMutationVariables} from '../../generated/graphql';
+import Error from '../../components/error/Error';
+import IngredientInputRow from '../../components/ingredientInputRow';
 
 type AddRecipePageProps = WithSheet<typeof styles, {}> & RouteComponentProps;
 
 type AddRecipePageState = {
     nameInput: string,
     instructionInput: string,
+    error?: ApolloError,
 };
 
 class AddRecipePage extends Component<AddRecipePageProps, AddRecipePageState> {
@@ -45,10 +49,21 @@ class AddRecipePage extends Component<AddRecipePageProps, AddRecipePageState> {
                 <form onSubmit={this.handleSubmit}>
                     <div className={classes.formContainer}>
 
+                        <span className={classes.formError}>
+                        {this.state.error && <Error error={this.state.error}/>}
+                        </span>
+
                         <label htmlFor="name" className={classes.formLabel}>Rezeptname:</label>
                         <input id="name" type="text" className={classes.formElement} value={this.state.nameInput}
                                placeholder={'Hier kommt der Rezeptname hin...'}
                                onChange={this.handleChange}/>
+
+                        <label htmlFor="ingredients" className={classes.formLabel}>Zutaten und Mengenangaben:</label>
+                        <fieldset className={classes.formElement}>
+                            <IngredientInputRow/>
+                            <IngredientInputRow/>
+                            <IngredientInputRow/>
+                        </fieldset>
 
                         <label htmlFor="instruction" className={classes.formLabel}>Zubereitung:</label>
                         <TextareaAutosize id='instruction' className={classes.formElement}
@@ -57,11 +72,13 @@ class AddRecipePage extends Component<AddRecipePageProps, AddRecipePageState> {
                                           value={this.state.instructionInput}
                                           onChange={this.handleAreaChange}/>
 
-                        <CreateRecipeComponent variables={variables} onCompleted={(data) => {
-                            this.props.history.push(
-                                `/rezept/${data.createRecipe.recipe.id}`
-                            );
-                        }}>
+                        <CreateRecipeComponent variables={variables}
+                                               onCompleted={(data) => {
+                                                   this.props.history.push(`/rezept/${data.createRecipe.recipe.id}`);
+                                               }}
+                                               onError={(error) => {
+                                                   this.setState({error: error})
+                                               }}>
                             {mutate => (
                                 <input type={'submit'} value={'Rezept speichern'} className={classes.formElement}
                                        onClick={() => mutate()}/>

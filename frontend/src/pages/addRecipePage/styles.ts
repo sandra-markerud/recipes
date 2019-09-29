@@ -26,6 +26,10 @@ export default {
         overflow: 'auto',
     },
 
+    formError: {
+      gridColumn: '1 / 3',
+    },
+
     formLabel: {
         gridColumn: '1 / 2',
         fontSize: '0.75em',

@@ -10,7 +10,8 @@ export const MUTATION_CREATE_RECIPE = gql`
                 ingredients {
                     quantity
                     unit {
-                        name
+                        longName
+                        shortName
                     }
                     food {
                         name
