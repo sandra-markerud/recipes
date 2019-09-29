@@ -67,7 +67,7 @@ class RecipeGraphQLTest {
     @Test
     void fetchRecipeById_whenRecipeFound() throws IOException {
         // given
-        Unit gramme = unitRepo.saveAndFlush(new Unit().setCode("ST"));
+        Unit gramme = unitRepo.saveAndFlush(new Unit().setLongName("Stück").setShortName("ST"));
         Recipe recipe = persistRecipe("Schinkennudeln", "Man nehme...", //
                 createIngredient(BigDecimal.valueOf(500L), gramme, "Nudeln"), //
                 createIngredient(BigDecimal.valueOf(200L), gramme, "gekochter Schinken"));
@@ -112,7 +112,7 @@ class RecipeGraphQLTest {
     @Test
     void fetchAllRecipes_whenRecipesFound() throws IOException {
         // given
-        Unit piece = unitRepo.saveAndFlush(new Unit().setCode("ST"));
+        Unit piece = unitRepo.saveAndFlush(new Unit().setLongName("Stück").setShortName("ST"));
         persistRecipe("Obstsalat", "alles kleinschnibbeln...", //
                 createIngredient(BigDecimal.ONE, piece, "Apfel"), //
                 createIngredient(BigDecimal.ONE, piece, "Birne"), //

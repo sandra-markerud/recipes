@@ -1,7 +1,7 @@
 query FetchAllUnits {
     allUnits {
         id
-        code
-        name
+        longName
+        shortName
     }
 }

@@ -42,8 +42,8 @@ class UnitGraphQLTest {
     @Test
     void createUnit() throws IOException {
         // given
-        variables.put("code", "TABLESPOON");
-        variables.put("name", "EL");
+        variables.put("longName", "Esslöffel");
+        variables.put("shortName", "EL");
 
         // when
         GraphQLResponse createUnitResponse = graphQLTestTemplate.perform("graphql/createUnit.graphql", variables);
@@ -51,15 +51,15 @@ class UnitGraphQLTest {
         // then
         JsonNode createdUnit = createUnitResponse.readTree().get("data").get("createUnit").get("unit");
         assertThat(createdUnit.get("id").asLong(), notNullValue());
-        assertThat(createdUnit.get("code").asText(), equalTo("TABLESPOON"));
-        assertThat(createdUnit.get("name").asText(), equalTo("EL"));
+        assertThat(createdUnit.get("longName").asText(), equalTo("Esslöffel"));
+        assertThat(createdUnit.get("shortName").asText(), equalTo("EL"));
     }
 
     @Test
     void fetchAllUnits() throws IOException {
         // given
-        unitRepo.save(new Unit().setCode("TABLESPOON").setName("EL"));
-        unitRepo.save(new Unit().setCode("TEASPOON").setName("TL"));
+        unitRepo.save(new Unit().setLongName("Esslöffel").setShortName("EL"));
+        unitRepo.save(new Unit().setLongName("Teelöffel").setShortName("TL"));
 
         // when
         GraphQLResponse fetchAllUnitsResponse = graphQLTestTemplate.postForResource("graphql/fetchAllUnits.graphql");
@@ -69,11 +69,11 @@ class UnitGraphQLTest {
 
         assertThat(allUnits.size(), equalTo(2));
         assertThat(allUnits.get(0).get("id").asLong(), equalTo(1L));
-        assertThat(allUnits.get(0).get("code").asText(), equalTo("TABLESPOON"));
-        assertThat(allUnits.get(0).get("name").asText(), equalTo("EL"));
+        assertThat(allUnits.get(0).get("longName").asText(), equalTo("Esslöffel"));
+        assertThat(allUnits.get(0).get("shortName").asText(), equalTo("EL"));
         assertThat(allUnits.get(1).get("id").asLong(), equalTo(2L));
-        assertThat(allUnits.get(1).get("code").asText(), equalTo("TEASPOON"));
-        assertThat(allUnits.get(1).get("name").asText(), equalTo("TL"));
+        assertThat(allUnits.get(1).get("longName").asText(), equalTo("Teelöffel"));
+        assertThat(allUnits.get(1).get("shortName").asText(), equalTo("TL"));
     }
 
 }

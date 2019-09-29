@@ -69,7 +69,7 @@ public class Ingredient extends BaseEntity {
 
     @Override
     public String toString() {
-        String localPart = "quantity=" + quantity + ", unit=" + unit.getCode() + ", food=" + food.getName();
+        String localPart = "quantity=" + quantity + ", unit=" + unit.getLongName() + ", food=" + food.getName();
         return String.format(super.toString(), localPart);
     }
 

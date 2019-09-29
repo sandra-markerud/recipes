@@ -1,7 +1,6 @@
 package com.markerud.recipes.recipe;
 
 import com.markerud.recipes.jpa.BaseEntity;
-import org.hibernate.annotations.NaturalId;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
@@ -11,34 +10,33 @@ import javax.persistence.Table;
 @Table(name = "UNITS")
 public class Unit extends BaseEntity {
 
-    @NaturalId
-    @Column(name = "CODE")
-    private String code;
+    @Column(name = "LONG_NAME")
+    private String longName;
 
-    @Column(name = "NAME")
-    private String name;
+    @Column(name = "SHORT_NAME")
+    private String shortName;
 
-    public String getCode() {
-        return code;
+    public String getLongName() {
+        return longName;
     }
 
-    public Unit setCode(String code) {
-        this.code = code;
+    public Unit setLongName(String longName) {
+        this.longName = longName;
         return this;
     }
 
-    public String getName() {
-        return name;
+    public String getShortName() {
+        return shortName;
     }
 
-    public Unit setName(String name) {
-        this.name = name;
+    public Unit setShortName(String shortName) {
+        this.shortName = shortName;
         return this;
     }
 
     @Override
     public String toString() {
-        String localPart = "code=" + code + ", name=" + name;
+        String localPart = "code=" + longName + ", name=" + shortName;
         return String.format(super.toString(), localPart);
     }
 

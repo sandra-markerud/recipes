@@ -1,6 +1,6 @@
 import gql from 'graphql-tag';
-import * as ApolloReactCommon from '@apollo/react-common';
 import * as React from 'react';
+import * as ApolloReactCommon from '@apollo/react-common';
 import * as ApolloReactComponents from '@apollo/react-components';
 import * as ApolloReactHoc from '@apollo/react-hoc';
 import * as ApolloReactHooks from '@apollo/react-hooks';
@@ -36,8 +36,8 @@ export type CreateRecipePayload = {
 };
 
 export type CreateUnitInput = {
-  code: Scalars['String'],
-  name: Scalars['String'],
+  longName: Scalars['String'],
+  shortName: Scalars['String'],
 };
 
 export type CreateUnitPayload = {
@@ -106,9 +106,20 @@ export type Recipe = {
 export type Unit = {
    __typename?: 'Unit',
   id: Scalars['ID'],
-  code: Scalars['String'],
-  name: Scalars['String'],
+  longName: Scalars['String'],
+  shortName: Scalars['String'],
 };
+export type AllUnitsQueryVariables = {};
+
+
+export type AllUnitsQuery = (
+  { __typename?: 'Query' }
+  & { allUnits: Array<(
+    { __typename?: 'Unit' }
+    & Pick<Unit, 'id' | 'longName' | 'shortName'>
+  )> }
+);
+
 export type CreateRecipeMutationVariables = {
   name: Scalars['String'],
   instruction: Scalars['String']
@@ -127,7 +138,7 @@ export type CreateRecipeMutation = (
         & Pick<Ingredient, 'quantity'>
         & { unit: (
           { __typename?: 'Unit' }
-          & Pick<Unit, 'name'>
+          & Pick<Unit, 'longName' | 'shortName'>
         ), food: (
           { __typename?: 'Food' }
           & Pick<Food, 'name'>
@@ -152,7 +163,7 @@ export type RecipeByIdQuery = (
       & Pick<Ingredient, 'id' | 'quantity'>
       & { unit: (
         { __typename?: 'Unit' }
-        & Pick<Unit, 'code' | 'name'>
+        & Pick<Unit, 'longName' | 'shortName'>
       ), food: (
         { __typename?: 'Food' }
         & Pick<Food, 'id' | 'name'>
@@ -172,6 +183,42 @@ export type AllRecipesQuery = (
   )> }
 );
 
+export const AllUnitsDocument = gql`
+    query AllUnits {
+  allUnits {
+    id
+    longName
+    shortName
+  }
+}
+    `;
+export type AllUnitsComponentProps = Omit<ApolloReactComponents.QueryComponentOptions<AllUnitsQuery, AllUnitsQueryVariables>, 'query'>;
+
+    export const AllUnitsComponent = (props: AllUnitsComponentProps) => (
+      <ApolloReactComponents.Query<AllUnitsQuery, AllUnitsQueryVariables> query={AllUnitsDocument} {...props} />
+    );
+    
+export type AllUnitsProps<TChildProps = {}> = ApolloReactHoc.DataProps<AllUnitsQuery, AllUnitsQueryVariables> & TChildProps;
+export function withAllUnits<TProps, TChildProps = {}>(operationOptions?: ApolloReactHoc.OperationOption<
+  TProps,
+  AllUnitsQuery,
+  AllUnitsQueryVariables,
+  AllUnitsProps<TChildProps>>) {
+    return ApolloReactHoc.withQuery<TProps, AllUnitsQuery, AllUnitsQueryVariables, AllUnitsProps<TChildProps>>(AllUnitsDocument, {
+      alias: 'allUnits',
+      ...operationOptions
+    });
+};
+
+    export function useAllUnitsQuery(baseOptions?: ApolloReactHooks.QueryHookOptions<AllUnitsQuery, AllUnitsQueryVariables>) {
+      return ApolloReactHooks.useQuery<AllUnitsQuery, AllUnitsQueryVariables>(AllUnitsDocument, baseOptions);
+    }
+      export function useAllUnitsLazyQuery(baseOptions?: ApolloReactHooks.LazyQueryHookOptions<AllUnitsQuery, AllUnitsQueryVariables>) {
+        return ApolloReactHooks.useLazyQuery<AllUnitsQuery, AllUnitsQueryVariables>(AllUnitsDocument, baseOptions);
+      }
+      
+export type AllUnitsQueryHookResult = ReturnType<typeof useAllUnitsQuery>;
+export type AllUnitsQueryResult = ApolloReactCommon.QueryResult<AllUnitsQuery, AllUnitsQueryVariables>;
 export const CreateRecipeDocument = gql`
     mutation CreateRecipe($name: String!, $instruction: String!) {
   createRecipe(input: {name: $name, instruction: $instruction}) {
@@ -182,7 +229,8 @@ export const CreateRecipeDocument = gql`
       ingredients {
         quantity
         unit {
-          name
+          longName
+          shortName
         }
         food {
           name
@@ -227,8 +275,8 @@ export const RecipeByIdDocument = gql`
       id
       quantity
       unit {
-        code
-        name
+        longName
+        shortName
       }
       food {
         id

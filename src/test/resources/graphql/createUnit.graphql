@@ -1,9 +1,9 @@
-mutation CreateUnit($code: String!, $name: String!) {
-    createUnit(input: { code: $code, name: $name }) {
+mutation CreateUnit($longName: String!, $shortName: String!) {
+    createUnit(input: { longName: $longName, shortName: $shortName }) {
         unit {
             id
-            code
-            name
+            longName
+            shortName
         }
     }
 }

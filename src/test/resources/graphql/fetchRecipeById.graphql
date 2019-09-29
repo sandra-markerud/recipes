@@ -9,7 +9,7 @@ query FetchRecipeById(
             id
             quantity
             unit {
-                code
+                longName
             }
             food {
                 id

@@ -7,7 +7,7 @@ mutation CreateRecipe($name: String!, $instruction: String!) {
             ingredients {
                 quantity
                 unit {
-                    name
+                    longName
                 }
                 food {
                     name
