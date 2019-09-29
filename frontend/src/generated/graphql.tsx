@@ -109,6 +109,17 @@ export type Unit = {
   longName: Scalars['String'],
   shortName: Scalars['String'],
 };
+export type AllFoodsQueryVariables = {};
+
+
+export type AllFoodsQuery = (
+  { __typename?: 'Query' }
+  & { allFoods: Array<(
+    { __typename?: 'Food' }
+    & Pick<Food, 'id' | 'name'>
+  )> }
+);
+
 export type AllUnitsQueryVariables = {};
 
 
@@ -183,6 +194,41 @@ export type AllRecipesQuery = (
   )> }
 );
 
+export const AllFoodsDocument = gql`
+    query AllFoods {
+  allFoods {
+    id
+    name
+  }
+}
+    `;
+export type AllFoodsComponentProps = Omit<ApolloReactComponents.QueryComponentOptions<AllFoodsQuery, AllFoodsQueryVariables>, 'query'>;
+
+    export const AllFoodsComponent = (props: AllFoodsComponentProps) => (
+      <ApolloReactComponents.Query<AllFoodsQuery, AllFoodsQueryVariables> query={AllFoodsDocument} {...props} />
+    );
+    
+export type AllFoodsProps<TChildProps = {}> = ApolloReactHoc.DataProps<AllFoodsQuery, AllFoodsQueryVariables> & TChildProps;
+export function withAllFoods<TProps, TChildProps = {}>(operationOptions?: ApolloReactHoc.OperationOption<
+  TProps,
+  AllFoodsQuery,
+  AllFoodsQueryVariables,
+  AllFoodsProps<TChildProps>>) {
+    return ApolloReactHoc.withQuery<TProps, AllFoodsQuery, AllFoodsQueryVariables, AllFoodsProps<TChildProps>>(AllFoodsDocument, {
+      alias: 'allFoods',
+      ...operationOptions
+    });
+};
+
+    export function useAllFoodsQuery(baseOptions?: ApolloReactHooks.QueryHookOptions<AllFoodsQuery, AllFoodsQueryVariables>) {
+      return ApolloReactHooks.useQuery<AllFoodsQuery, AllFoodsQueryVariables>(AllFoodsDocument, baseOptions);
+    }
+      export function useAllFoodsLazyQuery(baseOptions?: ApolloReactHooks.LazyQueryHookOptions<AllFoodsQuery, AllFoodsQueryVariables>) {
+        return ApolloReactHooks.useLazyQuery<AllFoodsQuery, AllFoodsQueryVariables>(AllFoodsDocument, baseOptions);
+      }
+      
+export type AllFoodsQueryHookResult = ReturnType<typeof useAllFoodsQuery>;
+export type AllFoodsQueryResult = ApolloReactCommon.QueryResult<AllFoodsQuery, AllFoodsQueryVariables>;
 export const AllUnitsDocument = gql`
     query AllUnits {
   allUnits {
