@@ -9,7 +9,8 @@ import {
     faHeart,
     faHome,
     faSearch,
-    faSpinner
+    faSpinner,
+    faTrash
 } from '@fortawesome/free-solid-svg-icons';
 import RecipesCollectionPage from './pages/recipesCollectionPage';
 import RecipeDetailPage from './pages/recipeDetailPage';
@@ -19,8 +20,7 @@ import NotFoundPage from './pages/notFoundPage';
 import {faPlusSquare} from '@fortawesome/free-regular-svg-icons';
 import AddRecipePage from './pages/addRecipePage/AddRecipePage';
 
-library.add(faAngleDoubleRight, faAngleDoubleUp, faBars, faCookieBite, faHeart, faHome, faPlusSquare, faSearch, faSpinner)
-;
+library.add(faAngleDoubleRight, faAngleDoubleUp, faBars, faCookieBite, faHeart, faHome, faPlusSquare, faSearch, faSpinner, faTrash);
 
 type AppProps = WithSheet<typeof styles, {}>;
 
