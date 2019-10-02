@@ -5,7 +5,7 @@ import withStyles, {WithSheet} from 'react-jss';
 import styles from './styles';
 import PageTemplate from '../pageTemplate/PageTemplate';
 import TextareaAutosize from 'react-autosize-textarea';
-import {CreateRecipeComponent, CreateRecipeMutationVariables} from '../../generated/graphql';
+import {CreateIngredientInput, CreateRecipeComponent, CreateRecipeMutationVariables} from '../../generated/graphql';
 import Error from '../../components/error/Error';
 import IngredientInputRow from '../../components/ingredientInputRow';
 
@@ -14,6 +14,7 @@ type AddRecipePageProps = WithSheet<typeof styles, {}> & RouteComponentProps;
 type AddRecipePageState = {
     nameInput: string,
     instructionInput: string,
+    ingredientsInput: CreateIngredientInput[],
     error?: ApolloError,
 };
 
@@ -23,6 +24,7 @@ class AddRecipePage extends Component<AddRecipePageProps, AddRecipePageState> {
         this.state = {
             nameInput: '',
             instructionInput: '',
+            ingredientsInput: [],
         };
     }
 
@@ -43,6 +45,7 @@ class AddRecipePage extends Component<AddRecipePageProps, AddRecipePageState> {
         const variables: CreateRecipeMutationVariables = {
             name: this.state.nameInput,
             instruction: this.state.instructionInput,
+            ingredients: this.state.ingredientsInput,
         };
         return (
             <PageTemplate title={'Neues Rezept'}>
@@ -60,8 +63,6 @@ class AddRecipePage extends Component<AddRecipePageProps, AddRecipePageState> {
 
                         <label htmlFor="ingredients" className={classes.formLabel}>Zutaten und Mengenangaben:</label>
                         <fieldset className={classes.formElement}>
-                            <IngredientInputRow/>
-                            <IngredientInputRow/>
                             <IngredientInputRow/>
                         </fieldset>
 

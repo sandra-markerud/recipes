@@ -25,9 +25,16 @@ export type CreateFoodPayload = {
   food: Food,
 };
 
+export type CreateIngredientInput = {
+  quantity: Scalars['Float'],
+  unitId: Scalars['ID'],
+  foodId: Scalars['ID'],
+};
+
 export type CreateRecipeInput = {
   name: Scalars['String'],
   instruction: Scalars['String'],
+  ingredients: Array<CreateIngredientInput>,
 };
 
 export type CreateRecipePayload = {
@@ -133,7 +140,8 @@ export type AllUnitsQuery = (
 
 export type CreateRecipeMutationVariables = {
   name: Scalars['String'],
-  instruction: Scalars['String']
+  instruction: Scalars['String'],
+  ingredients: Array<CreateIngredientInput>
 };
 
 
@@ -266,8 +274,8 @@ export function withAllUnits<TProps, TChildProps = {}>(operationOptions?: Apollo
 export type AllUnitsQueryHookResult = ReturnType<typeof useAllUnitsQuery>;
 export type AllUnitsQueryResult = ApolloReactCommon.QueryResult<AllUnitsQuery, AllUnitsQueryVariables>;
 export const CreateRecipeDocument = gql`
-    mutation CreateRecipe($name: String!, $instruction: String!) {
-  createRecipe(input: {name: $name, instruction: $instruction}) {
+    mutation CreateRecipe($name: String!, $instruction: String!, $ingredients: [CreateIngredientInput!]!) {
+  createRecipe(input: {name: $name, instruction: $instruction, ingredients: $ingredients}) {
     recipe {
       id
       name

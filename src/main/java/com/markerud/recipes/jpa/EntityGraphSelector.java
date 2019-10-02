@@ -21,11 +21,11 @@ public class EntityGraphSelector {
     private static final Set<String> RECIPE_GRAPH_ENTRIES = Set.of("ingredients", "ingredients.food", "ingredients.unit", "ingredients.recipe");
 
     public static EntityGraph deriveEntityGraphForIngredient(DataFetchingEnvironment env) {
-        return getEntityGraph(env, INGREDIENT_GRAPH_ENTRIES, env.getSource());
+        return getEntityGraph(env, INGREDIENT_GRAPH_ENTRIES, null);
     }
 
     public static EntityGraph deriveEntityGraphForRecipe(DataFetchingEnvironment env) {
-        return getEntityGraph(env, RECIPE_GRAPH_ENTRIES, env.getSource());
+        return getEntityGraph(env, RECIPE_GRAPH_ENTRIES, "recipe");
     }
 
     private static EntityGraph getEntityGraph(DataFetchingEnvironment env, Set<String> masterEntries,

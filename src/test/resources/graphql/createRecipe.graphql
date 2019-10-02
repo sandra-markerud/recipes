@@ -1,5 +1,5 @@
-mutation CreateRecipe($name: String!, $instruction: String!) {
-    createRecipe(input: { name: $name, instruction: $instruction }) {
+mutation CreateRecipe($name: String!, $instruction: String!, $ingredients: [CreateIngredientInput!]!) {
+    createRecipe(input: { name: $name, instruction: $instruction, ingredients: $ingredients }) {
         recipe {
             id
             name

@@ -17,6 +17,7 @@ type Recipe {
 input CreateRecipeInput {
     name: String!
     instruction: String!
+    ingredients: [CreateIngredientInput!]!
 }
 
 type CreateRecipePayload {

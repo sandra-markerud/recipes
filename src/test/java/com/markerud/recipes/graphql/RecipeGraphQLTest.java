@@ -1,6 +1,7 @@
 package com.markerud.recipes.graphql;
 
 import com.fasterxml.jackson.databind.JsonNode;
+import com.fasterxml.jackson.databind.node.ArrayNode;
 import com.fasterxml.jackson.databind.node.ObjectNode;
 import com.graphql.spring.boot.test.GraphQLResponse;
 import com.graphql.spring.boot.test.GraphQLTestTemplate;
@@ -16,10 +17,10 @@ import org.springframework.test.annotation.DirtiesContext;
 import org.springframework.test.context.junit.jupiter.SpringExtension;
 
 import java.io.IOException;
-import java.math.BigDecimal;
 
 import static java.util.Arrays.stream;
 import static org.hamcrest.MatcherAssert.assertThat;
+import static org.hamcrest.Matchers.containsString;
 import static org.hamcrest.Matchers.equalTo;
 import static org.junit.jupiter.api.Assertions.assertTrue;
 import static org.springframework.test.annotation.DirtiesContext.ClassMode.BEFORE_EACH_TEST_METHOD;
@@ -28,6 +29,8 @@ import static org.springframework.test.annotation.DirtiesContext.ClassMode.BEFOR
 @SpringBootTest(webEnvironment = SpringBootTest.WebEnvironment.RANDOM_PORT)
 @DirtiesContext(classMode = BEFORE_EACH_TEST_METHOD)
 class RecipeGraphQLTest {
+
+    private static final Long INVALID_ID = 4711L;
 
     @Autowired
     private GraphQLTestTemplate graphQLTestTemplate;
@@ -41,7 +44,6 @@ class RecipeGraphQLTest {
     @Autowired
     private UnitRepo unitRepo;
 
-
     private ObjectNode variables;
 
     @BeforeEach
@@ -52,8 +54,14 @@ class RecipeGraphQLTest {
     @Test
     void createRecipe() throws IOException {
         // given
+        Food apple = foodRepo.saveAndFlush(new Food().setName("Apfel"));
+        Food banana = foodRepo.saveAndFlush(new Food().setName("Banane"));
+        Unit piece = unitRepo.saveAndFlush(new Unit().setLongName("Stück").setShortName("ST"));
         variables.put("name", "Obstsalat");
         variables.put("instruction", "Alles kleinschnibbeln und in eine Schüssel geben.");
+        ArrayNode ingredients = variables.putArray("ingredients");
+        ingredients.addPOJO((new CreateIngredientInput(1.0, piece.getId(), apple.getId())));
+        ingredients.addPOJO((new CreateIngredientInput(1.0, piece.getId(), banana.getId())));
 
         // when
         GraphQLResponse createRecipeResponse = graphQLTestTemplate.perform("graphql/createRecipe.graphql", variables);
@@ -62,15 +70,33 @@ class RecipeGraphQLTest {
         JsonNode createdRecipe = createRecipeResponse.readTree().get("data").get("createRecipe").get("recipe");
         assertThat(createdRecipe.get("name").asText(), equalTo("Obstsalat"));
         assertThat(createdRecipe.get("instruction").asText(), equalTo("Alles kleinschnibbeln und in eine Schüssel geben."));
+        assertThat(createdRecipe.get("ingredients").size(), equalTo(2));
+    }
+
+    @Test
+    void createRecipe_whenIngredientUnitIsInvalid() throws IOException {
+        // given
+        Food apple = foodRepo.saveAndFlush(new Food().setName("Apfel"));
+        variables.put("name", "Obstsalat");
+        variables.put("instruction", "Alles kleinschnibbeln und in eine Schüssel geben.");
+        ArrayNode ingredients = variables.putArray("ingredients");
+        ingredients.addPOJO((new CreateIngredientInput(1.0, INVALID_ID, apple.getId())));
+
+        // when
+        GraphQLResponse createRecipeResponse = graphQLTestTemplate.perform("graphql/createRecipe.graphql", variables);
+
+        // then
+        assertTrue(createRecipeResponse.readTree().get("data").isNull());
+        assertThat(createRecipeResponse.readTree().get("errors").get(0).get("message").asText(), containsString("Unit with given ID does not exist"));
     }
 
     @Test
     void fetchRecipeById_whenRecipeFound() throws IOException {
         // given
-        Unit gramme = unitRepo.saveAndFlush(new Unit().setLongName("Stück").setShortName("ST"));
+        Unit gramme = unitRepo.saveAndFlush(new Unit().setLongName("Gramm").setShortName("g"));
         Recipe recipe = persistRecipe("Schinkennudeln", "Man nehme...", //
-                createIngredient(BigDecimal.valueOf(500L), gramme, "Nudeln"), //
-                createIngredient(BigDecimal.valueOf(200L), gramme, "gekochter Schinken"));
+                createIngredient(500.0, gramme, "Nudeln"), //
+                createIngredient(200.0, gramme, "gekochter Schinken"));
         variables.put("id", recipe.getId());
 
         // when
@@ -114,9 +140,9 @@ class RecipeGraphQLTest {
         // given
         Unit piece = unitRepo.saveAndFlush(new Unit().setLongName("Stück").setShortName("ST"));
         persistRecipe("Obstsalat", "alles kleinschnibbeln...", //
-                createIngredient(BigDecimal.ONE, piece, "Apfel"), //
-                createIngredient(BigDecimal.ONE, piece, "Birne"), //
-                createIngredient(BigDecimal.ONE, piece, "Banane"));
+                createIngredient(2.0, piece, "Apfel"), //
+                createIngredient(3.0, piece, "Birne"), //
+                createIngredient(1.0, piece, "Banane"));
 
         // when
         GraphQLResponse fetchAllFoodsResponse = graphQLTestTemplate.postForResource("graphql/fetchAllRecipes.graphql");
@@ -148,7 +174,7 @@ class RecipeGraphQLTest {
         return recipeRepo.save(recipe);
     }
 
-    private Ingredient createIngredient(BigDecimal quantity, Unit unit, String foodName) {
+    private Ingredient createIngredient(Double quantity, Unit unit, String foodName) {
         Food createdFood = foodRepo.saveAndFlush(new Food().setName(foodName));
         return new Ingredient().setQuantity(quantity).setUnit(unit).setFood(createdFood);
     }

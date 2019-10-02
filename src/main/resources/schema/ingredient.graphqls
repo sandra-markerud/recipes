@@ -5,3 +5,9 @@ type Ingredient {
     food: Food!
     recipe: Recipe!
 }
+
+input CreateIngredientInput {
+    quantity: Float!
+    unitId: ID!
+    foodId: ID!
+}

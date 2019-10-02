@@ -1,5 +1,6 @@
 package com.markerud.recipes.graphql;
 
+import com.cosium.spring.data.jpa.entity.graph.domain.EntityGraph;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.markerud.recipes.food.CreateFoodPayload;
 import com.markerud.recipes.food.Food;
@@ -9,7 +10,12 @@ import graphql.schema.DataFetcher;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
+import java.util.List;
 import java.util.Map;
+import java.util.Optional;
+
+import static com.markerud.recipes.jpa.EntityGraphSelector.deriveEntityGraphForRecipe;
+import static java.util.stream.Collectors.toList;
 
 @Component
 public class Mutation {
@@ -41,10 +47,33 @@ public class Mutation {
     };
 
     DataFetcher<CreateRecipePayload> createRecipeFetcher = environment -> {
-        Map<String, String> input = environment.getArgument("input");
-        Recipe recipeToBeCreasted = objectMapper.convertValue(input, Recipe.class);
-        Recipe savedRecipe = recipeRepo.save(recipeToBeCreasted);
-        return new CreateRecipePayload(savedRecipe);
+        Map<String, ?> input = environment.getArgument("input");
+        List<Ingredient> ingredientsToBeSaved = extractIngredients(input);
+
+        Recipe recipeToBeSaved = objectMapper.convertValue(input, Recipe.class);
+        ingredientsToBeSaved.forEach(recipeToBeSaved::addIngredient);
+        Recipe savedRecipe = recipeRepo.save(recipeToBeSaved);
+
+        EntityGraph entityGraph = deriveEntityGraphForRecipe(environment);
+        Optional<Recipe> refetchedRecipe = recipeRepo.findById(savedRecipe.getId(), entityGraph);
+
+        return new CreateRecipePayload(refetchedRecipe.get());
     };
+
+    private List<Ingredient> extractIngredients(Map<String, ?> input) {
+        List<Map<String, ?>> potentialIngredients = (List<Map<String, ?>>) input.remove("ingredients");
+
+        return potentialIngredients.stream().map(i -> {
+            Double quantity = (Double) i.get("quantity");
+            Optional<Unit> maybeUnit = unitRepo.findById(Long.valueOf(i.get("unitId").toString()));
+            Optional<Food> maybeFood = foodRepo.findById(Long.valueOf(i.get("foodId").toString()));
+            if (maybeUnit.isEmpty() || maybeFood.isEmpty()) {
+                throw new IllegalArgumentException("Ingredient could not be created." //
+                        + (maybeFood.isEmpty()? " Food with given ID does not exist." : "") //
+                        + (maybeUnit.isEmpty()? " Unit with given ID does not exist." : ""));
+            }
+            return new Ingredient().setQuantity(quantity).setUnit(maybeUnit.get()).setFood(maybeFood.get());
+        }).collect(toList());
+    }
 
 }
