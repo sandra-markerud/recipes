@@ -4,7 +4,11 @@ import Error from '../error';
 import UnitsSelect from './UnitsSelect';
 import {useAllUnitsQuery} from '../../generated/graphql';
 
-const UnitsSelectContainer: React.FC = () => {
+interface OwnProps {
+    onChange: (event: React.ChangeEvent<HTMLSelectElement>) => void
+}
+
+const UnitsSelectContainer: React.FC<OwnProps> = ({onChange}: OwnProps) => {
 
     const {data, error, loading} = useAllUnitsQuery();
 
@@ -17,7 +21,7 @@ const UnitsSelectContainer: React.FC = () => {
     }
 
     return (
-        <UnitsSelect data={data}/>
+        <UnitsSelect data={data} onChange={onChange}/>
     );
 };
 

@@ -3,6 +3,8 @@ import styles from './styles';
 import withStyles, {WithSheet} from 'react-jss';
 import {FontAwesomeIcon} from '@fortawesome/react-fontawesome';
 import {Row} from '../addIngredients/AddIngredients';
+import UnitsSelect from '../unitsSelect';
+import FoodsSelect from '../foodsSelect';
 
 type IngredientInputRowProps = WithSheet<typeof styles, {}> & {
     ingredient: Row,
@@ -36,20 +38,8 @@ const IngredientInputRow: React.FC<IngredientInputRowProps> = ({ingredient, edit
                    value={ingredient.quantity}
                    placeholder={'Menge...'}
                    onChange={handleQuantityChange}/>
-            <select required className={classes.component}
-                    onChange={handleUnitChange}>
-                <option key={'0'} value="" hidden>Einheit...</option>
-                <option key={'1'} value={'1002'}>{'Esslöffel'}</option>
-                <option key={'2'} value={'1003'}>{'Teelöffel'}</option>
-                <option key={'3'} value={'1000'}>{'Gramm'}</option>
-            </select>
-            <select required className={classes.component}
-                    onChange={handleFoodChange}>
-                <option key={'0'} value="" hidden>Zutat...</option>
-                <option key={'1'} value={'2001'}>{'Wachholderschinken'}</option>
-                <option key={'2'} value={'2005'}>{'Nudeln'}</option>
-                <option key={'3'} value={'2008'}>{'Basilikum, getrocknet'}</option>
-            </select>
+            <UnitsSelect onChange={handleUnitChange}/>
+            <FoodsSelect onChange={handleFoodChange}/>
             <div className={classes.icon} onClick={event => deleteRow(event, ingredient)}><FontAwesomeIcon
                 icon={'trash'}/></div>
         </React.Fragment>

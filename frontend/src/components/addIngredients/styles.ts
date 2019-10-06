@@ -6,6 +6,7 @@ export default {
         display: 'grid',
        gridTemplateColumns: '100px auto auto auto',
         gridColumnGap: '10px',
+        gridRowGap: '5px',
         alignItems: 'center',
         margin: 0,
         padding: 10,

@@ -4,7 +4,11 @@ import Error from '../error';
 import {useAllFoodsQuery} from '../../generated/graphql';
 import FoodsSelect from './FoodsSelect';
 
-const FoodsSelectContainer: React.FC = () => {
+interface OwnProps {
+    onChange: (event: React.ChangeEvent<HTMLSelectElement>) => void
+}
+
+const FoodsSelectContainer: React.FC<OwnProps> = ({onChange}: OwnProps) => {
 
     const {data, error, loading} = useAllFoodsQuery();
 
@@ -17,7 +21,7 @@ const FoodsSelectContainer: React.FC = () => {
     }
 
     return (
-        <FoodsSelect data={data}/>
+        <FoodsSelect data={data} onChange={onChange}/>
     );
 };
 
