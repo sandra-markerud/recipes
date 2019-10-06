@@ -1,12 +1,12 @@
 export default {
 
-    ingredientContainer: {
-        display: 'grid',
-        gridTemplateColumns: '100px auto auto auto',
-        gridColumnGap: '10px',
-        alignItems: 'center',
+    component: {
+        padding: '5px',
+        lineHeight: '1.4',
     },
 
-    icon: {},
+    icon: {
+        textAlign: 'center',
+    },
 
 };

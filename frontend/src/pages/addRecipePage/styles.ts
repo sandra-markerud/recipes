@@ -31,7 +31,6 @@ export default {
     },
 
     formLabel: {
-        gridColumn: '1 / 2',
         fontSize: '0.75em',
         textAlign: 'right',
     },
@@ -41,18 +40,6 @@ export default {
         padding: '5px',
         lineHeight: '1.4',
         border: '1px solid ' + Colors.standardColors.anthracite,
-    },
-
-    ingredientContainer: {
-        display: 'grid',
-        gridTemplateColumns: '100px auto auto auto',
-        gridColumnGap: '10px',
-        alignItems: 'center',
-    },
-
-    component: {
-        padding: '5px',
-        lineHeight: '1.4',
     },
 
     '@media screen and (max-width: 600px)': {
