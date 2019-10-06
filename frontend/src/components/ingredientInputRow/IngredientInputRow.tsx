@@ -12,19 +12,19 @@ type IngredientInputRowProps = WithSheet<typeof styles, {}> & {
 
 const IngredientInputRow: React.FC<IngredientInputRowProps> = ({ingredient, editRow, deleteRow, classes}) => {
 
-    const handleQuantityChange = (event: React.ChangeEvent<HTMLInputElement>, ingredient: Row) => {
+    const handleQuantityChange = (event: React.ChangeEvent<HTMLInputElement>) => {
         const updatedRow: Row = {...ingredient};
         updatedRow.quantity = event.target.value;
         editRow(updatedRow);
     };
 
-    const handleUnitChange = (event: React.ChangeEvent<HTMLSelectElement>, ingredient: Row) => {
+    const handleUnitChange = (event: React.ChangeEvent<HTMLSelectElement>) => {
         const updatedRow: Row = {...ingredient};
         updatedRow.unitId = event.target.value;
         editRow(updatedRow);
     };
 
-    const handleFoodChange = (event: React.ChangeEvent<HTMLSelectElement>, ingredient: Row) => {
+    const handleFoodChange = (event: React.ChangeEvent<HTMLSelectElement>) => {
         const updatedRow: Row = {...ingredient};
         updatedRow.foodId = event.target.value;
         editRow(updatedRow);
@@ -35,16 +35,16 @@ const IngredientInputRow: React.FC<IngredientInputRowProps> = ({ingredient, edit
             <input type="text" className={classes.component}
                    value={ingredient.quantity}
                    placeholder={'Menge...'}
-                   onChange={event => handleQuantityChange(event, ingredient)}/>
+                   onChange={handleQuantityChange}/>
             <select required className={classes.component}
-                    onChange={event => handleUnitChange(event, ingredient)}>
+                    onChange={handleUnitChange}>
                 <option key={'0'} value="" hidden>Einheit...</option>
                 <option key={'1'} value={'1002'}>{'Esslöffel'}</option>
                 <option key={'2'} value={'1003'}>{'Teelöffel'}</option>
                 <option key={'3'} value={'1000'}>{'Gramm'}</option>
             </select>
             <select required className={classes.component}
-                    onChange={event => handleFoodChange(event, ingredient)}>
+                    onChange={handleFoodChange}>
                 <option key={'0'} value="" hidden>Zutat...</option>
                 <option key={'1'} value={'2001'}>{'Wachholderschinken'}</option>
                 <option key={'2'} value={'2005'}>{'Nudeln'}</option>
