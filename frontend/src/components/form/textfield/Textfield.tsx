@@ -4,15 +4,17 @@ import withStyles, {WithSheet} from 'react-jss';
 import styles from './styles';
 
 type InputProps = WithSheet<typeof styles, {}> & {
+    id?: string,
     value: any
     placeholder?: string
     onChange: (event: ChangeEvent<HTMLInputElement>) => void
 }
 
-const Input: React.FC<InputProps> = ({value, placeholder, onChange, classes}) => {
+const Textfield: React.FC<InputProps> = ({id, value, placeholder, onChange, classes}) => {
     return (
-        <input type={'text'} className={classes.field} value={value} placeholder={placeholder} onChange={onChange}/>
+        <input id={id} type={'text'} className={classes.textfield} value={value} placeholder={placeholder}
+               onChange={onChange}/>
     );
 };
 
-export default withStyles(styles)(Input);
+export default withStyles(styles)(Textfield);

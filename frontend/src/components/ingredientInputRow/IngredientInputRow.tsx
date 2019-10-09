@@ -5,6 +5,7 @@ import {FontAwesomeIcon} from '@fortawesome/react-fontawesome';
 import {Row} from '../addIngredients/AddIngredients';
 import UnitsSelect from '../unitsSelect';
 import FoodsSelect from '../foodsSelect';
+import Textfield from '../form/textfield/Textfield';
 
 type IngredientInputRowProps = WithSheet<typeof styles, {}> & {
     ingredient: Row,
@@ -34,10 +35,7 @@ const IngredientInputRow: React.FC<IngredientInputRowProps> = ({ingredient, edit
 
     return (
         <React.Fragment>
-            <input type="text" className={classes.component}
-                   value={ingredient.quantity}
-                   placeholder={'Menge...'}
-                   onChange={handleQuantityChange}/>
+            <Textfield value={ingredient.quantity} placeholder={'Menge...'} onChange={handleQuantityChange}/>
             <UnitsSelect onChange={handleUnitChange}/>
             <FoodsSelect onChange={handleFoodChange}/>
             <div className={classes.icon} onClick={event => deleteRow(event, ingredient)}><FontAwesomeIcon

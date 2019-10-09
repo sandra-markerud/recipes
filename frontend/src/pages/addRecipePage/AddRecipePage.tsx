@@ -9,6 +9,7 @@ import TextareaAutosize from 'react-autosize-textarea';
 import Loader from '../../components/loader/Loader';
 import Error from '../../components/error/Error';
 import AddIngredients, {Row} from '../../components/addIngredients/AddIngredients';
+import Textfield from '../../components/form/textfield/Textfield';
 
 type AddRecipePageProps = WithSheet<typeof styles, {}> & RouteComponentProps;
 type IngredientInputRow = {
@@ -101,9 +102,8 @@ const AddRecipePage: React.FC<AddRecipePageProps> = ({history, classes}) => {
                     </span>
 
                     <label htmlFor="name" className={classes.formLabel}>Rezeptname:</label>
-                    <input id="name" type="text" className={classes.formElement} value={name}
-                           placeholder={'Hier kommt der Rezeptname hin...'}
-                           onChange={handleNameChange}/>
+                    <Textfield id={'name'} value={name} placeholder={'Hier kommt der Rezeptname hin...'}
+                               onChange={handleNameChange}/>
 
                     <label htmlFor="instruction" className={classes.formLabel}>Zubereitung:</label>
                     <TextareaAutosize id='instruction' className={classes.formElement}
