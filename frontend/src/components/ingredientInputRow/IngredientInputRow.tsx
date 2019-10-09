@@ -5,7 +5,7 @@ import {FontAwesomeIcon} from '@fortawesome/react-fontawesome';
 import {Row} from '../addIngredients/AddIngredients';
 import UnitsSelect from '../unitsSelect';
 import FoodsSelect from '../foodsSelect';
-import Textfield from '../form/textfield/Textfield';
+import Textfield from '../form/textfield';
 
 type IngredientInputRowProps = WithSheet<typeof styles, {}> & {
     ingredient: Row,
