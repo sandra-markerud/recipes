@@ -4,6 +4,7 @@ import {library} from '@fortawesome/fontawesome-svg-core';
 import {
     faAngleDoubleRight,
     faAngleDoubleUp,
+    faAngleDown,
     faBars,
     faCookieBite,
     faHeart,
@@ -20,7 +21,7 @@ import NotFoundPage from './pages/notFoundPage';
 import {faPlusSquare} from '@fortawesome/free-regular-svg-icons';
 import AddRecipePage from './pages/addRecipePage/AddRecipePage';
 
-library.add(faAngleDoubleRight, faAngleDoubleUp, faBars, faCookieBite, faHeart, faHome, faPlusSquare, faSearch, faSpinner, faTrash);
+library.add(faAngleDown, faAngleDoubleRight, faAngleDoubleUp, faBars, faCookieBite, faHeart, faHome, faPlusSquare, faSearch, faSpinner, faTrash);
 
 type AppProps = WithSheet<typeof styles, {}>;
 

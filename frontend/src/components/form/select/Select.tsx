@@ -1,6 +1,7 @@
 import * as React from 'react';
 import withStyles, {WithSheet} from 'react-jss';
 import styles from './styles';
+import {FontAwesomeIcon} from '@fortawesome/react-fontawesome';
 
 type SelectProps = WithSheet<typeof styles, {}> & {
     placeholder: string,
@@ -10,12 +11,14 @@ type SelectProps = WithSheet<typeof styles, {}> & {
 
 
 const Select: React.FC<SelectProps> = ({placeholder, options, onChange, classes}) => {
-
     return (
-        <select required className={classes.component} onChange={onChange}>
-            <option key={0} value="" hidden>{placeholder}</option>
-            {options}
-        </select>
+        <div className={classes.wrapper}>
+            <select required className={classes.component} onChange={onChange}>
+                <option key={0} value="" hidden>{placeholder}</option>
+                {options}
+            </select>
+            <FontAwesomeIcon icon={'angle-down'} className={classes.icon}/>
+        </div>
     );
 };
 
