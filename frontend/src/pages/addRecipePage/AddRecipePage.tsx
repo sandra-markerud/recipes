@@ -3,7 +3,12 @@ import {useState} from 'react';
 import withStyles, {WithSheet} from 'react-jss';
 import {RouteComponentProps, withRouter} from 'react-router-dom';
 import styles from './styles';
-import {CreateIngredientInput, useCreateRecipeMutation} from '../../generated/graphql';
+import {
+    AllRecipesDocument,
+    AllRecipesQuery,
+    CreateIngredientInput,
+    useCreateRecipeMutation
+} from '../../generated/graphql';
 import PageTemplate from '../pageTemplate/PageTemplate';
 import TextareaAutosize from 'react-autosize-textarea';
 import Loader from '../../components/loader/Loader';
@@ -24,7 +29,6 @@ const createIngredientKey = () => {
 };
 
 const AddRecipePage: React.FC<AddRecipePageProps> = ({history, classes}) => {
-
 
     const initialState = {
         name: '',
@@ -68,7 +72,6 @@ const AddRecipePage: React.FC<AddRecipePageProps> = ({history, classes}) => {
         setInstruction(event.target.value);
     };
 
-
     const convertIngredients = (): CreateIngredientInput[] => {
         const convertedIngredients: CreateIngredientInput[] = [];
         ingredients.forEach(ingredient => {
@@ -88,8 +91,27 @@ const AddRecipePage: React.FC<AddRecipePageProps> = ({history, classes}) => {
                 name: name,
                 instruction: instruction,
                 ingredients: convertIngredients(),
-            }
-        });
+            },
+            update(cache, {data}) {
+                const createdRecipe = data && data.createRecipe.recipe;
+                if (createdRecipe) {
+                    const readQueryResult = cache.readQuery<AllRecipesQuery>({
+                        query: AllRecipesDocument
+                    });
+                    const allRecipes = (readQueryResult && readQueryResult.allRecipes) ? readQueryResult.allRecipes : [];
+                    cache.writeQuery<AllRecipesQuery>({
+                        query: AllRecipesDocument,
+                        data: {
+                            allRecipes: [...allRecipes, createdRecipe],
+                        },
+                    });
+                }
+            },
+        })
+        //     .then(response => {
+        //     const createdRecipe = response.data && response.data.createRecipe.recipe;
+        //     createdRecipe && history.push('/rezept/' + createdRecipe.id);
+        // });
     };
 
     return (
