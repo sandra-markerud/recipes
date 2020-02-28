@@ -1,7 +1,0 @@
-query FetchAllUnits {
-    allUnits {
-        id
-        longName
-        shortName
-    }
-}
