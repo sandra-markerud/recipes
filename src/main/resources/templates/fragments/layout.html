@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:th=”http://www.thymeleaf.org”
+	xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout">
+
+<head>
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<meta http-equiv="content-type" content="text/html; charset=UTF-8" />
+<meta charset="utf-8">
+<link rel="shortcut icon" type="image/x-icon"
+	href="../../static/resources/images/favicon.png"
+	th:href="@{/resources/images/favicon.png}">
+<link th:href="@{/resources/css/recipes.css}"
+	href="../../static/resources/css/recipes.css" rel="stylesheet"
+	type="text/css" />
+<script src="https://kit.fontawesome.com/6901db4011.js"
+	crossorigin="anonymous"></script>
+<title layout:title-pattern="$LAYOUT_TITLE - $CONTENT_TITLE">Familie
+	Markerud</title>
+</head>
+
+<body>
+	<header th:replace="fragments/fragments :: header">Header from
+		the layout</header>
+	<section layout:fragment="content">
+		<p>Content from the layout - to be overwritten</p>
+	</section>
+	<footer th:replace="fragments/fragments :: footer">&copy; 2020
+		Sandra Markerud</footer>
+</body>
+
+</html>
