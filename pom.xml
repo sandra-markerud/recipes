@@ -141,7 +141,7 @@
 						</goals>
 						<configuration>
 							<ghooks>
-								<pre-push>.hooks/pre-push.sh</pre-push>
+								<pre-push>hooks/pre-push.sh</pre-push>
 							</ghooks>
 						</configuration>
 						<phase>compile</phase>
