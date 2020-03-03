@@ -6,34 +6,30 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 <meta http-equiv="content-type" content="text/html; charset=UTF-8" />
 <meta charset="utf-8">
-<link rel="shortcut icon" type="image/x-icon"
-	href="../static/resources/images/favicon.png"
-	th:href="@{/resources/images/favicon.png}">
-<link th:href="@{/resources/css/recipes.css}"
-	href="../static/resources/css/recipes.css" rel="stylesheet"
-	type="text/css" />
-<script src="https://kit.fontawesome.com/6901db4011.js"
-	crossorigin="anonymous"></script>
+<link th:href="@{/images/favicon.png}"
+	href="../static/images/favicon.png" rel="shortcut icon"
+	type="image/x-icon" />
+<link th:href="@{/css/recipes.css}" href="../static/css/recipes.css"
+	rel="stylesheet" type="text/css" />
 <title layout:title-pattern="$LAYOUT_TITLE - $CONTENT_TITLE">Familie
 	Markerud</title>
 </head>
 
 <body class="page">
-<header class="nav-container">
-    <nav>
-      <input type="checkbox" id="nav-toggle">
-      <label for="nav-toggle" class="burger-menu">
-        <img src="../static/resources/images/bars-solid.svg" alt="">
-      </label>
-      <div class="left-menu">
-          <a href="#">Link 1</a>
-          <a href="#">Link 2</a>
-          <a href="#">Link 3</a>
-          <a href="#">Link 4</a>
-      </div>
-      <a href="#" class="logo">LOGO</a>
-    </nav>
-</header>
+	<header class="nav-container">
+		<nav>
+			<input type="checkbox" id="nav-toggle"> <label
+				for="nav-toggle" class="burger-menu"> <img
+				th:src="@{/images/bars-solid.svg}"
+				src="../static/images/bars-solid.svg" alt="Menü">
+			</label>
+			<div class="left-menu">
+				<a href="#">Link 1</a> <a href="#">Link 2</a> <a href="#">Link 3</a>
+				<a href="#">Link 4</a>
+			</div>
+			<a href="#" class="logo">LOGO</a>
+		</nav>
+	</header>
 	<section class="content">
 		<p>Content - here comes the stuff</p>
 	</section>
