@@ -4,21 +4,11 @@
 	xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
 	layout:decorate="~{fragments/layout}">
 <head>
-<title>Rezeptliste</title>
+<title>Rezept</title>
 </head>
 <body>
 	<div class="content" layout:fragment="content">
-		<h1>RECIPES LIST</h1>
-		<table>
-			<tr>
-				<th>ID</th>
-				<th>NAME</th>
-			</tr>
-			<tr th:each="recipe : ${recipes}">
-				<td th:text="${recipe.id}">1</td>
-				<td th:text="${recipe.name}">Schinkennudeln</td>
-			</tr>
-		</table>
+		<h1>RECIPES DETAIL</h1>
 	</div>
 </body>
 </html>
