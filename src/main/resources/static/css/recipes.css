@@ -112,6 +112,11 @@ a:focus {
 	height: 100vh;
 }
 
+.content {
+	overflow: hidden;
+	padding: 10px;
+}
+
 .footer {
 	background-color: #5F5F5F;
 	color: #FFFFFF;
