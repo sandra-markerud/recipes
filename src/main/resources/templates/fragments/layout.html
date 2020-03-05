@@ -11,23 +11,22 @@
 	type="image/x-icon" />
 <link th:href="@{/css/recipes.css}" href="../../static/css/recipes.css"
 	rel="stylesheet" type="text/css" />
-<title layout:title-pattern="$CONTENT_TITLE - $LAYOUT_TITLE">Familie
-	Markerud</title>
+<title layout:title-pattern="$LAYOUT_TITLE :: $CONTENT_TITLE">Familie Markerud</title>
 </head>
 
 <body class="page">
-	<header class="nav-container">
+	<header class="header">
 		<nav>
-			<input type="checkbox" id="nav-toggle"> <label
-				for="nav-toggle" class="burger-menu"> <img
-				th:src="@{/images/bars-solid.svg}"
-				src="../../static/images/bars-solid.svg" alt="Menü">
-			</label>
-			<div class="left-menu">
-				<a href="#">Link 1</a> <a href="#">Link 2</a> <a href="#">Link 3</a>
-				<a href="#">Link 4</a>
-			</div>
-			<a href="#" class="logo">LOGO</a>
+			<input type="checkbox" id="nav-toggle">
+			<label for="nav-toggle" class="burger-menu">
+				<img th:src="@{/images/bars-solid.svg}" src="../../static/images/bars-solid.svg" alt="Menü">
+			</label> 
+			<div class="left-menu"></div>
+			<a href="/" th:href="@{/}" class="logo"><span></span></a>
+			<ul class="right-menu">
+				<li><a href="/" th:href="@{/}" th:text="#{navbar.homepage}">Startseite</a></li>
+				<li><a href="/recipes" th:href="@{/recipes}" th:text="#{navbar.recipesListPage}">Rezepte</a></li>
+			</ul>
 		</nav>
 	</header>
 	<section class="content" layout:fragment="content">
