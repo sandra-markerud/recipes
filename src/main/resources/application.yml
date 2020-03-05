@@ -1,2 +1,6 @@
 server:
   port: 4000
+
+spring:
+  messages:
+    basename: messages/messages
