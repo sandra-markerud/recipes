@@ -6,6 +6,8 @@ import static com.markerud.recipes.persistence.RecipeRepository.recipeDetailEnti
 
 import java.util.Optional;
 
+import javax.persistence.EntityNotFoundException;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -36,7 +38,7 @@ public class RecipesController {
 	public ModelAndView showRecipesDetailPage(@PathVariable("id") Long id) {
 		ModelAndView mav = new ModelAndView(RECIPES_DETAIL_PAGE);
 		Optional<Recipe> potentialRecipe = recipeRepo.findById(id, recipeDetailEntityGraph);
-		mav.addObject("recipe", potentialRecipe.orElseThrow());
+		mav.addObject("recipe", potentialRecipe.orElseThrow(EntityNotFoundException::new));
 		return mav;
 	}
 

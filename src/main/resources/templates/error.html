@@ -1,0 +1,16 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="de"
+	xmlns:th="http://www.thymeleaf.org"
+	xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+	layout:decorate="~{fragments/layout}">
+<head>
+<title th:text="#{errorPage.title}">Ein Fehler ist aufgetreten</title>
+</head>
+<body>
+	<div class="content" layout:fragment="content">
+		<h1 th:text="#{errorPage.title}">Ein Fehler ist aufgetreten</h1>
+		<h2 th:text="${status}">status</h2>
+		<h2 th:text="${message}">message</h2>
+	</div>
+</body>
+</html>

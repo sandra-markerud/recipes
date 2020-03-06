@@ -4,6 +4,4 @@ server:
 spring:
   messages:
     basename: messages/messages
-  profiles:
-    active:
-    - dev
+ 

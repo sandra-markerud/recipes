@@ -59,9 +59,9 @@ class RecipesControllerTest {
 	@Test
 	void showRecipesDetailPage() throws Exception {
 		Unit piece = unitRepo.saveAndFlush(new Unit().setLongName("Stück").setShortName("ST"));
-		Recipe recipe = persistRecipe("Obstsalat", "alles kleinschnibbeln...", //
-				createIngredient(2.0, piece, "Apfel"), //
-				createIngredient(3.0, piece, "Birne"), //
+		Recipe recipe = persistRecipe("Obstsalat", "alles kleinschnibbeln...",
+				createIngredient(2.0, piece, "Apfel"),
+				createIngredient(3.0, piece, "Birne"),
 				createIngredient(1.0, piece, "Banane"));
 
 		mockMvc.perform(get("/recipes/detail/{id}", recipe.getId()))
@@ -70,6 +70,12 @@ class RecipesControllerTest {
 				.andExpect(model().attribute("recipe", hasProperty("name", equalTo("Obstsalat"))))
 				.andExpect(model().attribute("recipe", hasProperty("ingredients", hasSize(3))))
 				.andExpect(view().name(RECIPES_DETAIL_PAGE));
+	}
+
+	@Test
+	void showRecipesDetailPage_notFoundForUnknownRecipe() throws Exception {
+		mockMvc.perform(get("/recipes/detail/{id}", 4711))
+				.andExpect(status().isNotFound());
 	}
 
 	private Recipe persistRecipe(String name, String instruction, Ingredient... ingredients) {
