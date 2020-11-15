@@ -1,4 +1,7 @@
 spring:
+  resources:
+    cache:
+      period: 0
   thymeleaf:
     cache: false
   jpa:
