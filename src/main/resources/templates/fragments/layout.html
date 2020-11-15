@@ -1,38 +1,45 @@
 <!DOCTYPE html>
-<html xmlns="http://www.w3.org/1999/xhtml"
-	xmlns:th=”http://www.thymeleaf.org”
-	xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="de"
+      xmlns:th="http://www.thymeleaf.org"
+      xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout">
 <head>
-<meta name="viewport" content="width=device-width, initial-scale=1.0" />
-<meta http-equiv="content-type" content="text/html; charset=UTF-8" />
-<meta charset="utf-8">
-<link th:href="@{/images/favicon.png}"
-	href="../../static/images/favicon.png" rel="shortcut icon"
-	type="image/x-icon" />
-<link th:href="@{/css/recipesOld.css}" href="../../static/css/recipesOld.css"
-	rel="stylesheet" type="text/css" />
-<title layout:title-pattern="$LAYOUT_TITLE :: $CONTENT_TITLE">Familie Markerud</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+    <meta http-equiv="content-type" content="text/html; charset=UTF-8"/>
+    <meta charset="utf-8">
+    <link th:href="@{/images/favicon.png}" href="../../static/images/favicon.png" rel="shortcut icon"
+          type="image/x-icon"/>
+    <link th:href="@{/css/main.css}" href="../../static/css/main.css" rel="stylesheet" type="text/css"/>
+    <title layout:title-pattern="$LAYOUT_TITLE :: $CONTENT_TITLE" th:text="#{title}">[Page Title]</title>
 </head>
-
-<body class="page">
-	<header class="header">
-		<nav>
-			<input type="checkbox" id="nav-toggle">
-			<label for="nav-toggle" class="burger-menu">
-				<img th:src="@{/images/bars-solid.svg}" src="../../static/images/bars-solid.svg" alt="Menü">
-			</label> 
-			<div class="left-menu"></div>
-			<a href="/" th:href="@{/}" class="logo"><span></span></a>
-			<ul class="right-menu">
-				<li><a href="/" th:href="@{/}" th:text="#{navbar.homepage}">Startseite</a></li>
-				<li><a href="/recipes" th:href="@{/recipes}" th:text="#{navbar.recipesListPage}">Rezepte</a></li>
-			</ul>
-		</nav>
-	</header>
-	<section class="content" layout:fragment="content">
-		<p>Content - here comes the stuff</p>
-	</section>
-	<footer class="footer">&copy; 2020 Sandra Markerud</footer>
+<body>
+<header>
+    <div class="headline">
+        <a href="/" th:href="@{/}" class="logo"><span></span></a>
+        <h1 th:text="#{headline}">[Headline]</h1>
+    </div>
+    <div class="nav-container">
+        <nav class="nav">
+            <input type="checkbox" id="burger">
+            <label for="burger" class="burger">
+                <span class="line"></span>
+                <span class="line"></span>
+                <span class="line"></span>
+            </label>
+            <div class="nav-menu">
+                <ul>
+                    <li class="menu-item"><a href="/" th:href="@{/}" th:text="#{navbar.homepage}">[Startseite]</a></li>
+                    <li class="menu-item"><a href="/recipes" th:href="@{/recipes}" th:text="#{navbar.recipesListPage}">[Rezepte]</a>
+                    </li>
+                </ul>
+            </div>
+        </nav>
+    </div>
+</header>
+<main class="content" layout:fragment="content">
+    <p>[Content - here comes the stuff]</p>
+</main>
+<footer class="copyright">
+    <p th:utext="#{footer.copyright}">[Copyright]</p>
+</footer>
 </body>
-
 </html>

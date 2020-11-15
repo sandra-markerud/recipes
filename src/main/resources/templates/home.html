@@ -1,45 +1,13 @@
 <!DOCTYPE html>
 <html xmlns="http://www.w3.org/1999/xhtml" lang="de"
-      xmlns:th="http://www.thymeleaf.org">
+      xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+      layout:decorate="~{fragments/layout}">
 <head>
-    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-    <meta http-equiv="content-type" content="text/html; charset=UTF-8"/>
-    <meta charset="utf-8">
-    <link th:href="@{/images/favicon.png}"
-          href="../static/images/favicon.png" rel="shortcut icon"
-          type="image/x-icon"/>
-    <link th:href="@{/css/main.css}" href="../static/css/main.css"
-          rel="stylesheet" type="text/css"/>
-    <title>Recipes list</title>
+    <title>Homepage</title>
 </head>
 <body>
-<header>
-    <div class="headline">
-        <img th:src="@{/images/logo.png}" src="../static/images/logo.png" alt="Logo">
-        <h1 th:text="#{headline}">[Headline]</h1>
-    </div>
-    <div class="nav-container">
-        <nav class="nav">
-            <input type="checkbox" id="burger">
-            <label for="burger" class="burger">
-                <span class="line"></span>
-                <span class="line"></span>
-                <span class="line"></span>
-            </label>
-            <div class="nav-menu">
-                <ul>
-                    <li><a href="/" th:href="@{/}" th:text="#{navbar.homepage}">[Startseite]</a></li>
-                    <li><a href="/recipes" th:href="@{/recipes}" th:text="#{navbar.recipesListPage}">[Rezepte]</a></li>
-                </ul>
-            </div>
-        </nav>
-    </div>
-</header>
-<main class="content">
-    Content
-</main>
-<footer class="copyright">
-    Footer
-</footer>
+<div class="content" layout:fragment="content">
+    <h1>HOMEPAGE</h1>
+</div>
 </body>
 </html>
