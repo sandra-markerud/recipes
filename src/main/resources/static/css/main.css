@@ -47,9 +47,8 @@ header {
     grid-template-columns: auto 1fr;
     grid-column-gap: 10px;
     align-items: center;
-    
-    margin: 0 10px;
-    padding: 10px 0;
+
+    padding: 10px;
 
     font-family: ButterflyKids-Regular, serif;
     font-size: 64px;
