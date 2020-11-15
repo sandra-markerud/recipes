@@ -14,16 +14,24 @@
 </head>
 <body>
 <header>
-    <div>
+    <div class="headline">
         <img th:src="@{/images/logo.png}" src="../static/images/logo.png" alt="Logo">
+        <h1 th:text="#{headline}">[Headline]</h1>
     </div>
     <div class="nav-container">
-        <nav>
-            <ul>
-                <li>Startseite</li>
-                <li>Rezepte</li>
-                <li>Impressum</li>
-            </ul>
+        <nav class="nav">
+            <input type="checkbox" id="burger">
+            <label for="burger" class="burger">
+                <span class="line"></span>
+                <span class="line"></span>
+                <span class="line"></span>
+            </label>
+            <div class="nav-menu">
+                <ul>
+                    <li><a href="/" th:href="@{/}" th:text="#{navbar.homepage}">[Startseite]</a></li>
+                    <li><a href="/recipes" th:href="@{/recipes}" th:text="#{navbar.recipesListPage}">[Rezepte]</a></li>
+                </ul>
+            </div>
         </nav>
     </div>
 </header>

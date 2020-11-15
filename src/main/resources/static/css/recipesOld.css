@@ -9,7 +9,6 @@ html, body, div, span, applet, object, iframe, h1, h2, h3, h4, h5, h6, p,
 	margin: 0;
 	padding: 0;
 	border: 0;
-	font-size: 100%;
 	font: inherit;
 	vertical-align: baseline;
 }
@@ -50,7 +49,6 @@ html {
 	border-top: 4px solid #91B746;
 	text-transform: uppercase;
 	font-family: 'Oswald', sans-serif;
-	text-transform: uppercase;
 }
 
 nav {
@@ -58,7 +56,6 @@ nav {
 	margin: 0 auto;
 	display: grid;
 	grid-template-columns: 1fr auto 1fr;
-	display: grid;
 }
 
 .logo {
@@ -96,7 +93,6 @@ nav {
 .right-menu li a {
 	color: #FFFFFF;
 	text-decoration: none;
-	display: inline-block;
 	display: flex;
 	align-self: stretch;
 	justify-content: center;
@@ -109,7 +105,6 @@ nav {
 	grid-column: 1;
 	align-self: center;
 	margin-left: 20px;
-	width: 40px;
 }
 
 #nav-toggle, .burger-menu {
