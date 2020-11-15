@@ -1,0 +1,89 @@
+/* CSS Reset */
+html, body, div, span, applet, object, iframe, h1, h2, h3, h4, h5, h6, p,
+blockquote, pre, a, abbr, acronym, address, big, cite, code, del, dfn,
+em, img, ins, kbd, q, s, samp, small, strike, strong, sub, sup, tt, var,
+b, u, i, center, dl, dt, dd, ol, ul, li, fieldset, form, label, legend,
+table, caption, tbody, tfoot, thead, tr, th, td, article, aside, canvas,
+details, embed, figure, figcaption, footer, header, hgroup, menu, nav,
+output, ruby, section, summary, time, mark, audio, video {
+    margin: 0;
+    padding: 0;
+    border: 0;
+    font: inherit;
+    vertical-align: baseline;
+}
+
+@font-face {
+    font-family: 'Blokletters-Balpen';
+    src: local('Blokletters-Balpen'), url(../fonts/Blokletters-Balpen.ttf) format('truetype');
+}
+
+html {
+    font-family: Blokletters-Balpen, sans-serif;
+    font-style: normal;
+    background-color: #FFFFFF;
+    color: #5F5F5F;
+    height: 100%;
+}
+
+body {
+    height: 100%;
+    display: grid;
+    grid-template-rows: auto 1fr auto;
+}
+
+.nav-container {
+    width: 100%;
+    background-color: #5F5F5F;
+    color: #FFFFFF;
+    border-top: 5px solid #91B746;
+    text-transform: uppercase;
+    font-family: 'Oswald', sans-serif;
+}
+
+nav {
+    max-width: 1720px;
+    margin: 0 auto;
+
+    display: grid;
+    grid-template-columns: 1fr auto 1fr;
+}
+
+.content {
+
+}
+
+.copyright {
+    background-color: #5F5F5F;
+    color: #FFFFFF;
+}
+
+@media screen and (max-width: 320px) {
+    body {
+        background-color: red;
+    }
+}
+
+@media screen and (min-width: 321px) and (max-width: 424px) {
+    body {
+        background-color: yellow;
+    }
+}
+
+@media screen and (min-width: 425px) and (max-width: 767px) {
+    body {
+        background-color: green;
+    }
+}
+
+@media screen and (min-width: 768px) and (max-width: 1023px) {
+    body {
+        background-color: lightblue;
+    }
+}
+
+@media screen and (min-width: 1024px) {
+    body {
+        background-color: blue;
+    }
+}

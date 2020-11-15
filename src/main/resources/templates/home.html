@@ -1,14 +1,37 @@
 <!DOCTYPE html>
 <html xmlns="http://www.w3.org/1999/xhtml" lang="de"
-	xmlns:th="http://www.thymeleaf.org"
-	xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
-	layout:decorate="~{fragments/layout}">
+      xmlns:th="http://www.thymeleaf.org">
 <head>
-<title>Homepage</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+    <meta http-equiv="content-type" content="text/html; charset=UTF-8"/>
+    <meta charset="utf-8">
+    <link th:href="@{/images/favicon.png}"
+          href="../static/images/favicon.png" rel="shortcut icon"
+          type="image/x-icon"/>
+    <link th:href="@{/css/main.css}" href="../static/css/main.css"
+          rel="stylesheet" type="text/css"/>
+    <title>Recipes list</title>
 </head>
 <body>
-	<div class="content" layout:fragment="content">
-		<h1>HOMEPAGE</h1>
-	</div>
+<header>
+    <div>
+        <img th:src="@{/images/logo.png}" src="../static/images/logo.png" alt="Logo">
+    </div>
+    <div class="nav-container">
+        <nav>
+            <ul>
+                <li>Startseite</li>
+                <li>Rezepte</li>
+                <li>Impressum</li>
+            </ul>
+        </nav>
+    </div>
+</header>
+<main class="content">
+    Content
+</main>
+<footer class="copyright">
+    Footer
+</footer>
 </body>
 </html>

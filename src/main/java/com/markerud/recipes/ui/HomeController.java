@@ -8,8 +8,13 @@ import org.springframework.web.bind.annotation.GetMapping;
 @Controller
 public class HomeController {
 
+	@GetMapping("/old")
+	public String showOldHomepage() {
+		return "homeOld";
+	}
+
 	@GetMapping("/")
-	public String showHomepage() {
+	public String showNewHomepage() {
 		return HOME_PAGE;
 	}
 
