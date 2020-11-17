@@ -1,6 +1,7 @@
 package com.markerud.recipes.ui;
 
 import static com.markerud.recipes.ViewConstants.HOME_PAGE;
+import static com.markerud.recipes.ViewConstants.IMPRINT_PAGE;
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.get;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.status;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.view;
@@ -15,14 +16,21 @@ import org.springframework.test.web.servlet.MockMvc;
 @AutoConfigureMockMvc
 class HomeControllerTest {
 
-	@Autowired
-	private MockMvc mockMvc;
+    @Autowired
+    private MockMvc mockMvc;
 
-	@Test
-	void showHomepage() throws Exception {
-		mockMvc.perform(get("/"))
-				.andExpect(status().isOk())
-				.andExpect(view().name(HOME_PAGE));
-	}
+    @Test
+    void showHomePage() throws Exception {
+        mockMvc.perform(get("/"))
+                .andExpect(status().isOk())
+                .andExpect(view().name(HOME_PAGE));
+    }
+
+    @Test
+    void showImprintPage() throws Exception {
+        mockMvc.perform(get("/imprint"))
+                .andExpect(status().isOk())
+                .andExpect(view().name(IMPRINT_PAGE));
+    }
 
 }

@@ -1,9 +1,15 @@
 package com.markerud.recipes.model;
 
+import lombok.Getter;
+import lombok.Setter;
+import lombok.experimental.Accessors;
+
 import javax.persistence.*;
 
-
 @Entity
+@Getter
+@Setter
+@Accessors(chain = true)
 @Table(name = "INGREDIENTS")
 public class Ingredient extends BaseEntity {
 
@@ -21,42 +27,6 @@ public class Ingredient extends BaseEntity {
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "RECIPE_ID")
     private Recipe recipe;
-
-    public Double getQuantity() {
-        return quantity;
-    }
-
-    public Ingredient setQuantity(Double quantity) {
-        this.quantity = quantity;
-        return this;
-    }
-
-    public Unit getUnit() {
-        return unit;
-    }
-
-    public Ingredient setUnit(Unit unit) {
-        this.unit = unit;
-        return this;
-    }
-
-    public Food getFood() {
-        return food;
-    }
-
-    public Ingredient setFood(Food food) {
-        this.food = food;
-        return this;
-    }
-
-    public Recipe getRecipe() {
-        return recipe;
-    }
-
-    public Ingredient setRecipe(Recipe recipe) {
-        this.recipe = recipe;
-        return this;
-    }
 
     @Override
     public String toString() {

@@ -1,27 +1,24 @@
 package com.markerud.recipes.model;
 
+import lombok.Getter;
+import lombok.Setter;
+import lombok.experimental.Accessors;
+import org.hibernate.annotations.NaturalId;
+
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.Table;
 
-import org.hibernate.annotations.NaturalId;
-
 @Entity
+@Getter
+@Setter
 @Table(name = "FOODS")
+@Accessors(chain = true)
 public class Food extends BaseEntity {
 
     @NaturalId
     @Column(name = "NAME")
     private String name;
-
-    public String getName() {
-        return name;
-    }
-
-    public Food setName(String name) {
-        this.name = name;
-        return this;
-    }
 
     @Override
     public String toString() {

@@ -51,14 +51,14 @@ header {
     padding: 10px;
 
     font-family: ButterflyKids-Regular, serif;
-    font-size: 64px;
+    font-size: 42px;
     font-weight: bolder;
 }
 
 .logo {
     background: url("../images/logo.png") -1px -1px no-repeat;
-    height: 76px;
-    width: 76px;
+    height: 50px;
+    width: 50px;
 }
 
 .nav-container {
