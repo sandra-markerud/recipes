@@ -1,24 +1,24 @@
 <!DOCTYPE html>
 <html xmlns="http://www.w3.org/1999/xhtml" lang="de"
-	xmlns:th="http://www.thymeleaf.org"
-	xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
-	layout:decorate="~{fragments/layout}">
+      xmlns:th="http://www.thymeleaf.org"
+      xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+      layout:decorate="~{fragments/layout}">
 <head>
-<title>Rezeptliste</title>
+    <title>Rezeptliste</title>
 </head>
 <body>
-	<div class="content" layout:fragment="content">
-		<h1>RECIPES LIST</h1>
-		<table>
-			<tr>
-				<th>ID</th>
-				<th>NAME</th>
-			</tr>
-			<tr th:each="recipe : ${recipes}">
-				<td th:text="${recipe.id}">1</td>
-				<td th:text="${recipe.name}">Schinkennudeln</td>
-			</tr>
-		</table>
-	</div>
+<div class="content" layout:fragment="content">
+    <h1 th:text="#{recipesListPage.headline}">[Rezepte]</h1>
+    <div class="recipe-card-container">
+        <div th:each="recipe : ${recipes}" class="recipe-card">
+            <div class="recipe-card-logo">
+                <img th:src="@{/images/placeholder.svg}" src="../../static/images/placeholder.svg" alt="Logo">
+            </div>
+            <div class="recipe-card-info">
+                <a href="/recipes/detail/1" th:href="@{|/recipes/detail/${recipe.id}|}" th:text="${recipe.name}">[Schinkennudeln]</a>
+            </div>
+        </div>
+    </div>
+</div>
 </body>
 </html>

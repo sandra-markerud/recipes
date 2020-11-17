@@ -185,6 +185,39 @@ nav a {
     padding: 10px;
 }
 
+.recipe-card-container {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 300px));
+    grid-gap: 10px;
+}
+
+.recipe-card {
+    box-shadow: 0 4px 10px 0 rgba(0,0,0,0.2), 0 4px 20px 0 rgba(0,0,0,0.19);
+    padding: 10px;
+    display: grid;
+    grid-template-rows: auto 1fr;
+    grid-gap: 10px;
+}
+
+.recipe-card-logo {
+    border: 1px solid #5F5F5F;
+    padding: 10px;
+}
+
+.recipe-card-info {
+    color: #A3C06C;
+}
+
+.recipe-card-info a {
+    text-decoration: none;
+    font-weight: bolder;
+    color: #A3C06C;
+}
+
+.recipe-card-info a:hover {
+    text-decoration: underline;
+}
+
 .copyright {
     padding: 10px;
     background-color: #5F5F5F;
