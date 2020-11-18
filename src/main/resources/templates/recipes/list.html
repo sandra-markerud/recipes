@@ -11,8 +11,8 @@
     <h1 th:text="#{recipesListPage.headline}">[Rezepte]</h1>
     <div class="recipe-card-container">
         <div th:each="recipe : ${recipes}" class="recipe-card">
-            <div class="recipe-card-logo">
-                <img th:src="@{/images/recipe_default.png}" src="../../static/images/recipe_default.png" alt="Logo">
+            <div class="recipe-card-image">
+                <img th:src="@{/images/recipe_default.png}" src="../../static/images/recipe_default.png" alt="Image">
             </div>
             <div class="recipe-card-info">
                 <a href="/recipes/detail/1" th:href="@{|/recipes/detail/${recipe.id}|}" th:text="${recipe.name}">[Schinkennudeln]</a>

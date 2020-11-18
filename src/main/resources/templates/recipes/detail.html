@@ -1,15 +1,33 @@
 <!DOCTYPE html>
 <html xmlns="http://www.w3.org/1999/xhtml" lang="de"
-	xmlns:th="http://www.thymeleaf.org"
-	xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
-	layout:decorate="~{fragments/layout}">
+      xmlns:th="http://www.thymeleaf.org"
+      xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+      layout:decorate="~{fragments/layout}">
 <head>
-<title>Rezept</title>
+    <title>Rezept</title>
 </head>
 <body>
-	<div class="content" layout:fragment="content">
-		<h1 th:text="${recipe.name}">Schinkennudeln</h1>
-		<p th:text="${recipe.instruction}">Man nehme...</p>
-	</div>
+<div class="content recipe-detail-content" layout:fragment="content">
+    <div class="recipe-detail-image">
+        <img th:src="@{/images/recipe_default.png}" src="../../static/images/recipe_default.png" alt="Logo">
+    </div>
+    <div class="recipe-detail-rating">[4/5 Sterne]</div>
+    <h1 class="recipe-detail-title" th:text="${recipe.name}">[Schinkennudeln]</h1>
+    <div class="recipe-detail-info">
+        <ul>
+            <li>[<strong>Arbeitszeit:</strong> 15 Minuten]</li>
+            <li>[<strong>Schwierigkeitsgrad:</strong> simpel]</li>
+        </ul>
+    </div>
+    <div class="recipe-detail-ingredients">
+        <ul>
+            <li class="ingredient-container" th:each="ingredient: ${recipe.ingredients}" th:key="${ingredient.id}">
+                <span th:text="${ingredient.quantity + ' ' + ingredient.unit.shortName}">100 gr</span>
+                <span th:text="${ingredient.food.name}">Nudeln</span>
+            </li>
+        </ul>
+    </div>
+    <p class="recipe-detail-instruction" th:text="${recipe.instruction}">[Zubereitung]</p>
+</div>
 </body>
 </html>
