@@ -12,7 +12,7 @@
     <div class="recipe-card-container">
         <div th:each="recipe : ${recipes}" class="recipe-card">
             <div class="recipe-card-logo">
-                <img th:src="@{/images/placeholder.svg}" src="../../static/images/placeholder.svg" alt="Logo">
+                <img th:src="@{/images/recipe_default.png}" src="../../static/images/recipe_default.png" alt="Logo">
             </div>
             <div class="recipe-card-info">
                 <a href="/recipes/detail/1" th:href="@{|/recipes/detail/${recipe.id}|}" th:text="${recipe.name}">[Schinkennudeln]</a>
