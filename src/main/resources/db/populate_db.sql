@@ -105,7 +105,7 @@ Und jetzt alles hübsch in ein Glas stapeln:
  - die zweite Hälfte vom Pfeffer-Mix
  - die zweite Hälfte Paprika
 
-Optisch so schön gestapelt eignet sich die Würzmischung gut zum Verschenken. Vor dem ersten Grbrauch muss die Würzmischung jedoch gut durschgemischt werden.', 0, CURRENT_TIMESTAMP, CURRENT_TIMESTAMP),
+Optisch so schön gestapelt eignet sich die Würzmischung gut zum Verschenken. Vor dem ersten Gebrauch muss die Würzmischung jedoch gut durschgemischt werden.', 0, CURRENT_TIMESTAMP, CURRENT_TIMESTAMP),
     (3003, 'Dinkelbrötchen Waldorfkindergarten', 'Das Mehl mit den Haferflocken, dem lauwarmen Wasser, der Frischhefe und dem Kräutersalz vermischen und den Teig gut durchkneten.
 
 Den Teig an einem warmen Ort ca. 30-45 Minuten gehen lassen.

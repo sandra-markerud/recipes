@@ -240,7 +240,7 @@ nav a {
 }
 
 .recipe-detail-image-container {
-    background-color: lightyellow;
+
 }
 
 .recipe-detail-image {
@@ -248,7 +248,7 @@ nav a {
     display: grid;
     border: 1px solid #F2F2F2;
     border-radius: 5px;
-    background-color: lightyellow;
+
 }
 
 .recipe-detail-image img {
@@ -257,25 +257,25 @@ nav a {
 }
 
 .recipe-detail-rating {
-    font-size: 70%;
-    background-color: lightyellow;
+    font-size: 85%;
+
 }
 
 .recipe-detail-title {
-    background-color: lightyellow;
+
 }
 
 .recipe-detail-info {
-    background-color: lightyellow;
+
 }
 
 .recipe-detail-info ul li {
     display: inline;
-    font-size: 70%;
+    font-size: 85%;
 }
 
 .recipe-detail-ingredients {
-    background-color: lightyellow;
+
 }
 
 .ingredient-container {
@@ -287,7 +287,7 @@ nav a {
 }
 
 .recipe-detail-instruction {
-    background-color: lightyellow;
+
 }
 
 .recipe-detail-instruction p {
@@ -300,30 +300,40 @@ nav a {
     color: #FFFFFF;
 }
 
-@media screen and (max-width: 320px) {
-
+@media screen and (min-width: 320px) and (max-width: 374px) {
+    /* Sven's iPhone Hochformat*/
 }
 
-@media screen and (min-width: 321px) and (max-width: 375px) {
-
+@media screen and (min-width: 375px) and (max-width: 567px) {
+    /* Sandrsa's iPhone Hochformat*/
 }
 
-@media screen and (min-width: 376px) and (max-width: 425px) {
-
+@media screen and (min-width: 568px) and (max-width: 666px) {
+    /* Sven's iPhone Querformat*/
 }
 
-@media screen and (min-width: 426px) and (max-width: 768px) {
-
+@media screen and (min-width: 667px) and (max-width: 767px) {
+    /* Sandra's iPhone Querformat*/
 }
 
-@media screen and (min-width: 769px) and (max-width: 1024px) {
+/*@media screen and (min-width: 768px) and (max-width: 1023px) {*/
+@media screen and (min-width: 768px) {
+    /* iPad Mini Hochformat*/
+    .recipe-detail-content {
+        grid-template-columns: 1fr 1fr;
+        grid-template-rows: auto auto 1fr auto;
 
+    }
+
+    .recipe-detail-image-container {
+        grid-row: 1 / 4;
+    }
 }
 
-@media screen and (min-width: 1023px) and (max-width: 1440px) {
-
+@media screen and (min-width: 1024px) {
+    /* iPad Mini Querformat*/
+    .recipe-detail-content {
+        grid-template-columns: 1fr 2fr;
+    }
 }
 
-@media screen and (min-width: 1441px) {
-
-}
