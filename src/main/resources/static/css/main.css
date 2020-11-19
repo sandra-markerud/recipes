@@ -26,6 +26,7 @@ output, ruby, section, summary, time, mark, audio, video {
 html {
     font-family: Blokletters-Balpen, sans-serif;
     font-style: normal;
+    font-size: 13px;
     background-color: #FFFFFF;
     color: #5F5F5F;
     height: 100%;
@@ -41,7 +42,6 @@ body {
 a {
     text-decoration: none;
     color: #A3C06C;
-    font-weight: bolder;
 }
 
 a:hover {
@@ -239,30 +239,34 @@ nav a {
     grid-gap: 10px;
 }
 
+.recipe-detail-image-container {
+    background-color: lightyellow;
+}
+
 .recipe-detail-image {
-    display: grid;
-    grid-template-columns: auto;
     padding: 10px;
+    display: grid;
     border: 1px solid #F2F2F2;
     border-radius: 5px;
+    background-color: lightyellow;
 }
 
 .recipe-detail-image img {
     width: 100%;
-    max-width: 670px;
     height: auto;
 }
 
 .recipe-detail-rating {
     font-size: 70%;
+    background-color: lightyellow;
 }
 
 .recipe-detail-title {
-
+    background-color: lightyellow;
 }
 
 .recipe-detail-info {
-
+    background-color: lightyellow;
 }
 
 .recipe-detail-info ul li {
@@ -271,7 +275,7 @@ nav a {
 }
 
 .recipe-detail-ingredients {
-
+    background-color: lightyellow;
 }
 
 .ingredient-container {
@@ -283,6 +287,10 @@ nav a {
 }
 
 .recipe-detail-instruction {
+    background-color: lightyellow;
+}
+
+.recipe-detail-instruction p {
     white-space: pre-wrap;
 }
 
@@ -296,18 +304,26 @@ nav a {
 
 }
 
-@media screen and (min-width: 321px) and (max-width: 424px) {
+@media screen and (min-width: 321px) and (max-width: 375px) {
 
 }
 
-@media screen and (min-width: 425px) and (max-width: 767px) {
+@media screen and (min-width: 376px) and (max-width: 425px) {
 
 }
 
-@media screen and (min-width: 768px) and (max-width: 1023px) {
+@media screen and (min-width: 426px) and (max-width: 768px) {
 
 }
 
-@media screen and (min-width: 1024px) {
+@media screen and (min-width: 769px) and (max-width: 1024px) {
+
+}
+
+@media screen and (min-width: 1023px) and (max-width: 1440px) {
+
+}
+
+@media screen and (min-width: 1441px) {
 
 }

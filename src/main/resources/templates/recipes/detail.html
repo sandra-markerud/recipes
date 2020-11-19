@@ -8,8 +8,10 @@
 </head>
 <body>
 <div class="content recipe-detail-content" layout:fragment="content">
-    <div class="recipe-detail-image">
-        <img th:src="@{/images/recipe_default.png}" src="../../static/images/recipe_default.png" alt="Logo">
+    <div class="recipe-detail-image-container">
+        <div class="recipe-detail-image">
+            <img th:src="@{/images/recipe_default.png}" src="../../static/images/recipe_default.png" alt="Logo">
+        </div>
     </div>
     <div class="recipe-detail-rating">[4/5 Sterne]</div>
     <h1 class="recipe-detail-title" th:text="${recipe.name}">[Schinkennudeln]</h1>
@@ -20,6 +22,7 @@
         </ul>
     </div>
     <div class="recipe-detail-ingredients">
+        <h2 th:text="#{recipesDetailPage.ingredientsHeadline}">[Zutaten]</h2>
         <ul>
             <li class="ingredient-container" th:each="ingredient: ${recipe.ingredients}" th:key="${ingredient.id}">
                 <span th:text="${ingredient.quantity + ' ' + ingredient.unit.shortName}">100 gr</span>
@@ -27,7 +30,10 @@
             </li>
         </ul>
     </div>
-    <p class="recipe-detail-instruction" th:text="${recipe.instruction}">[Zubereitung]</p>
+    <div class="recipe-detail-instruction">
+        <h2 th:text="#{recipesDetailPage.instructionsHeadline}">[Zubereitung]</h2>
+        <p th:text="${recipe.instruction}">[Man nehme...]</p>
+    </div>
 </div>
 </body>
 </html>
