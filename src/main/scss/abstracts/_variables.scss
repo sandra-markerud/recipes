@@ -1,0 +1,21 @@
+// Colors
+$color-white: #FFFFFF;
+$color-anthracite: #5F5F5F;
+$color-lightgrey: #F2F2F2;
+$color-green: #A3C06C;
+
+// Fonts
+$font-default: 'Blokletters-Balpen';
+$font-logo: 'ButterflyKids-Regular';
+$font-navigation: 'Oswald';
+
+// Responsive breakpoints
+$bp-small: 320px;
+$bp-medium: 768px;
+$bp-large: 1024px;
+$breakpoints: (
+        'small': $bp-small,
+        'medium': $bp-medium,
+        'large': $bp-large,
+);
+

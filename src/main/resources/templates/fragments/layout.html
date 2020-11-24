@@ -8,7 +8,8 @@
     <meta charset="utf-8">
     <link th:href="@{/images/favicon.png}" href="../../static/images/favicon.png" rel="shortcut icon"
           type="image/x-icon"/>
-    <link th:href="@{/css/main.css}" href="../../static/css/main.css" rel="stylesheet" type="text/css"/>
+    <link th:href="@{/css/main.css}" href="../../../../../target/classes/static/css/main.css" rel="stylesheet"
+          type="text/css"/>
     <title layout:title-pattern="$LAYOUT_TITLE :: $CONTENT_TITLE" th:text="#{title}">[Page Title]</title>
 </head>
 <body>
@@ -39,6 +40,6 @@
 <main class="content" layout:fragment="content">
     <p>[Content - here comes the stuff]</p>
 </main>
-<footer class="copyright" th:utext="#{footer.copyright}">[Copyright]</footer>
+<footer th:utext="#{footer.copyright}">[Copyright]</footer>
 </body>
 </html>

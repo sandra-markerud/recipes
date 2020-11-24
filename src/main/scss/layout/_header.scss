@@ -1,0 +1,29 @@
+header {
+  display: grid;
+  grid-template-rows: auto auto;
+}
+
+.headline {
+  display: grid;
+  grid-template-columns: auto 1fr;
+  grid-column-gap: 10px;
+  align-items: center;
+
+  padding: 10px;
+
+  font-family: ButterflyKids-Regular, serif;
+  font-size: 42px;
+  font-weight: bolder;
+}
+
+.logo {
+  background: url("../images/logo.png") -1px -1px no-repeat;
+  height: 50px;
+  width: 50px;
+}
+
+.nav-container {
+  width: 100%;
+  background-color: $color-anthracite;
+  border-top: 5px solid $color-green;
+}

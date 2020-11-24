@@ -1,0 +1,38 @@
+@mixin font-face($font-name, $weight: normal, $style: normal) {
+  @font-face {
+    font-family: quote($font-name);
+    src: local(quote($font-name)), url("../fonts/" + $font-name + ".ttf") format('truetype');
+    font-weight: $weight;
+    font-style: $style;
+  }
+}
+
+// @link https://www.sitepoint.com/managing-responsive-breakpoints-sass/
+@mixin respond-to($breakpoint) {
+  @if map-has-key($breakpoints, $breakpoint) {
+    @media only screen and (min-width: #{map-get($breakpoints, $breakpoint)}) {
+      @content;
+    }
+  } @else {
+    @warn "Unfortunately, no value could be retrieved from `#{$breakpoint}`. "
+        + "Please make sure it is defined in `$breakpoints` map.";
+  }
+}
+
+// @link https://twitter.com/csswizardry/status/478938530342006784
+@mixin on-event($self: false) {
+  @if $self {
+    &,
+    &:hover,
+    &:active,
+    &:focus {
+      @content;
+    }
+  } @else {
+    &:hover,
+    &:active,
+    &:focus {
+      @content;
+    }
+  }
+}
