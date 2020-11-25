@@ -59,7 +59,7 @@ class RecipesControllerTest {
                 createIngredient(3.0, piece, "Birne"),
                 createIngredient(1.0, piece, "Banane"));
 
-        mockMvc.perform(get("/recipes/detail/{id}", recipe.getId()))
+        mockMvc.perform(get("/recipes/{id}", recipe.getId()))
                 .andExpect(status().isOk())
                 .andExpect(model().attributeExists("recipe"))
                 .andExpect(model().attribute("recipe", hasProperty("name", equalTo("Obstsalat"))))

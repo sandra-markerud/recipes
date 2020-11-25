@@ -15,7 +15,7 @@
                 <img th:src="@{/images/recipe_default.png}" src="../../static/images/recipe_default.png" alt="Image">
             </div>
             <div class="recipe-card-info">
-                <a href="/recipes/detail/1" th:href="@{|/recipes/detail/${recipe.id}|}" th:text="${recipe.name}">[Schinkennudeln]</a>
+                <a href="/recipes/1" th:href="@{|/recipes/${recipe.id}|}" th:text="${recipe.name}">[Schinkennudeln]</a>
             </div>
         </div>
     </div>
