@@ -25,8 +25,8 @@
         <h2 th:text="#{recipesDetailPage.ingredientsHeadline}">[Zutaten]</h2>
         <ul>
             <li class="ingredient-container" th:each="ingredient: ${recipe.ingredients}" th:key="${ingredient.id}">
-                <span th:text="${ingredient.quantity + ' ' + ingredient.unit.shortName}">100 gr</span>
-                <span th:text="${ingredient.food.name}">Nudeln</span>
+                <span class="ingredient-unit" th:text="${ingredient.quantity + ' ' + ingredient.unit.shortName}">100 gr</span>
+                <span class="ingredient-food" th:text="${ingredient.food.name}">Nudeln</span>
             </li>
         </ul>
     </div>

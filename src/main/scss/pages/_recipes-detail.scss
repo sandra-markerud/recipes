@@ -51,7 +51,12 @@
   padding: 0.4em 0;
   border-bottom: 1px solid $color-lightgrey;
   grid-column-gap: 20px;
-  grid-template-columns: auto 1fr;
+  grid-template-columns: 1fr 2fr;
+
+  .ingredient-unit {
+    text-align: right;
+  }
+
 }
 
 .recipe-detail-instruction {
