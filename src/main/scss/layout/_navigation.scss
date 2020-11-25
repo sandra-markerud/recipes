@@ -1,5 +1,16 @@
 .nav-menu {
   display: none;
+  max-width: 1720px;
+
+  @include respond-to(medium) {
+    display: block;
+    width: 100%;
+
+    ul {
+      display: flex;
+      justify-content: flex-start;
+    }
+  }
 }
 
 nav {
@@ -19,7 +30,21 @@ nav {
 
   &:nth-child(1) {
     border-top: 1px solid $color-white;
+    @include respond-to(medium) {
+      border: none;
+    }
   }
+
+  @include on-event {
+    background-color: $color-green;
+  }
+
+  a {
+    @include on-event {
+      text-decoration: none;
+    }
+  }
+
 }
 
 label.burger {
@@ -30,6 +55,10 @@ label.burger {
 
   margin-right: auto;
   border-radius: 4px;
+
+  @include respond-to(medium) {
+    display: none;
+  }
 }
 
 .line {
