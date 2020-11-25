@@ -1,0 +1,26 @@
+label {
+  font-size: 13px;
+}
+
+input[type=text], textarea {
+  padding: 10px;
+  width: 100%;
+  box-sizing: border-box;
+  font-family: $font-default, sans-serif;
+  font-size: 16px;
+  color: $color-anthracite;
+  border-radius: 5px;
+
+  &::placeholder {
+    color: lighten($color-anthracite, 30%);
+    font-family: $font-default, sans-serif;
+    font-size: 13px;
+  }
+
+}
+
+textarea {
+  resize: vertical;
+  min-height: 100px;
+}
+
