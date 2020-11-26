@@ -1,0 +1,52 @@
+col.ingredient-sort {
+  width: 30px;
+}
+
+col.ingredient-amount {
+  width: 120px;
+}
+
+col.ingredient-unit {
+  width: 170px;
+}
+
+col.ingredient-food {
+  width: auto;
+}
+
+col.ingredient-delete {
+  width: 30px;
+}
+
+.new-ingredients {
+  width: 100%;
+
+  td {
+    padding: $space-small;
+    border-top: 2px dashed $color-another-grey;
+  }
+}
+
+
+.form-wrapper {
+  display: grid;
+  grid-template-columns: 1fr;
+  grid-row-gap: $space-large;
+}
+
+.form-row {
+  padding: $space-medium;
+  background-color: lightblue;
+}
+
+.ingredient-row {
+  display: grid;
+  grid-template-columns: 1fr 1fr 2fr auto;
+}
+
+//.form-row {
+//  padding: $space-small;
+//  margin-bottom: $space-large;
+//  background-color: $color-white;
+//}
+//

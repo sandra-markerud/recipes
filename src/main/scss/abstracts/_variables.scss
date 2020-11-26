@@ -1,8 +1,11 @@
 // Colors
 $color-white: #FFFFFF;
 $color-anthracite: #5f5f5f;
-$color-lightgrey: #F2F2F2;
+$color-lightgrey: #f2f2f2;
+$color-another-grey: #e5e5e5;
 $color-green: #A3C06C;
+
+$shadow-default: 0 4px 10px 0 rgba(0, 0, 0, 0.2), 0 4px 20px 0 rgba(0, 0, 0, 0.19);
 
 // Fonts
 $font-default: 'Blokletters-Balpen';
@@ -16,6 +19,15 @@ $bp-large: 1024px;
 $breakpoints: (
         'small': $bp-small,
         'medium': $bp-medium,
-        'large': $bp-large,
+        'large': $bp-large
 );
 
+// Spaces
+$space-small: 5px;
+$space-medium: 10px;
+$space-large: 20px;
+$spaces: (
+        'small': $space-small,
+        'medium': $space-medium,
+        'large': $space-large
+);

@@ -10,12 +10,12 @@ import com.markerud.recipes.ui.forms.RecipeForm;
 import lombok.RequiredArgsConstructor;
 import org.springframework.data.domain.Sort;
 import org.springframework.stereotype.Controller;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.validation.BindingResult;
+import org.springframework.web.bind.annotation.*;
 import org.springframework.web.server.ResponseStatusException;
 import org.springframework.web.servlet.ModelAndView;
 
+import javax.validation.Valid;
 import java.util.List;
 import java.util.Optional;
 
@@ -57,6 +57,14 @@ public class RecipesController {
         mav.addObject("foods", foods);
         mav.addObject("recipeForm", new RecipeForm());
         return mav;
+    }
+
+    @PostMapping("/new")
+    public String submitNewRecipe(@Valid @ModelAttribute("recipeForm") RecipeForm recipeForm, BindingResult result) {
+        if (result.hasErrors()) {
+            return ERROR_PAGE;
+        }
+        return HOME_PAGE;
     }
 
 }
