@@ -1,4 +1,4 @@
-label {
+label, legend {
   font-size: 13px;
 }
 
@@ -27,6 +27,6 @@ input[type=text], textarea, select {
 
 textarea {
   resize: vertical;
-  min-height: 100px;
+  min-height: 300px;
 }
 

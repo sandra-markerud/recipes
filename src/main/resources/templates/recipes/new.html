@@ -8,51 +8,142 @@
 </head>
 <body>
 <div class="content" layout:fragment="content">
-    <table class="new-ingredients">
-        <colgroup>
-            <col class="ingredient-sort"/>
-            <col class="ingredient-amount"/>
-            <col class="ingredient-unit"/>
-            <col class="ingredient-food"/>
-            <col class="ingredient-delete"/>
-        </colgroup>
-        <thead>
-        <tr>
-            <th></th>
-            <th>[Menge]</th>
-            <th>[Einheit]</th>
-            <th>[Zutatenname]</th>
-            <th></th>
-        </tr>
-        </thead>
-        <tbody>
-        <tr>
-            <td>
-                <a href="#">
-                    <img th:src="@{/images/sort.svg}" src="../../static/images/sort.svg" alt="Sort">
-                </a>
-            </td>
-            <td>
-                <input type="text" autocomplete="off"/>
-            </td>
-            <td>
-                <select>
-                    <option th:each="unit : ${units}" th:value="${unit.id}" th:text="${unit.longName}"></option>
-                </select>
-            </td>
-            <td>
-                <select>
-                    <option></option>
-                    <option th:each="food : ${foods}" th:value="${food.id}" th:text="${food.name}"></option>
-                </select>
-            </td>
-            <td>
-                <a href="#">
-                    <img th:src="@{/images/trash.svg}" src="../../static/images/trash.svg" alt="Delete">
-                </a>
-            </td>
-        </tr>
-        </tbody>
-    </table>
+
+    <div class="wizard">
+        <input checked="checked" id="tab1" type="radio" name="tabs"/>
+        <input id="tab2" type="radio" name="tabs"/>
+        <input id="tab3" type="radio" name="tabs"/>
+
+        <nav class="wizard-menu">
+            <label for="tab1" class="step">Rezept</label>
+            <label for="tab2" class="step">Zubereitung</label>
+            <label for="tab3" class="step">Rezeptbild</label>
+        </nav>
+
+        <figure class="wizard-content">
+            <div class="tab1">
+                <!--                <div class="row">-->
+                <label for="recipe-name" th:text="'Rezeptname'"></label>
+                <input type="text" id="recipe-name" th:placeholder="'Hier kommt der Rezeptname hin'">
+                <!--                </div>-->
+
+                <fieldset>
+                    <legend th:text="'Zutaten und Mengenangaben'"></legend>
+                    <table class="new-ingredients">
+                        <colgroup>
+                            <col class="ingredient-sort"/>
+                            <col class="ingredient-amount"/>
+                            <col class="ingredient-unit"/>
+                            <col class="ingredient-food"/>
+                            <col class="ingredient-delete"/>
+                        </colgroup>
+                        <thead>
+                        <tr>
+                            <th></th>
+                            <th>[Menge]</th>
+                            <th>[Einheit]</th>
+                            <th>[Zutatenname]</th>
+                            <th></th>
+                        </tr>
+                        </thead>
+                        <tbody>
+                        <tr>
+                            <td>
+                                <a href="#">
+                                    <img th:src="@{/images/sort.svg}" src="../../static/images/sort.svg" alt="Sort">
+                                </a>
+                            </td>
+                            <td>
+                                <input type="text" autocomplete="off"/>
+                            </td>
+                            <td>
+                                <select>
+                                    <option th:each="unit : ${units}" th:value="${unit.id}"
+                                            th:text="${unit.longName}"></option>
+                                </select>
+                            </td>
+                            <td>
+                                <select>
+                                    <option></option>
+                                    <option th:each="food : ${foods}" th:value="${food.id}"
+                                            th:text="${food.name}"></option>
+                                </select>
+                            </td>
+                            <td>
+                                <a href="#">
+                                    <img th:src="@{/images/trash.svg}" src="../../static/images/trash.svg" alt="Delete">
+                                </a>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>
+                                <a href="#">
+                                    <img th:src="@{/images/sort.svg}" src="../../static/images/sort.svg" alt="Sort">
+                                </a>
+                            </td>
+                            <td>
+                                <input type="text" autocomplete="off"/>
+                            </td>
+                            <td>
+                                <select>
+                                    <option th:each="unit : ${units}" th:value="${unit.id}"
+                                            th:text="${unit.longName}"></option>
+                                </select>
+                            </td>
+                            <td>
+                                <select>
+                                    <option></option>
+                                    <option th:each="food : ${foods}" th:value="${food.id}"
+                                            th:text="${food.name}"></option>
+                                </select>
+                            </td>
+                            <td>
+                                <a href="#">
+                                    <img th:src="@{/images/trash.svg}" src="../../static/images/trash.svg" alt="Delete">
+                                </a>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>
+                                <a href="#">
+                                    <img th:src="@{/images/sort.svg}" src="../../static/images/sort.svg" alt="Sort">
+                                </a>
+                            </td>
+                            <td>
+                                <input type="text" autocomplete="off"/>
+                            </td>
+                            <td>
+                                <select>
+                                    <option th:each="unit : ${units}" th:value="${unit.id}"
+                                            th:text="${unit.longName}"></option>
+                                </select>
+                            </td>
+                            <td>
+                                <select>
+                                    <option></option>
+                                    <option th:each="food : ${foods}" th:value="${food.id}"
+                                            th:text="${food.name}"></option>
+                                </select>
+                            </td>
+                            <td>
+                                <a href="#">
+                                    <img th:src="@{/images/trash.svg}" src="../../static/images/trash.svg" alt="Delete">
+                                </a>
+                            </td>
+                        </tr>
+                        </tbody>
+                    </table>
+                </fieldset>
+            </div>
+
+            <div class="tab2">
+                <label for="instructions">Rezeptzubereitung</label>
+                <textarea id="instructions" placeholder="Man nehme..."></textarea>
+            </div>
+
+            <div class="tab3"> Bild-Upload</div>
+        </figure>
+    </div>
+
 </div>
 </body>
