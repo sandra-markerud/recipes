@@ -1,4 +1,4 @@
-.tab1, .tab2, .tab3 {
+.tab1, .tab2, .tab3, .tab4 {
   padding: $space-medium;
   display: none;
   background-color: $color-lightgrey;
@@ -10,7 +10,10 @@ input[type=radio][name="tabs"] {
 }
 
 .step {
-  padding: $space-medium 0 $space-medium $space-small;
+  display: grid;
+  grid-template-columns: auto 1fr;
+  grid-column-gap: $space-small;
+  padding: $space-small;
   border: 1px solid $color-green;
   border-radius: 5px;
   background-color: $color-green;
@@ -18,25 +21,17 @@ input[type=radio][name="tabs"] {
   text-transform: uppercase;
   font-family: $font-navigation, sans-serif;
   font-size: 16px;
+  vertical-align: middle;
   cursor: pointer;
-  display: inline-block;
-  position: relative;
+}
 
-  &:after {
-    content: " ";
-    background-color: $color-green;
-    width: 30px;
-    height: 30px;
-    position: absolute;
-    top: 50%;
-    right: 0;
-    margin-top: -15px;
-    margin-right: -13px;
-    transition: background 0.3s linear;
-    transform: rotate(45deg);
-    border-radius: 5px;
-    z-index: -1;
-  }
+.label-number {
+
+}
+
+.label-text {
+  margin: auto 0;
+  vertical-align: middle;
 }
 
 .wizard {
@@ -48,14 +43,14 @@ input[type=radio][name="tabs"] {
 
 .wizard-menu {
   display: grid;
-  grid-template-columns: repeat(3, auto);
-  grid-column-gap: $space-large;
-  justify-items: start;
+  grid-auto-flow: column;
+  grid-column-gap: $space-small;
 }
 
 #tab1:checked ~ figure .tab1,
 #tab2:checked ~ figure .tab2,
-#tab3:checked ~ figure .tab3 {
+#tab3:checked ~ figure .tab3,
+#tab4:checked ~ figure .tab4 {
   display: grid;
 }
 
